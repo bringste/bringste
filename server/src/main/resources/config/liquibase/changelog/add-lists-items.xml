@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <!-- JHipster core -->
+    <changeSet id="1" author="jhipster">
+        <createTable tableName="T_SHOPPING_LIST">
+            <column name="id" type="varchar(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="creator_id" type="varchar(50)"/>
+            <column name="assignee_id" type="varchar(50)"/>
+            <column name="source_location_id" type="varchar(50)"/>
+            <column name="target_location_id" type="varchar(50)"/>
+            <column name="tip_description" type="varchar(255)"/>
+            <column name="tip_type" type="varchar(10)"/>
+            <column name="due_date" type="numeric"/>
+            <column name="reserved" type="boolean"/>
+            <column name="source_location" type="varchar(60)"/>
+            <column name="target_location" type="varchar(60)"/>
+        </createTable>
+        <createTable tableName="T_ITEM">
+            <column name="id" type="varchar(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="done" type="boolean"/>
+            <column name="shopping_list_id" type="varchar(50)"/>
+        </createTable>
+        <createTable tableName="T_LOCATION">
+            <column name="id" type="varchar(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="shopping_list_id" type="varchar(50)"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="longitude" type="decimal(20,10)"/>
+            <column name="latitude" type="decimal(20,10)"/>
+            <column name="zoom" type="numeric"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

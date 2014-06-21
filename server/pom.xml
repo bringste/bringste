@@ -377,6 +377,16 @@
             <artifactId>swagger-springmvc</artifactId>
             <version>${swagger-springmvc.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.theoryinpractise</groupId>
+            <artifactId>halbuilder-json</artifactId>
+            <version>3.1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>net.eusashead.hateoas</groupId>
+            <artifactId>spring-halbuilder</artifactId>
+            <version>1.3.1.RELEASE</version>
+        </dependency>
 
         <!-- Database dependencies-->
         <dependency>
@@ -420,6 +430,7 @@
         </dependency>
     </dependencies>
     <build>
+        <finalName>bringste</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

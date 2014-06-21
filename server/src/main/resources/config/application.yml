@@ -26,12 +26,9 @@ spring:
     messageSource:
         cacheSeconds: 1
 
-
 swagger:
-    apiDocsLocation: http://localhost:8080
-    title: jhipster API
-    description: jhipster applications and beyond!
-    termsOfServiceUrl: http://jhipster.github.io/
+    apiDocsLocation: http://www.bringste.berlin
+    title: bringster API
+    description: bringster!
+    termsOfServiceUrl: http://www.bringste.berlin/
     contact:
-    license: Apache 2.0
-    licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.html
