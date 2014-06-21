@@ -9,14 +9,19 @@ var ngModule = angular.module('bringste.discover.map', []);
 
 var DiscoverMapController = [ '$scope', function($scope) {
 
-  var L = window.L;
-
-  console.log(L);
-
-  var map = L.mapbox.map('map', 'bringste.iik932a2').setView([40, -74.50], 9);
-
 }];
 
+
+ngModule.directive('bsteMap', function() {
+
+  return {
+    link: function(scope, element, attrs) {
+      var map = window.L.mapbox.map(element.get(0), 'bringste.iik932a2');
+      map.setView([40, -74.50], 9);
+    }
+  };
+
+});
 
 ngModule.config([ '$routeProvider', function($routeProvider) {
 

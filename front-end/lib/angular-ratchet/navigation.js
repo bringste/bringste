@@ -148,22 +148,28 @@ ngModule.directive('rtView', [ '$document', '$http', '$compile', '$controller', 
 
     link: function(scope, element, attrs) {
 
-      scope.$on('$routeChangeSuccess', function(e) {
+      var lastScope;
+
+      $rootScope.$on('$routeChangeSuccess', function(e) {
 
         var route = $navigationCache.get();
 
         withTemplate(route, function(tpl) {
 
-          element.html(tpl);
-
-          var scope = route.scope || $rootScope.$new();
-
-          if (route.controller && !route.scope) {
-            $controller(route.controller, { $scope: scope });
-            route.scope = scope;
+          if (lastScope) {
+            lastScope.$destroy();
           }
 
-          $compile(element)(scope);
+          element.html(tpl);
+
+          var childScope = $rootScope.$new();
+
+          $compile(element)(childScope);
+
+          if (route.controller) {
+            $controller(route.controller, { $scope: childScope });
+            lastScope = childScope;
+          }
 
           // force reflow to prevent scroll
           $document.get(0).body.offsetHeight;
