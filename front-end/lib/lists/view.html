@@ -20,7 +20,7 @@
             <p>List from {{list.createdAt}}</p>
             <p>{{list.isDelivered}}</p>
           </div>
-          <span class="badge badge-positive badge-top-aligned pull-right">{{list.items.length}}</span>
+          <span class="badge badge-positive badge-inverted badge-top-aligned pull-right">{{ list.reward.toFixed(2) }}€</span>
         </li>
       </ul>
     </div>
@@ -30,11 +30,7 @@
       <ul class="table-view" ng-click="toggleExpansion(list)">
         <li class="table-view-cell">
           <div class="content-image-padded pull-left">
-          <ul>
-            <div ng-repeat="item in list.items">
-              <li><p>{{item.name}}</p></li>
-            </div>
-          </ul>
+          <p><span ng-repeat="item in list.items"><span ng-if="!$first">, </span>{{ item.name }}</span></p>
           </div>
         </li>
       </ul>

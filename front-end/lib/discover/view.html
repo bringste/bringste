@@ -23,13 +23,12 @@
     <div class="card card-small card-checkable">
       <ul class="table-view" ng-click="toggleExpansion(entry)">
         <li class="table-view-cell">
-          <img class="media-object pull-left" ng-src="{{ entry.user.imgUrl }}">
+          <img class="media-object pull-left" ng-src="{{ entry.user.imageUrl }}">
           <div class="content-horizontally-padded pull-left">
             <p>{{ entry.user.name }}</p>
             <p>{{ entry.address.street }}</p>
-            <p>{{ entry.address.city }}</p>
           </div>
-          <span class="badge badge-positive badge-top-aligned pull-right">{{ entry.items.length }}</span>
+          <span class="badge badge-positive badge-inverted badge-top-aligned pull-right">{{ entry.reward.toFixed(2) }}€</span>
         </li>
       </ul>
     </div>
@@ -39,9 +38,7 @@
       <ul class="table-view" ng-click="toggleExpansion(entry)">
         <li class="table-view-cell">
           <div class="content-image-padded pull-left">
-          <ul>
-            <li ng-repeat="item in entry.items"><p>{{ item.name }}</p></li>
-          </ul>
+          <p><span ng-repeat="item in entry.items"><span ng-if="!$first">, </span>{{ item.name }}</span></p>
           </div>
         </li>
       </ul>

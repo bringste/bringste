@@ -53,7 +53,7 @@ body {
 }
 
 .content-image-padded {
-  margin: 0 0 0 42px;
+  margin: 0 0 0 62px;
 }
 
 .card-wrapper .checkbox-wrapper {
@@ -130,3 +130,16 @@ body {
   font-weight: 300;
 }
 
+.bar-tab .tab-item {
+  position: relative;
+}
+
+.bar-tab .tab-item .badge {
+  position: absolute;
+  right: -13px;
+  top: -8px;
+  z-index: 99;
+/*  position: absolute;
+  right: 21px;
+  z-index: 99;*/
+}
