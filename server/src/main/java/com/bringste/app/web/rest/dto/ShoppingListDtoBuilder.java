@@ -2,6 +2,7 @@ package com.bringste.app.web.rest.dto;
 
 import com.bringste.app.domain.TipType;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class ShoppingListDtoBuilder {
   private LocationDto targetLocation;
   private Boolean reserved;
   private List<ItemDto> items;
+  private BigDecimal tipAmount;
 
   public ShoppingListDtoBuilder setId(String id) {
     this.id = id;
@@ -29,6 +31,11 @@ public class ShoppingListDtoBuilder {
 
   public ShoppingListDtoBuilder setTipDescription(String tipDescription) {
     this.tipDescription = tipDescription;
+    return this;
+  }
+
+  public ShoppingListDtoBuilder setTipAmount(BigDecimal tipAmount) {
+    this.tipAmount = tipAmount;
     return this;
   }
 
@@ -68,6 +75,6 @@ public class ShoppingListDtoBuilder {
   }
 
   public ShoppingListDto build() {
-    return new ShoppingListDto(id, dueDate, tipDescription, tipType, creatorId, assigneeId, sourceLocation, targetLocation, reserved, items);
+    return new ShoppingListDto(id, dueDate, tipDescription, tipAmount, tipType, creatorId, assigneeId, sourceLocation, targetLocation, reserved, items);
   }
 }

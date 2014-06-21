@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,6 +29,10 @@ public class ShoppingList implements Serializable {
   @Enumerated(value = EnumType.STRING)
   @Column(name = "tip_type")
   private TipType tipType;
+
+  @NotNull
+  @Column(name = "tip_amount")
+  private BigDecimal tipAmount;
 
   @Size(max = 255)
   @Column(name = "tip_description")
@@ -137,6 +142,14 @@ public class ShoppingList implements Serializable {
 
   public String getTipDescription() {
     return tipDescription;
+  }
+
+  public BigDecimal getTipAmount() {
+    return tipAmount;
+  }
+
+  public void setTipAmount(BigDecimal tipAmount) {
+    this.tipAmount = tipAmount;
   }
 
   public void setTipDescription(String tipDescription) {
