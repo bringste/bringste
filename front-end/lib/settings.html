@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>bringste</title>
+    <title>Shopping List</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -15,62 +15,32 @@
 
     <!-- le header -->
     <header class="bar bar-nav">
-      <a class="icon icon-plus pull-right" href="newlist.html"></a>
-      <h1 class="title">My Lists</h1>
+      <h1 class="title">Settings</h1>
     </header>
     <!-- /le header -->
 
     <!-- le content -->
     <div class="content">
 
-      <!-- a card -->
-      <div class="card-wrapper">
-        <!-- cards metadata  -->
-        <div class="card card-small card-checkable">
-          <ul class="table-view">
-            <li class="table-view-cell">
-              <img class="media-object pull-left" src="http://lorempixel.com/42/42/people/">
-              <div class="content-horizontally-padded pull-left">
-                <p>List from 21th of June</p>
-                <p>Not yet bringste</p>
+      <div class="card">
+        <ul class="table-view">
+          <li class="table-view-cell media">
+            <a class="navigate-right">
+              <span class="media-object pull-left icon"><i class="fa fa-home"></i></span>
+              <div class="media-body">
+                Home
               </div>
-              <span class="badge badge-positive badge-top-aligned pull-right">3</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- cards list contents  -->
-        <div class="card card-small card-list">
-          <ul class="table-view">
-            <li class="table-view-cell">
-              <div class="content-image-padded pull-left">
-              <ul>
-                <li><p>Milch</p></li>
-                <li><p>Zucker</p></li>
-                <li><p>Sahne</p></li>
-              </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- cards metadata  -->
-        <div class="checkbox-wrapper">
-          <div class="checkbox">
-            <div class="checkmark">
-              <i class="fa fa-check"></i>
-            </div>
-          </div>
-        </div>
+            </a>
+          </li>
+        </ul>
       </div>
-      <!-- /a card -->
 
     </div>
     <!-- /le content -->
 
     <!-- le nav -->
       <nav class="bar bar-tab">
-        <a class="tab-item active" href="index.html">
+        <a class="tab-item" href="index.html">
           <span class="icon"><i class="fa fa-home"></i></span>
           <span class="tab-label">My Lists</span>
         </a>
@@ -82,7 +52,7 @@
           <span class="icon"><i class="fa fa-list-ul"></i></span>
           <span class="tab-label">Shopping List</span>
         </a>
-        <a class="tab-item" href="settings.html">
+        <a class="tab-item active" href="settings.html">
           <span class="icon"><i class="fa fa-cog"></i></span>
           <span class="tab-label">Settings</span>
         </a>

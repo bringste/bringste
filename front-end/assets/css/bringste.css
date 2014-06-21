@@ -1,3 +1,12 @@
+body {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .card-small {
   width: 80%;
 }
@@ -14,6 +23,16 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-top: none;
+}
+
+.map-wrapper {
+  height: 100%;
+}
+.map-wrapper .map{
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:100%;
 }
 
 .card-wrapper-active .card-list {
@@ -37,13 +56,57 @@
   margin: 0 0 0 42px;
 }
 
-.card-checkable .checkbox {
+.card-wrapper .checkbox-wrapper {
   position: absolute;
 
   top: 50%;
-  right: 15px;
+  right: 10px;
 
-  height: 32px;
-  width: 32px;
-  margin: -16px 0 0 0;
+  height: 22px;
+  width: calc(20% - 30px);
+  margin: -11px 0 0 0;
 }
+
+.checkbox-wrapper .checkbox {
+  margin: 0 auto;
+}
+
+.checkbox {
+  height: 22px;
+  width: 22px;
+
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.checkbox .checkmark {
+  display: none;
+
+  height: 100%;
+}
+
+.checkbox-checked .checkmark {
+  display: block;
+
+  margin: 0 auto;
+}
+
+.checkmark .fa {
+  font-size: 24px;
+  margin: -6px 0 0 0px;
+}
+
+.blankslate {
+  position: absolute;
+
+  top: 50%;
+
+  width: 80%;
+  height: auto;
+
+  margin: -90px 10% 0 10%;
+
+  max-width: 533px;
+  max-height: 192px;
+}
+

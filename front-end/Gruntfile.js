@@ -94,7 +94,7 @@ module.exports = function (grunt) {
       resources: {
         files: [
           // index.html
-          { expand: true, cwd: '<%= config.sources %>', src: [ 'index.html' ], dest: '<%= config.dist %>' },
+          { expand: true, cwd: '<%= config.sources %>', src: [ '*.html' ], dest: '<%= config.dist %>' },
 
           // assets
           {
@@ -141,7 +141,7 @@ module.exports = function (grunt) {
         files: [
           '<%= config.assets %>/img/**/*',
           '<%= config.assets %>/css/**/*',
-          '<%= config.sources %>/index.html'
+          '<%= config.sources %>/*.html'
         ],
         tasks: [ 'copy:resources' ]
       },

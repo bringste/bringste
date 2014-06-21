@@ -10,71 +10,46 @@
     <link rel="stylesheet" href="vendor/ratchet/css/ratchet.css" />
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/bringste.css">
+    <!-- mapbox specific includes -->
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css' rel='stylesheet' />
+    <!-- /mapbox specific includes -->
   </head>
   <body>
 
     <!-- le header -->
     <header class="bar bar-nav">
-      <a class="icon icon-plus pull-right" href="newlist.html"></a>
-      <h1 class="title">My Lists</h1>
+      <h1 class="title">Discover</h1>
     </header>
     <!-- /le header -->
+
+    <!-- le content presentation selector -->
+    <nav class="bar bar-standard bar-header-secondary">
+      <div class="segmented-control">
+        <a class="control-item" href="discover.html">List</a>
+        <a class="control-item active">Map</a>
+      </div>
+    </nav>
+    <!-- /le content presentation selector -->
 
     <!-- le content -->
     <div class="content">
 
-      <!-- a card -->
-      <div class="card-wrapper">
-        <!-- cards metadata  -->
-        <div class="card card-small card-checkable">
-          <ul class="table-view">
-            <li class="table-view-cell">
-              <img class="media-object pull-left" src="http://lorempixel.com/42/42/people/">
-              <div class="content-horizontally-padded pull-left">
-                <p>List from 21th of June</p>
-                <p>Not yet bringste</p>
-              </div>
-              <span class="badge badge-positive badge-top-aligned pull-right">3</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- cards list contents  -->
-        <div class="card card-small card-list">
-          <ul class="table-view">
-            <li class="table-view-cell">
-              <div class="content-image-padded pull-left">
-              <ul>
-                <li><p>Milch</p></li>
-                <li><p>Zucker</p></li>
-                <li><p>Sahne</p></li>
-              </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- cards metadata  -->
-        <div class="checkbox-wrapper">
-          <div class="checkbox">
-            <div class="checkmark">
-              <i class="fa fa-check"></i>
-            </div>
-          </div>
-        </div>
+      <!-- le map -->
+      <div class="map-wrapper">
+        <div class="map" id='map'></div>
       </div>
-      <!-- /a card -->
 
     </div>
     <!-- /le content -->
 
     <!-- le nav -->
       <nav class="bar bar-tab">
-        <a class="tab-item active" href="index.html">
+        <a class="tab-item" href="index.html">
           <span class="icon"><i class="fa fa-home"></i></span>
           <span class="tab-label">My Lists</span>
         </a>
-        <a class="tab-item" href="discover.html">
+        <a class="tab-item active" href="discover.html">
           <span class="icon"><i class="fa fa-map-marker"></i></span>
           <span class="tab-label">Discover</span>
         </a>
@@ -91,5 +66,8 @@
 
     <script src="vendor/ratchet/js/ratchet.min.js"></script>
     <script src="bringste.js"></script>
+    <script>
+      var map = L.mapbox.map('map', 'bringste.iik932a2').setView([40, -74.50], 9);
+    </script>
   </body>
 </html>
