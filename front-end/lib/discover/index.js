@@ -13,6 +13,8 @@ var ngModule = angular.module('bringste.discover', [
 var DiscoverController = [ '$scope', function($scope) {
   $scope.bringRequests = [
     {
+      isSelected: true,
+      isExpanded: false,
       user: {
         imageUrl: 'http://lorempixel.com/42/42/people/',
         name: 'Oma Inge'
@@ -28,12 +30,14 @@ var DiscoverController = [ '$scope', function($scope) {
       ]
     },
     {
+      isSelected: false,
+      isExpanded: false,
       user: {
         imageUrl: 'http://lorempixel.com/42/42/people/',
         name: 'Oma Inge'
       },
       address: {
-        street: 'Foo street 12',
+        street: 'Foo street 13',
         city: '10121 Berlin'
       },
       items: [
@@ -43,12 +47,14 @@ var DiscoverController = [ '$scope', function($scope) {
       ]
     },
     {
+      isSelected: false,
+      isExpanded: false,
       user: {
         imageUrl: 'http://lorempixel.com/42/42/people/',
         name: 'Oma Inge'
       },
       address: {
-        street: 'Foo street 12',
+        street: 'Foo street 14',
         city: '10121 Berlin'
       },
       items: [
@@ -58,12 +64,14 @@ var DiscoverController = [ '$scope', function($scope) {
       ]
     },
     {
+      isSelected: false,
+      isExpanded: false,
       user: {
         imageUrl: 'http://lorempixel.com/42/42/people/',
         name: 'Oma Inge'
       },
       address: {
-        street: 'Foo street 12',
+        street: 'Foo street 15',
         city: '10121 Berlin'
       },
       items: [
@@ -73,6 +81,15 @@ var DiscoverController = [ '$scope', function($scope) {
       ]
     }
   ];
+
+  $scope.toggleSelected = function(list) {
+    list.isSelected = !list.isSelected;
+  };
+
+  $scope.toggleExpansion = function(list) {
+    list.isExpanded = !list.isExpanded;
+  };
+
 }];
 
 ngModule.config([ '$routeProvider', function($routeProvider) {
