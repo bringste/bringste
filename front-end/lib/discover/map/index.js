@@ -73,7 +73,7 @@ ngModule.directive('bsteMap', function() {
                 coordinates: [e.latlng.lng, e.latlng.lat]
             },
             properties: {
-                'title': 'Here I am!',
+                'title': 'Here you are!',
                 'marker-color': '#0076c4',
                   'marker-size': 'small'
             }
