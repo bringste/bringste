@@ -25,6 +25,16 @@ body {
   border-top: none;
 }
 
+.map-wrapper {
+  height: 100%;
+}
+.map-wrapper .map{
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:100%;
+}
+
 .card-wrapper-active .card-list {
   max-height: 32000px;
   border-top: 1px solid #ddd;
