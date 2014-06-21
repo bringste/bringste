@@ -12,3 +12,5 @@ ngModule.config([ '$locationProvider', function($locationProvider) {
 
 
 module.exports = ngModule;
+
+require('./main');

@@ -11,121 +11,55 @@
     <link rel="stylesheet" href="css/bringste.css">
   </head>
   <body>
+
     <header class="bar bar-nav">
       <a class="icon icon-gear pull-right" href="#settingsModal"></a>
       <h1 class="title">bringste</h1>
     </header>
 
+    <!-- le header -->
     <div class="bar bar-standard bar-header-secondary">
       <form>
         <input type="search" placeholder="Search">
       </form>
     </div>
+    <!-- /le header -->
 
+    <!-- le content -->
     <div class="content">
+      <div class="card-wrapper">
+        <div class="card card-small card-checkable">
+          <ul class="table-view">
+            <li class="table-view-cell">
+              <img class="media-object pull-left" src="http://placehold.it/42x42">
+              <div class="content-horizontally-padded pull-left">
+                <p>Oma Inge</p>
+                <p>Mainstr. 19</p>
+                <p>10999 Berlin</p>
+              </div>
+              <span class="badge badge-positive badge-top-aligned pull-right">3</span>
+            </li>
+          </ul>
+        </div>
 
-      <div class="slider">
-        <div class="slide-group">
-          <div class="slide">
-            <img src="img/argo.png" alt="Argo" width="640" height="300">
-          </div>
-          <div class="slide">
-             <img src="img/skyfall.png" alt="Skyfall" width="640" height="300">
-          </div>
-          <div class="slide">
-             <img src="img/ralph.png" alt="Wreck-It Ralph" width="640" height="300">
-          </div>
+        <div class="card card-small card-list">
+          <ul class="table-view">
+            <li class="table-view-cell">
+              <div class="content-image-padded pull-left">
+              <ul>
+                <li><p>Milch</p></li>
+                <li><p>Zucker</p></li>
+                <li><p>Sahne</p></li>
+              </ul>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
+    </div>
+    <!-- /le content -->
 
-      <ul class="table-view">
-        <li class="table-view-cell table-view-divider">Recommended videos</li>
-        <li class="table-view-cell media">
-          <a class="navigate-right" href="choose-theater.html" data-transition="slide-in">
-            <img class="media-object pull-left" src="http://placehold.it/64x64" alt="Placeholder image for Argo's poster">
-            <div class="media-body">
-              Argo
-              <p>Lorem ipsum dolor sit amet, consectetur.</p>
-            </div>
-          </a>
-        </li>
-        <li class="table-view-cell media">
-          <a class="navigate-right" href="choose-theater.html" data-transition="slide-in">
-            <img class="media-object pull-left" src="http://placehold.it/64x64" alt="Placeholder image for Skyfall's poster">
-            <div class="media-body">
-              Skyfall: 007
-              <p>Lorem ipsum dolor sit amet, consectetur.</p>
-            </div>
-          </a>
-        </li>
-
-        <li class="table-view-cell media">
-          <a class="navigate-right" href="choose-theater.html" data-transition="slide-in">
-            <img class="media-object pull-left" src="http://placehold.it/64x64" alt="Placeholder image for Wreck-it Ralph's poster">
-            <div class="media-body">
-              Wreck-it Ralph
-              <p>Lorem ipsum dolor sit amet, consectetur.</p>
-            </div>
-          </a>
-        </li>
-        <li class="table-view-cell media">
-          <a class="navigate-right" href="choose-theater.html" data-transition="slide-in">
-            <img class="media-object pull-left" src="http://placehold.it/64x64" alt="Placeholder image for Argo's poster">
-            <div class="media-body">
-              Argo
-              <p>Lorem ipsum dolor sit amet, consectetur.</p>
-            </div>
-          </a>
-        </li>
-        <li class="table-view-cell media">
-          <a class="navigate-right" href="choose-theater.html" data-transition="slide-in">
-            <img class="media-object pull-left" src="http://placehold.it/64x64" alt="Placeholder image for Skyfall's poster">
-            <div class="media-body">
-              Skyfall: 007
-              <p>Lorem ipsum dolor sit amet, consectetur.</p>
-            </div>
-          </a>
-        </li>
-        <li class="table-view-cell media">
-          <a class="navigate-right" href="choose-theater.html" data-transition="slide-in">
-            <img class="media-object pull-left" src="http://placehold.it/64x64" alt="Placeholder image for Wreck-it Ralph's poster">
-            <div class="media-body">
-              Wreck-it Ralph
-              <p>Lorem ipsum dolor sit amet, consectetur.</p>
-            </div>
-          </a>
-        </li>
-        <li class="table-view-cell media">
-          <a class="navigate-right" href="choose-theater.html" data-transition="slide-in">
-            <img class="media-object pull-left" src="http://placehold.it/64x64" alt="Placeholder image for Argo's poster">
-            <div class="media-body">
-              Argo
-              <p>Lorem ipsum dolor sit amet, consectetur.</p>
-            </div>
-          </a>
-        </li>
-        <li class="table-view-cell media">
-          <a class="navigate-right" href="choose-theater.html" data-transition="slide-in">
-            <img class="media-object pull-left" src="http://placehold.it/64x64" alt="Placeholder image for Skyfall's poster">
-            <div class="media-body">
-              Skyfall: 007
-              <p>Lorem ipsum dolor sit amet, consectetur.</p>
-            </div>
-          </a>
-        </li>
-        <li class="table-view-cell media">
-          <a class="navigate-right" href="choose-theater.html" data-transition="slide-in">
-            <img class="media-object pull-left" src="http://placehold.it/64x64" alt="Placeholder image for Wreck-it Ralph's poster">
-            <div class="media-body">
-              Wreck-it Ralph
-              <p>Lorem ipsum dolor sit amet, consectetur.</p>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div><!-- /.content -->
-
-    <!-- Settings modal -->
+    <!-- le settings -->
     <div id="settingsModal" class="modal">
       <header class="bar bar-nav">
         <a class="icon icon-close pull-right" href="#settingsModal"></a>
@@ -165,8 +99,10 @@
           <button class="btn btn-positive btn-block">Save settings</button>
         </div>
       </div>
-    </div><!-- /.modal -->
+    </div>
+    <!-- /le settings -->
 
     <script src="vendor/ratchet/js/ratchet.min.js"></script>
+    <script src="js/bringste.js"></script>
   </body>
 </html>

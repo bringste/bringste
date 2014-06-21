@@ -1,0 +1,49 @@
+.card-small {
+  width: 80%;
+}
+
+.card-checkable {
+  margin-bottom: 0;
+}
+
+.card-list {
+  max-height: 6px;
+
+  margin-top: -6px;
+
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: none;
+}
+
+.card-wrapper-active .card-list {
+  max-height: 32000px;
+  border-top: 1px solid #ddd;
+}
+
+.card-list ul {
+  list-style-type: disc;
+}
+
+.table-view-cell > .badge-top-aligned {
+  top: 17px;
+}
+
+.content-horizontally-padded {
+  margin: -4px 0 0 10px;
+}
+
+.content-image-padded {
+  margin: 0 0 0 42px;
+}
+
+.card-checkable .checkbox {
+  position: absolute;
+
+  top: 50%;
+  right: 15px;
+
+  height: 32px;
+  width: 32px;
+  margin: -16px 0 0 0;
+}
