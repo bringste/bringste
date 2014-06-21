@@ -51,18 +51,18 @@ public class ShoppingListResource {
       float sourceLatitude = shoppingList.getSourceLocation().getLatitude().floatValue();
 
       LocationDto sourceLocation = new LocationDtoBuilder()
-        .setX(sourceLongitude)
-        .setY(sourceLatitude)
+        .setLatitude(sourceLatitude)
+        .setLongitude(sourceLongitude)
         .setZoom(sourceZoom)
         .build();
 
       shoppingListDtoBuilder.setSourceLocation(sourceLocation);
 
       shoppingListDtoBuilder.setTargetLocation(new LocationDtoBuilder()
-          .setX(shoppingList.getTargetLocation().getLongitude().floatValue())
-          .setY(shoppingList.getTargetLocation().getLatitude().floatValue())
-          .setZoom(shoppingList.getTargetLocation().getZoom())
-          .build());
+        .setLatitude(shoppingList.getTargetLocation().getLatitude().floatValue())
+        .setLongitude(shoppingList.getTargetLocation().getLongitude().floatValue())
+        .setZoom(shoppingList.getTargetLocation().getZoom())
+        .build());
 
       shoppingListDtoBuilder.setCreatorId(shoppingList.getCreator().getLogin())
         .setAssigneeId(shoppingList.getAssignee().getLogin())

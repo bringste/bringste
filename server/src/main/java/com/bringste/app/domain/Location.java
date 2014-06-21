@@ -35,9 +35,11 @@ public class Location {
   @Column(name = "zoom")
   Integer zoom;
 
-  @OneToOne
-  @JoinColumn(name = "shopping_list_id")
-  ShoppingList shoppingList;
+  @OneToOne(mappedBy = "sourceLocation")
+  ShoppingList sourceOf;
+
+  @OneToOne(mappedBy = "targetLocation")
+  ShoppingList targetOf;
 
   public String getId() {
     return id;
@@ -79,8 +81,12 @@ public class Location {
     return this;
   }
 
-  public ShoppingList getShoppingList() {
-    return shoppingList;
+  public ShoppingList getSourceOf() {
+    return sourceOf;
+  }
+
+  public ShoppingList getTargetOf() {
+    return targetOf;
   }
 
   public Location withId() {
