@@ -1,0 +1,84 @@
+<!-- le header -->
+<header class="bar bar-nav">
+  <h1 class="title">Discover</h1>
+</header>
+<!-- /le header -->
+
+
+<!-- le nav -->
+<nav class="bar bar-tab">
+  <a class="tab-item" href="index.html">
+    <span class="icon"><i class="fa fa-home"></i></span>
+    <span class="tab-label">My Lists</span>
+  </a>
+  <a class="tab-item active" href="discover.html">
+    <span class="icon"><i class="fa fa-map-marker"></i></span>
+    <span class="tab-label">Discover</span>
+  </a>
+  <a class="tab-item" href="list.html">
+    <span class="icon"><i class="fa fa-list-ul"></i></span>
+    <span class="tab-label">Shopping List</span>
+  </a>
+  <a class="tab-item" href="settings.html">
+    <span class="icon"><i class="fa fa-cog"></i></span>
+    <span class="tab-label">Settings</span>
+  </a>
+</nav>
+<!-- /le nav -->
+
+
+<!-- le content presentation selector -->
+<nav class="bar bar-standard bar-header-secondary">
+  <div class="segmented-control">
+    <a class="control-item active">List</a>
+    <a class="control-item" rt-navigation-push href="/discover/map">Map</a>
+  </div>
+</nav>
+<!-- /le content presentation selector -->
+
+<!-- le content -->
+<div class="content">
+
+  <!-- a card -->
+  <div class="card-wrapper" ng-repeat="entry in bringRequests">
+    <!-- cards metadata  -->
+    <div class="card card-small card-checkable">
+      <ul class="table-view">
+        <li class="table-view-cell">
+          <img class="media-object pull-left" ng-src="{{ entry.user.imgUrl }}">
+          <div class="content-horizontally-padded pull-left">
+            <p>{{ entry.user.name }}</p>
+            <p>{{ entry.address.street }}</p>
+            <p>{{ entry.address.city }}</p>
+          </div>
+          <span class="badge badge-positive badge-top-aligned pull-right">{{ entry.items.length }}</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- cards list contents  -->
+    <div class="card card-small card-list">
+      <ul class="table-view">
+        <li class="table-view-cell">
+          <div class="content-image-padded pull-left">
+          <ul>
+            <li ng-repeat="item in entry.items"><p>{{ item.name }}</p></li>
+          </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- cards metadata  -->
+    <div class="checkbox-wrapper">
+      <div class="checkbox">
+        <div class="checkmark">
+          <i class="fa fa-check"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /a card -->
+
+</div>
+<!-- /le content -->
