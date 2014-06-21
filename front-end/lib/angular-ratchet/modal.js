@@ -94,7 +94,7 @@ ngModule.directive('rtToggleModal', function($modal) {
 
     link: function(scope, element, attrs) {
 
-      element.get(0).addEventListener('touchend', function(e) {
+      element.on('click', function(e) {
 
         // prevent actual navigation
         e.preventDefault();

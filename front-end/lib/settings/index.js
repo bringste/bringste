@@ -8,8 +8,18 @@ var angular = require('angular');
 var ngModule = angular.module('bringste.settings', []);
 
 
-var SettingsController = [ '$scope', function($scope) {
-  $scope.foo = 'saddsadsadsa';
+var SettingsController = [ '$scope', '$http', 'credentials', function($scope, $http, credentials) {
+
+  $http.get('http://www.bringste.berlin:80/app/rest/users/' + credentials.id).then(function(response) {
+    $scope.profile = response.data;
+  });
+
+  $scope.save = function() {
+    $http.post('http://www.bringste.berlin:80/app/rest/users/' + credentials.id, $scope.profile).then(function(response) {
+
+    });
+  };
+
 }];
 
 

@@ -11,30 +11,30 @@ var ngModule = angular.module('bringste.lists', [
 
 var ListsController = [ '$scope', function($scope) {
   $scope.lists = [
-  {
-    createdAt: null,
-    isDelivered: false,
-    isSelected: false,
-    isExpanded: false,
-    reward: 3.00,
-    items: [{name: 'nutella'}, {name: 'blub mate'}]
-  },
-  {
-    createdAt: null,
-    isDelivered: false,
-    isSelected: true,
-    isExpanded: false,
-    reward: 5.00,
-    items: [{name: 'sahne'}, {name: 'zucker'}]
-  }
+    {
+      createdAt: null,
+      isDelivered: false,
+      isSelected: false,
+      isExpanded: false,
+      reward: 3.00,
+      items: [{name: 'nutella'}, {name: 'blub mate'}]
+    },
+    {
+      createdAt: null,
+      isDelivered: false,
+      isSelected: true,
+      isExpanded: false,
+      reward: 5.00,
+      items: [{name: 'sahne'}, {name: 'zucker'}]
+    }
   ];
 
   $scope.toggleSelected = function(list) {
-    list.isSelected = !list.isSelected;
+    list.selected = !list.selected;
   };
 
-  $scope.toggleExpansion = function(list) {
-    list.isExpanded = !list.isExpanded;
+  $scope.toggleExpanded = function(list) {
+    list.expanded = !list.expanded;
   };
 
 }];

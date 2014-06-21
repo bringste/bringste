@@ -1,6 +1,6 @@
 <!-- le header -->
 <header class="bar bar-nav">
-  <h1 class="title">Discover</h1>
+  <h1 class="title">Bring it!</h1>
 </header>
 <!-- /le header -->
 
@@ -18,15 +18,19 @@
 <div class="content">
 
   <!-- a card -->
-  <div class="card-wrapper" ng-if="bringRequests.length > 0" ng-repeat="entry in bringRequests" ng-class="{ 'card-wrapper-active': entry.isExpanded === true }">
+  <div class="card-wrapper"
+       ng-if="bringRequests.length > 0"
+       ng-repeat="entry in bringRequests"
+       ng-class="{ 'card-wrapper-active': entry.isExpanded === true }">
+
     <!-- cards metadata  -->
     <div class="card card-small card-checkable">
       <ul class="table-view" ng-click="toggleExpansion(entry)">
         <li class="table-view-cell">
-          <img class="media-object pull-left" ng-src="{{ entry.user.imageUrl }}">
+          <img class="media-object pull-left" ng-src="{{ entry.creator.imageUrl }}">
           <div class="content-horizontally-padded pull-left">
-            <p>{{ entry.user.name }}</p>
-            <p>{{ entry.address.street }}</p>
+            <p>{{ entry.creator.name }}</p>
+            <p>{{ entry.targetLocation.name }}</p>
           </div>
           <span class="badge badge-positive badge-inverted badge-top-aligned pull-right">{{ entry.reward.toFixed(2) }}€</span>
         </li>
@@ -35,7 +39,7 @@
 
     <!-- cards list contents  -->
     <div class="card card-small card-list">
-      <ul class="table-view" ng-click="toggleExpansion(entry)">
+      <ul class="table-view" ng-click="toggleExpanded(entry)">
         <li class="table-view-cell">
           <div class="content-image-padded pull-left">
           <p><span ng-repeat="item in entry.items"><span ng-if="!$first">, </span>{{ item.name }}</span></p>

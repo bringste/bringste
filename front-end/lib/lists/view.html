@@ -10,7 +10,11 @@
 <div class="content">
 
   <!-- a card -->
-  <div class="card-wrapper" ng-if="lists.length > 0" ng-repeat="list in lists" ng-class="{ 'card-wrapper-active': list.isExpanded === true }">
+  <div class="card-wrapper"
+       ng-if="lists.length > 0"
+       ng-repeat="list in lists"
+       ng-class="{ 'card-wrapper-active': list.isExpanded === true }">
+
     <!-- cards metadata  -->
     <div class="card card-small card-checkable">
       <ul class="table-view" ng-click="toggleExpansion(list)">
@@ -27,7 +31,7 @@
 
     <!-- cards list contents  -->
     <div class="card card-small card-list">
-      <ul class="table-view" ng-click="toggleExpansion(list)">
+      <ul class="table-view" ng-click="toggleExpanded(list)">
         <li class="table-view-cell">
           <div class="content-image-padded pull-left">
           <p><span ng-repeat="item in list.items"><span ng-if="!$first">, </span>{{ item.name }}</span></p>
