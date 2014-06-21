@@ -15,6 +15,7 @@ var DiscoverController = [ '$scope', function($scope) {
     {
       isSelected: true,
       isExpanded: false,
+      reward: 3.00,
       user: {
         imageUrl: 'http://lorempixel.com/42/42/people/',
         name: 'Oma Inge'
@@ -32,6 +33,7 @@ var DiscoverController = [ '$scope', function($scope) {
     {
       isSelected: false,
       isExpanded: false,
+      reward: 5.00,
       user: {
         imageUrl: 'http://lorempixel.com/42/42/people/',
         name: 'Oma Inge'
@@ -49,6 +51,7 @@ var DiscoverController = [ '$scope', function($scope) {
     {
       isSelected: false,
       isExpanded: false,
+      reward: 6.00,
       user: {
         imageUrl: 'http://lorempixel.com/42/42/people/',
         name: 'Oma Inge'
@@ -66,6 +69,7 @@ var DiscoverController = [ '$scope', function($scope) {
     {
       isSelected: false,
       isExpanded: false,
+      reward: 8.00,
       user: {
         imageUrl: 'http://lorempixel.com/42/42/people/',
         name: 'Oma Inge'
