@@ -15,8 +15,13 @@ var ShoppinglistController = [ '$scope', function($scope) {
     },
     createdAt: null,
     isDelivered: false,
-    items: [{name: 'test'}]
+    items: [{name: 'Fritz Cola', isSelected: true}, {name: 'Wasser', isSelected: false}]
   }];
+
+  $scope.toggleSelected = function(list) {
+    list.isSelected = !list.isSelected;
+  };
+
 }];
 
 ngModule.config([ '$routeProvider', function($routeProvider) {

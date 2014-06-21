@@ -13,9 +13,9 @@
     <ul class="table-view">
       <li class="table-view-cell table-view-divider">{{subscribedList.creator.name}}</li>
       <div ng-repeat="item in subscribedList.items">
-        <li class="table-view-cell media">
+        <li class="table-view-cell media" ng-click="toggleSelected(item)">
           <span class="media-object pull-left">
-            <div class="checkbox">
+            <div class="checkbox" ng-class="{ 'checkbox-checked': item.isSelected === true }">
               <div class="checkmark">
                 <i class="fa fa-check"></i>
               </div>
