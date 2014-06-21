@@ -7,7 +7,7 @@ var ngModule = angular.module('bringste', [
   require('./skeleton').name,
   require('./lists').name,
   require('./discover').name,
-  require('./shoppinglist').name,
+  require('./shopping-list').name,
   require('./settings').name,
   require('./util').name
 ]).run(function() {

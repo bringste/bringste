@@ -6,6 +6,7 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste.shoppinglist', []);
 
+
 var ShoppinglistController = [ '$scope', function($scope) {
   $scope.subscribedLists = [{
     creator: {
@@ -20,7 +21,7 @@ var ShoppinglistController = [ '$scope', function($scope) {
 
 ngModule.config([ '$routeProvider', function($routeProvider) {
 
-  $routeProvider.when('/shoppinglist', {
+  $routeProvider.when('/shopping-list', {
     controller: ShoppinglistController,
     template: fs.readFileSync(__dirname + '/view.html', 'utf-8')
   });
