@@ -71,9 +71,9 @@ public class ShoppingListResourceTest {
   @Test
   public void testGetShoppingLists() throws Exception {
     restUserMockMvc.perform(get("/app/rest/shopping-lists")
-      .accept(MediaType.APPLICATION_JSON))
+      .accept("application/hal+json"))
       .andExpect(status().isOk())
-      .andExpect(content().contentType("application/json"))
+      .andExpect(content().contentType("application/hal+json"))
       .andExpect(jsonPath("$.lists").isArray())
       .andExpect(jsonPath("$.lists[0]").exists())
       .andExpect(jsonPath("$.lists[0].creatorId").value("omainge"))

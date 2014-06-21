@@ -7,17 +7,17 @@ import com.bringste.app.web.rest.dto.*;
 import com.codahale.metrics.annotation.Timed;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/app")
 public class ShoppingListResource {
 
@@ -28,10 +28,10 @@ public class ShoppingListResource {
    * GET  /rest/shopping-lists -> get the shopping lists .
    */
   @RequestMapping(value = "/rest/shopping-lists",
-    method = RequestMethod.GET, produces = {"application/json"})
+    method = RequestMethod.GET, produces = {"application/hal+json"})
   @Timed
-  public ShoppingListsDto getShoppingLists() {
-    return createShoppingListsDto(shoppingListRepository.findAll());
+  public ResponseEntity<ShoppingListsDto> getShoppingLists() {
+    return new ResponseEntity<>(createShoppingListsDto(shoppingListRepository.findAll()), HttpStatus.OK);
   }
 
   private ShoppingListsDto createShoppingListsDto(List<ShoppingList> shoppingLists) {
@@ -84,6 +84,7 @@ public class ShoppingListResource {
   @RequestMapping(value = "/rest/shopping-lists/{id}/reserve", method = RequestMethod.POST)
   @Timed
   public ResponseEntity<String> reserveShoppingList(@PathVariable("id") String id) {
-    return new ResponseEntity<String>("ok", HttpStatus.OK);
+    shoppingListRepository.findOne(id).setReserved(true);
+    return new ResponseEntity<>("reserved", HttpStatus.OK);
   }
 }
