@@ -16,6 +16,8 @@ var ShoppinglistController = [ '$scope', function($scope) {
     isDelivered: false,
     items: [{name: 'test'}]
   }];
+
+  $scope.subscribedLists = [];
 }];
 
 ngModule.config([ '$routeProvider', function($routeProvider) {

@@ -31,7 +31,7 @@
 <div class="content">
 
   <!-- a card -->
-  <div ng-repeat="subscribedList in subscribedLists">
+  <div ng-if="subscribedLists.length > 0" ng-repeat="subscribedList in subscribedLists">
     <ul class="table-view">
       <li class="table-view-cell table-view-divider">{{subscribedList.creator.name}}</li>
       <div ng-repeat="item in subscribedList.items">
@@ -49,6 +49,15 @@
     </ul>
   </div>
   <!-- /a card -->
+
+
+  <!-- le blankslate -->
+  <p class="blankslate" ng-if="subscribedLists.length == 0" >
+    <span class="blankslateHeadline">Empty shopping list</span>
+    <span>There are no items scheduled for purchase.</span>
+    <span><a rt-navigation-push href="/discover">Discover</a> some lists and deliver items to people around you.</span>
+  </p>
+  <!-- /le blankslate -->
 
 </div>
 <!-- /le content -->
