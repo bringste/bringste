@@ -45,7 +45,7 @@ ngModule.provider('$route', function() {
 
     $get: [ '$q', '$http', '$rootScope', '$location', '$navigationCache', function($q, $http, $rootScope, $location, $navigationCache) {
 
-      var $route = { current: null };
+      var $route = { };
 
       $rootScope.$on('$locationChangeSuccess', updateRoute);
 
@@ -163,59 +163,59 @@ function rtViewFactory(   $route,   $animate) {
     priority: 400,
     transclude: 'element',
     link: function(scope, $element, attr, ctrl, $transclude) {
-        var currentScope,
-            currentElement,
-            previousElement,
-            onloadExp = attr.onload || '';
+      var currentScope,
+          currentElement,
+          previousElement,
+          onloadExp = attr.onload || '';
 
-        scope.$on('$routeChangeSuccess', update);
-        update();
+      scope.$on('$routeChangeSuccess', update);
+      update();
 
-        function cleanupLastView() {
-          if(previousElement) {
-            previousElement.remove();
+      function cleanupLastView() {
+        if(previousElement) {
+          previousElement.remove();
+          previousElement = null;
+        }
+        if(currentScope) {
+          currentScope.$destroy();
+          currentScope = null;
+        }
+        if(currentElement) {
+          $animate.leave(currentElement, function() {
             previousElement = null;
-          }
-          if(currentScope) {
-            currentScope.$destroy();
-            currentScope = null;
-          }
-          if(currentElement) {
-            $animate.leave(currentElement, function() {
-              previousElement = null;
-            });
-            previousElement = currentElement;
-            currentElement = null;
-          }
+          });
+          previousElement = currentElement;
+          currentElement = null;
         }
+      }
 
-        function update() {
-          var locals = $route.current && $route.current.locals,
-              template = locals && locals.$template;
+      function update() {
+        var locals = $route.current && $route.current.locals,
+            template = locals && locals.$template;
 
-          if (angular.isDefined(template)) {
-            var newScope = scope.$new();
-            var current = $route.current;
+        if (angular.isDefined(template)) {
+          var newScope = scope.$new();
+          var current = $route.current;
 
-            // Note: This will also link all children of ng-view that were contained in the original
-            // html. If that content contains controllers, ... they could pollute/change the scope.
-            // However, using ng-view on an element with additional content does not make sense...
-            // Note: We can't remove them in the cloneAttchFn of $transclude as that
-            // function is called before linking the content, which would apply child
-            // directives to non existing elements.
-            var clone = $transclude(newScope, function(clone) {
-              $animate.enter(clone, null, currentElement || $element);
-              cleanupLastView();
-            });
-
-            currentElement = clone;
-            currentScope = current.scope = newScope;
-            currentScope.$emit('$viewContentLoaded');
-            currentScope.$eval(onloadExp);
-          } else {
+          // Note: This will also link all children of ng-view that were contained in the original
+          // html. If that content contains controllers, ... they could pollute/change the scope.
+          // However, using ng-view on an element with additional content does not make sense...
+          // Note: We can't remove them in the cloneAttchFn of $transclude as that
+          // function is called before linking the content, which would apply child
+          // directives to non existing elements.
+          var clone = $transclude(newScope, function(clone) {
+            $animate.enter(clone, null, currentElement || $element);
             cleanupLastView();
-          }
+          });
+
+          currentElement = clone;
+          currentScope = current.scope = newScope;
+          currentScope.$emit('$viewContentLoaded');
+          currentScope.$eval(onloadExp);
+        } else {
+          cleanupLastView();
         }
+      }
     }
   };
 }
@@ -226,13 +226,8 @@ function rtViewFillContentsFactory(   $compile,   $controller,   $route) {
     restrict: 'ECA',
     priority: -400,
     link: function(scope, $element) {
-      var current = $route.current;
-
-      if (!current) {
-        return;
-      }
-
-      var locals = current.locals;
+      var current = $route.current,
+          locals = current.locals;
 
       $element.html(locals.$template);
 
