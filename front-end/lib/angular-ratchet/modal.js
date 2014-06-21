@@ -43,7 +43,6 @@ ngModule.provider('$modal', function() {
           var scope = $rootScope.$new();
 
           if (config.controller) {
-            console.log('fooo');
             $controller(config.controller, { $scope: scope });
           }
 

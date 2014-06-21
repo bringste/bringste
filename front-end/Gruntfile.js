@@ -162,8 +162,9 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', [
     'build',
+    'browserify:watch',
     'connect:livereload',
-    'watch'
+    'watch',
   ]);
 
   grunt.registerTask('default', [ 'test', 'build' ]);

@@ -3,13 +3,16 @@
 var angular = require('angular');
 
 var ngModule = angular.module('bringste', [
-  require('angular-route').name,
+  require('./angular-ratchet').name,
+  require('./lists').name,
+  require('./settings').name,
+  require('./util').name
 ]);
 
-ngModule.config([ '$locationProvider', function($locationProvider) {
-  $locationProvider.html5Mode(true);
-}]);
+ngModule.config([ '$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+  //$locationProvider.html5Mode(true);
 
-require('./main');
+  $routeProvider.otherwise({ redirectTo: '/lists' });
+}]);
 
 module.exports = ngModule;
