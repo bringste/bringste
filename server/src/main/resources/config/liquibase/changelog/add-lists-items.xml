@@ -14,6 +14,7 @@
             <column name="source_location_id" type="varchar(50)"/>
             <column name="target_location_id" type="varchar(50)"/>
             <column name="tip_description" type="varchar(255)"/>
+            <column name="tip_amount" type="decimal(10,3)"/>
             <column name="tip_type" type="varchar(10)"/>
             <column name="due_date" type="numeric"/>
             <column name="reserved" type="boolean"/>

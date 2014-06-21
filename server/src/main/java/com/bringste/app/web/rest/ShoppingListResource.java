@@ -13,22 +13,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Controller
 @RequestMapping("/app")
+@Transactional
 public class ShoppingListResource {
 
   @Inject
   ShoppingListRepository shoppingListRepository;
 
-  /**
-   * GET  /rest/shopping-lists -> get the shopping lists .
-   */
   @RequestMapping(value = "/rest/shopping-lists",
-    method = RequestMethod.GET, produces = {"application/hal+json"})
+    method = RequestMethod.GET, produces = {"application/json"})
   @Timed
   public ResponseEntity<ShoppingListsDto> getShoppingLists() {
     return new ResponseEntity<>(createShoppingListsDto(shoppingListRepository.findAll()), HttpStatus.OK);
@@ -75,16 +74,40 @@ public class ShoppingListResource {
       shoppingListDtoBuilder.setDueDate(new Date(shoppingList.getDueDate()))
         .setReserved(shoppingList.isReserved());
 
+      shoppingListDtoBuilder.setTipAmount(shoppingList.getTipAmount());
+
       shoppingListDtos.add(shoppingListDtoBuilder.build());
     }
 
     return new ShoppingListsDto(shoppingListDtos);
   }
 
-  @RequestMapping(value = "/rest/shopping-lists/{id}/reserve", method = RequestMethod.POST)
+  @RequestMapping(value = "/rest/shopping-list/{id}/reserve", method = RequestMethod.POST)
   @Timed
   public ResponseEntity<String> reserveShoppingList(@PathVariable("id") String id) {
-    shoppingListRepository.findOne(id).setReserved(true);
-    return new ResponseEntity<>("reserved", HttpStatus.OK);
+    ShoppingList shoppingList = shoppingListRepository.findOne(id);
+    if (shoppingList.isReserved()) {
+      return new ResponseEntity<>("conflict, list is already reserved", HttpStatus.CONFLICT);
+    } else {
+      ShoppingList list = shoppingListRepository.findOne(id);
+      list.setReserved(true);
+      shoppingListRepository.save(list);
+      return new ResponseEntity<>("reserved", HttpStatus.OK);
+    }
   }
+
+  @RequestMapping(value = "/rest/shopping-list/{id}/unreserve", method = RequestMethod.POST)
+  @Timed
+  public ResponseEntity<String> ureserveShoppingList(@PathVariable("id") String id) {
+    ShoppingList shoppingList = shoppingListRepository.findOne(id);
+    if (shoppingList.isReserved()) {
+      ShoppingList list = shoppingListRepository.findOne(id);
+      list.setReserved(false);
+      shoppingListRepository.save(list);
+      return new ResponseEntity<>("unreserved", HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>("conflict, list is already unreserved", HttpStatus.CONFLICT);
+    }
+  }
+
 }

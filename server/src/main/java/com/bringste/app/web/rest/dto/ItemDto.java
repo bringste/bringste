@@ -14,6 +14,10 @@ public class ItemDto {
   public ItemDto() {
   }
 
+  public String getId() {
+    return id;
+  }
+
   public String getName() {
     return name;
   }

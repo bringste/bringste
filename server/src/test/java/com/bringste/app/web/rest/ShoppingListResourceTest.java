@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -25,6 +24,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -54,7 +54,8 @@ public class ShoppingListResourceTest {
     list.setAssignee(user);
     list.setCreator(user);
     list.setTipType(TipType.CUSTOM);
-    list.setTipDescription("1 Beer");
+    list.setTipAmount(new BigDecimal(1.0));
+    list.setTipDescription("Beer");
     list.setDueDate(new Date().getTime());
     list.setSourceLocation(new Location().withId().withName("source").withLatitude(new BigDecimal(1.0f)).withLongitude(new BigDecimal(1.0f)));
     list.setTargetLocation(new Location().withId().withName("target").withLatitude(new BigDecimal(1.0f)).withLongitude(new BigDecimal(1.0f)));
@@ -71,18 +72,35 @@ public class ShoppingListResourceTest {
   @Test
   public void testGetShoppingLists() throws Exception {
     restUserMockMvc.perform(get("/app/rest/shopping-lists")
-      .accept("application/hal+json"))
+      .accept("application/json"))
       .andExpect(status().isOk())
-      .andExpect(content().contentType("application/hal+json"))
+      .andExpect(content().contentType("application/json"))
       .andExpect(jsonPath("$.lists").isArray())
       .andExpect(jsonPath("$.lists[0]").exists())
       .andExpect(jsonPath("$.lists[0].creatorId").value("omainge"))
       .andExpect(jsonPath("$.lists[0].assigneeId").value("user"))
       .andExpect(jsonPath("$.lists[1].assigneeId").doesNotExist())
       .andExpect(jsonPath("$.lists[0].tipType").value("CUSTOM"))
-      .andExpect(jsonPath("$.lists[0].tipDescription").value("1 Beer"))
+      .andExpect(jsonPath("$.lists[0].tipDescription").value("Beer"))
+      .andExpect(jsonPath("$.lists[0].tipAmount").value(1.0))
       .andExpect(jsonPath("$.lists[0].items").isArray())
       .andExpect(jsonPath("$.lists[0].items[0].name").value("Bread"))
       .andExpect(jsonPath("$.lists[0].items[0].done").value(false));
+  }
+
+  @Test
+  public void testListReservation() throws Exception {
+    restUserMockMvc.perform(post("/app/rest/shopping-list/list-1/reserve"))
+      .andExpect(status().isOk())
+      .andExpect(content().string("reserved"));
+
+    restUserMockMvc.perform(post("/app/rest/shopping-list/list-1/reserve"))
+      .andExpect(status().isConflict());
+
+    restUserMockMvc.perform(post("/app/rest/shopping-list/list-1/unreserve"))
+      .andExpect(status().isOk());
+
+    restUserMockMvc.perform(post("/app/rest/shopping-list/list-1/unreserve"))
+      .andExpect(status().isConflict());
   }
 }

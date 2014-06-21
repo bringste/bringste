@@ -2,6 +2,7 @@ package com.bringste.app.web.rest.dto;
 
 import com.bringste.app.domain.TipType;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,6 +12,7 @@ public class ShoppingListDto {
   String id;
   Date dueDate;
   String tipDescription;
+  BigDecimal tipAmount;
   String creatorId;
   String assigneeId;
   LocationDto sourceLocation;
@@ -29,6 +31,10 @@ public class ShoppingListDto {
 
   public String getTipDescription() {
     return tipDescription;
+  }
+
+  public BigDecimal getTipAmount() {
+    return tipAmount;
   }
 
   public String getCreatorId() {
@@ -59,10 +65,11 @@ public class ShoppingListDto {
     return tipType;
   }
 
-  public ShoppingListDto(String id, Date dueDate, String tipDescription, TipType tipType, String creatorId, String assigneeId, LocationDto sourceLocation, LocationDto targetLocation, Boolean reserved, List<ItemDto> items) {
+  public ShoppingListDto(String id, Date dueDate, String tipDescription, BigDecimal tipAmount, TipType tipType, String creatorId, String assigneeId, LocationDto sourceLocation, LocationDto targetLocation, Boolean reserved, List<ItemDto> items) {
     this.id = id;
     this.dueDate = dueDate;
     this.tipDescription = tipDescription;
+    this.tipAmount = tipAmount;
     this.tipType = tipType;
     this.creatorId = creatorId;
     this.assigneeId = assigneeId;
