@@ -1,13 +1,11 @@
 package com.bringste.app.web.rest.dto;
 
 import com.bringste.app.domain.TipType;
-import net.eusashead.hateoas.hal.adapter.annotation.RepresentationWriterAdapter;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@RepresentationWriterAdapter(ShoppingListDtoWriter.class)
 public class ShoppingListDto {
   TipType tipType;
   String id;
