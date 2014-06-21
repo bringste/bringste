@@ -10,13 +10,32 @@ var ngModule = angular.module('bringste.lists', [
 ]);
 
 var ListsController = [ '$scope', function($scope) {
-  $scope.lists = [{
+  $scope.lists = [
+  {
     createdAt: null,
     isDelivered: false,
-    items: [{name: 'test'}]
-  }];
-}];
+    isSelected: false,
+    isExpanded: false,
+    items: [{name: 'nutella'}, {name: 'blub mate'}]
+  },
+  {
+    createdAt: null,
+    isDelivered: false,
+    isSelected: true,
+    isExpanded: false,
+    items: [{name: 'sahne'}, {name: 'zucker'}]
+  }
+  ];
 
+  $scope.toggleSelected = function(list) {
+    list.isSelected = !list.isSelected;
+  };
+
+  $scope.toggleExpansion = function(list) {
+    list.isExpanded = !list.isExpanded;
+  };
+
+}];
 
 ngModule.config([ '$routeProvider', function($routeProvider) {
 

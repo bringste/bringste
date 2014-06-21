@@ -10,10 +10,10 @@
 <div class="content">
 
   <!-- a card -->
-  <div class="card-wrapper" ng-if="lists.length > 0" ng-repeat="list in lists">
+  <div class="card-wrapper" ng-if="lists.length > 0" ng-repeat="list in lists" ng-class="{ 'card-wrapper-active': list.isExpanded === true }">
     <!-- cards metadata  -->
     <div class="card card-small card-checkable">
-      <ul class="table-view">
+      <ul class="table-view" ng-click="toggleExpansion(list)">
         <li class="table-view-cell">
           <img class="media-object pull-left" src="http://lorempixel.com/42/42/people/">
           <div class="content-horizontally-padded pull-left">
@@ -27,7 +27,7 @@
 
     <!-- cards list contents  -->
     <div class="card card-small card-list">
-      <ul class="table-view">
+      <ul class="table-view" ng-click="toggleExpansion(list)">
         <li class="table-view-cell">
           <div class="content-image-padded pull-left">
           <ul>
@@ -42,7 +42,7 @@
 
     <!-- cards metadata  -->
     <div class="checkbox-wrapper">
-      <div class="checkbox">
+      <div class="checkbox" ng-class="{ 'checkbox-checked': list.isSelected === true }" ng-click="toggleSelected(list)">
         <div class="checkmark">
           <i class="fa fa-check"></i>
         </div>
