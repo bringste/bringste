@@ -19,8 +19,6 @@ var NewListController = [ '$scope', 'focus', function($scope, focus) {
 
     var items = $scope.list.items;
 
-    console.log('changed', box, items.indexOf(box));
-
     var idx = items.indexOf(box);
     if (idx == items.length - 1) {
       if (box.name) {

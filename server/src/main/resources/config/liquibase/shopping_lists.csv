@@ -1,2 +1,2 @@
-id;creator_id;assignee_id;source_location_id;target_location_id;tip_description;tip_type;due_date;reserved;source_location;target_location
-list-1;user;user;
+id;creator_id;assignee_id;source_location_id;target_location_id;tip_description;tip_type;due_date;reserved
+list-1;omainge;user;loc-1;loc-2;1 Beer;CUSTOM;1403388264;false

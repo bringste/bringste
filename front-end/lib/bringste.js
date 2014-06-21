@@ -4,6 +4,7 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste', [
   require('./angular-ratchet').name,
+  require('./skeleton').name,
   require('./lists').name,
   require('./discover').name,
   require('./shoppinglist').name,
