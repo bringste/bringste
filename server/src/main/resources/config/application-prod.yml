@@ -6,7 +6,7 @@ spring:
     
     datasource:
         dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
-        url: jdbc:mysql://localhost:3306/jhipster
+        url: jdbc:mysql://localhost:3306/bringste
         databaseName: 
         serverName: 
         username: root
@@ -29,7 +29,7 @@ spring:
             
 
     mail:
-        baseUrl: http://localhost:8080
+        baseUrl: http://www.bringste.berlin
 
     thymeleaf:
         mode: XHTML
