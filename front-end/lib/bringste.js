@@ -10,7 +10,9 @@ var ngModule = angular.module('bringste', [
   require('./shoppinglist').name,
   require('./settings').name,
   require('./util').name
-]);
+]).run(function() {
+  window.FastClick.attach(document.body);
+});
 
 ngModule.config([ '$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   //$locationProvider.html5Mode(true);

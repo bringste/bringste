@@ -115,6 +115,14 @@ module.exports = function (grunt) {
               'js/**/*'
             ],
             dest: '<%= config.dist %>/vendor/ratchet'
+          },
+          {
+            expand: true,
+            cwd: '<%= config.bower_components %>/fastclick/lib',
+            src: [
+              '*.js'
+            ],
+            dest: '<%= config.dist %>/vendor/fastclick'
           }
         ]
       }
