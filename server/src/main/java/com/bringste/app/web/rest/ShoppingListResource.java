@@ -64,9 +64,11 @@ public class ShoppingListResource {
         .setZoom(shoppingList.getTargetLocation().getZoom())
         .build());
 
-      shoppingListDtoBuilder.setCreatorId(shoppingList.getCreator().getLogin())
-        .setAssigneeId(shoppingList.getAssignee().getLogin())
-        .setTipType(shoppingList.getTipType())
+      shoppingListDtoBuilder.setCreatorId(shoppingList.getCreator().getLogin());
+      if (shoppingList.getAssignee() != null) {
+        shoppingListDtoBuilder.setAssigneeId(shoppingList.getAssignee().getLogin());
+      }
+      shoppingListDtoBuilder.setTipType(shoppingList.getTipType())
         .setTipDescription(shoppingList.getTipDescription());
       shoppingListDtoBuilder.setItems(items);
 

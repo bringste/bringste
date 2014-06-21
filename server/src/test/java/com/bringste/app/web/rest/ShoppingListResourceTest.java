@@ -77,6 +77,8 @@ public class ShoppingListResourceTest {
       .andExpect(jsonPath("$.lists").isArray())
       .andExpect(jsonPath("$.lists[0]").exists())
       .andExpect(jsonPath("$.lists[0].creatorId").value("omainge"))
+      .andExpect(jsonPath("$.lists[0].assigneeId").value("user"))
+      .andExpect(jsonPath("$.lists[1].assigneeId").doesNotExist())
       .andExpect(jsonPath("$.lists[0].tipType").value("CUSTOM"))
       .andExpect(jsonPath("$.lists[0].tipDescription").value("1 Beer"))
       .andExpect(jsonPath("$.lists[0].items").isArray())
