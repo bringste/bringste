@@ -1,5 +1,9 @@
 var $ = require('jquery');
 
-$('.card-wrapper').click(function () {
-	$(this).toggleClass('card-wrapper-active');
+$('.card-wrapper > .card-small > .table-view').click(function () {
+	$(this).parent().parent().toggleClass('card-wrapper-active');
+});
+
+$('.checkbox').click(function () {
+	$(this).toggleClass('checkbox-checked');
 });

@@ -1,4 +1,4 @@
-.card {
+body {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -46,13 +46,36 @@
   margin: 0 0 0 42px;
 }
 
-.card-checkable .checkbox {
+.card-wrapper .checkbox-wrapper {
   position: absolute;
 
   top: 50%;
-  right: 15px;
+  right: 10px;
 
-  height: 32px;
-  width: 32px;
-  margin: -16px 0 0 0;
+  height: 22px;
+  width: calc(20% - 30px);
+  margin: -11px 0 0 0;
 }
+.card-wrapper .checkbox-wrapper .checkbox {
+  height: 100%;
+  width: 22px;
+
+  margin: 0 auto;
+
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.card-wrapper .checkbox-wrapper .checkbox .checkmark {
+  display: none;
+
+  height: 100%;
+
+  /*replace background with an appropriate image*/
+  background: #4cd964;
+}
+
+.card-wrapper .checkbox-wrapper .checkbox-checked .checkmark {
+  display: block;
+}
+
