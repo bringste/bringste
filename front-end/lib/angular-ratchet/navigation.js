@@ -114,10 +114,9 @@ ngModule.provider('$route', function() {
         $location.path(entry.href);
       }
 
-      function pop() {
-        var last = $navigationCache.pop();
-
-        $location.path(last.href);
+      function pop(element) {
+        $navigationCache.pop();
+        $location.path(element.href);
       }
 
       $route.push = push;
@@ -277,6 +276,37 @@ ngModule.directive('rtNavigationPush', [ '$navigationSupport', '$route', functio
 
         scope.$apply(function() {
           $route.push({
+            href: element.attr('href'),
+            transition: attrs['transition']
+          });
+        });
+      });
+
+    }
+  };
+
+}]);
+
+
+ngModule.directive('rtNavigationPop', [ '$navigationSupport', '$route', function($navigationSupport, $route) {
+
+  return {
+
+    link: function(scope, element, attrs) {
+
+      element.on('click', function(event) {
+        event.preventDefault();
+      });
+
+      element.on('touchend', function(event) {
+        event.preventDefault();
+
+        if ($navigationSupport.isScrolling()) {
+          return;
+        }
+
+        scope.$apply(function() {
+          $route.pop({
             href: element.attr('href'),
             transition: attrs['transition']
           });
