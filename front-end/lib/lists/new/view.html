@@ -1,0 +1,55 @@
+<!-- le nav -->
+<nav class="bar bar-tab">
+  <a class="tab-item active" href="index.html">
+    <span class="icon"><i class="fa fa-home"></i></span>
+    <span class="tab-label">My Lists</span>
+  </a>
+  <a class="tab-item" href="discover.html">
+    <span class="icon"><i class="fa fa-map-marker"></i></span>
+    <span class="tab-label">Discover</span>
+  </a>
+  <a class="tab-item" href="list.html">
+    <span class="icon"><i class="fa fa-list-ul"></i></span>
+    <span class="tab-label">Shopping List</span>
+  </a>
+  <a class="tab-item" href="settings.html">
+    <span class="icon"><i class="fa fa-cog"></i></span>
+    <span class="tab-label">Settings</span>
+  </a>
+</nav>
+<!-- /le nav -->
+
+
+<!-- le header -->
+<header class="bar bar-nav">
+  <a class="icon icon-left-nav pull-left"></a>
+  <h1 class="title">New List</h1>
+</header>
+<!-- /le header -->
+
+<!-- le content -->
+<div class="content content-padded">
+
+  <form ng-submit="create()">
+
+    <p>Delivery Address:</p>
+    <div class="segmented-control" style="margin-bottom: 15px;">
+      <a class="control-item" ng-class="{ active: list.deliver == 'home' }" href ng-click="deliver('home')">Home</a>
+      <a class="control-item" ng-class="{ active: list.deliver == 'current' }" href ng-click="deliver('current')">Current Position</a>
+    </div>
+
+    <p>Due Date:</p>
+
+    <input type="date" ng-model="list.dueDate" />
+
+    <p>Items:</p>
+
+    <div ng-repeat="item in list.items">
+      <input type="text" placeholder="+ Add Item" focus-on="item" ng-change="changed(item)" ng-model="item.name" />
+    </div>
+
+    <button class="btn btn-positive btn-block" type="submit">Create List</button>
+  </form>
+
+</div>
+<!-- /le content -->
