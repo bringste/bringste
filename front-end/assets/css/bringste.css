@@ -56,26 +56,28 @@ body {
   width: calc(20% - 30px);
   margin: -11px 0 0 0;
 }
-.card-wrapper .checkbox-wrapper .checkbox {
-  height: 100%;
-  width: 22px;
 
+.checkbox-wrapper .checkbox {
   margin: 0 auto;
+}
+
+.checkbox {
+  height: 22px;
+  width: 22px;
 
   border: 1px solid #ddd;
   border-radius: 3px;
 }
 
-.card-wrapper .checkbox-wrapper .checkbox .checkmark {
+.checkbox .checkmark {
   display: none;
 
   height: 100%;
-
-  /*replace background with an appropriate image*/
-  background: #4cd964;
 }
 
-.card-wrapper .checkbox-wrapper .checkbox-checked .checkmark {
+.checkbox-checked .checkmark {
   display: block;
+
+  margin: 0 auto;
 }
 
