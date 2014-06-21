@@ -18,7 +18,7 @@ ngModule.config([ '$routeProvider', function($routeProvider) {
 
   $routeProvider.when('/lists', {
     controller: ListsController,
-    template: fs.readFileSync(__dirname + '/view.html')
+    template: fs.readFileSync(__dirname + '/view.html', 'utf-8')
   });
 
 }]);

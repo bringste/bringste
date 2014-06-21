@@ -5,6 +5,7 @@ var angular = require('angular');
 var ngModule = angular.module('bringste', [
   require('./angular-ratchet').name,
   require('./lists').name,
+  require('./discover').name,
   require('./settings').name,
   require('./util').name
 ]);
