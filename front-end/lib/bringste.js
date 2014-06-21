@@ -10,7 +10,6 @@ ngModule.config([ '$locationProvider', function($locationProvider) {
   $locationProvider.html5Mode(true);
 }]);
 
+require('./main');
 
 module.exports = ngModule;
-
-require('./main');
