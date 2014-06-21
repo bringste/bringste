@@ -52,7 +52,7 @@ ngModule.config([ '$routeProvider', function($routeProvider) {
 
   $routeProvider.when('/lists/new', {
     controller: NewListController,
-    template: fs.readFileSync(__dirname + '/view.html')
+    template: fs.readFileSync(__dirname + '/view.html', 'utf-8')
   });
 
 }]);
