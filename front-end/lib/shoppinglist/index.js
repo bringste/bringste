@@ -4,24 +4,24 @@ var fs = require('fs');
 
 var angular = require('angular');
 
+var ngModule = angular.module('bringste.shoppinglist', []);
 
-var ngModule = angular.module('bringste.lists', [
-  require('./new').name
-]);
-
-var ListsController = [ '$scope', function($scope) {
-  $scope.lists = [{
+var ShoppinglistController = [ '$scope', function($scope) {
+  $scope.subscribedLists = [{
+    creator: {
+      id: 0,
+      name: 'Oma Inge'
+    },
     createdAt: null,
     isDelivered: false,
     items: [{name: 'test'}]
   }];
 }];
 
-
 ngModule.config([ '$routeProvider', function($routeProvider) {
 
-  $routeProvider.when('/lists', {
-    controller: ListsController,
+  $routeProvider.when('/shoppinglist', {
+    controller: ShoppinglistController,
     template: fs.readFileSync(__dirname + '/view.html', 'utf-8')
   });
 

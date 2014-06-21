@@ -1,0 +1,20 @@
+<!-- le nav -->
+<nav class="bar bar-tab">
+  <a class="tab-item" ng-class="{ active: isActive('/lists') }" rt-navigation-push href="/lists">
+    <span class="icon"><i class="fa fa-home"></i></span>
+    <span class="tab-label">My Lists</span>
+  </a>
+  <a class="tab-item" ng-class="{ active: isActive('/discover') }" rt-navigation-push href="/discover">
+    <span class="icon"><i class="fa fa-map-marker"></i></span>
+    <span class="tab-label">Discover</span>
+  </a>
+  <a class="tab-item" ng-class="{ active: isActive('/shopping-list') }" rt-navigation-push href="/shopping-list">
+    <span class="icon"><i class="fa fa-list-ul"></i></span>
+    <span class="tab-label">Shopping List</span>
+  </a>
+  <a class="tab-item" rt-toggle-modal="settings" href>
+    <span class="icon"><i class="fa fa-cog"></i></span>
+    <span class="tab-label">Settings</span>
+  </a>
+</nav>
+<!-- /le nav -->
