@@ -8,9 +8,11 @@
 
 #import "TOMSViewController.h"
 #import "Constants.h"
+#import <MONActivityIndicatorView/MONActivityIndicatorView.h>
 
-@interface TOMSViewController () <UIWebViewDelegate>
+@interface TOMSViewController () <UIWebViewDelegate, MONActivityIndicatorViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) MONActivityIndicatorView *indicatorView;
 @property (assign, getter = isLoaded) BOOL loaded;
 @end
 
@@ -22,6 +24,16 @@
     
     [self.view setBackgroundColor:[UIColor colorWithRed:0 green:0.639 blue:0.769 alpha:1]];
     
+    self.indicatorView = [[MONActivityIndicatorView alloc] init];
+    self.indicatorView.delegate = self;
+    self.indicatorView.center = self.view.center;
+    self.indicatorView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin |
+                                            UIViewAutoresizingFlexibleRightMargin |
+                                            UIViewAutoresizingFlexibleBottomMargin |
+                                            UIViewAutoresizingFlexibleLeftMargin;
+    
+    [self.view addSubview:self.indicatorView];
+    
     self.webView.alpha = 0;
     self.webView.delegate = self;
     
@@ -30,14 +42,28 @@
     [self.webView loadRequest:request];
 }
 
+#pragma mark - MONActivityIndicatorViewDelegate
+
+- (UIColor *)activityIndicatorView:(MONActivityIndicatorView *)activityIndicatorView
+      circleBackgroundColorAtIndex:(NSUInteger)index {
+    return [UIColor whiteColor];
+}
+
 #pragma mark - Load indication
 
 - (void)loadingDidStart
 {
+    [self.indicatorView startAnimating];
 }
 
 - (void)loadingDidEnd
 {
+    [self.indicatorView stopAnimating];
+    [UIView animateWithDuration:0.37
+                     animations:^{
+                         self.view.backgroundColor = [UIColor whiteColor];
+                         self.webView.alpha = 1;
+                     }];
 }
 
 #pragma mark - UIWebViewDelegate
@@ -53,10 +79,6 @@
 {
     if (!self.isLoaded) {
         [self loadingDidEnd];
-        [UIView animateWithDuration:0.37
-                         animations:^{
-                             self.webView.alpha = 1;
-                         }];
         self.loaded = YES;
     }
 }
