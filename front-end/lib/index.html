@@ -12,17 +12,10 @@
   </head>
   <body>
 
-    <header class="bar bar-nav">
-      <a class="icon icon-gear pull-right" href="#settingsModal"></a>
-      <h1 class="title">bringste</h1>
-    </header>
-
     <!-- le header -->
-    <div class="bar bar-standard bar-header-secondary">
-      <form>
-        <input type="search" placeholder="Search">
-      </form>
-    </div>
+    <header class="bar bar-nav">
+      <h1 class="title">Discovery</h1>
+    </header>
     <!-- /le header -->
 
     <!-- le content -->
@@ -71,31 +64,22 @@
     </div>
     <!-- /le content -->
 
-    <!-- le settings -->
-    <div id="settingsModal" class="modal">
-      <header class="bar bar-nav">
-        <a class="icon icon-close pull-right" href="#settingsModal"></a>
-        <h1 class="title">Settings</h1>
-      </header>
-
-      <div class="content">
-
-        <div class="card">
-          <ul class="table-view">
-            <li class="table-view-cell media">
-              <a class="navigate-right">
-                <span class="media-object pull-left icon icon-home"></span>
-                <div class="media-body">
-                  Home
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-    <!-- /le settings -->
+    <!-- le nav -->
+      <nav class="bar bar-tab">
+        <a class="tab-item active" href="index.html">
+          <span class="icon icon-home"></span>
+          <span class="tab-label">Home</span>
+        </a>
+        <a class="tab-item" href="list.html">
+          <span class="icon icon-list"></span>
+          <span class="tab-label">Search</span>
+        </a>
+        <a class="tab-item" href="settings.html">
+          <span class="icon icon-gear"></span>
+          <span class="tab-label">Settings</span>
+        </a>
+      </nav>
+    <!-- /le nav -->
 
     <script src="vendor/ratchet/js/ratchet.min.js"></script>
     <script src="bringste.js"></script>
