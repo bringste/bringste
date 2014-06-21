@@ -1,0 +1,488 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A6A8218A1955E03F00FA2CFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A821891955E03F00FA2CFD /* Foundation.framework */; };
+		A6A8218C1955E03F00FA2CFD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A8218B1955E03F00FA2CFD /* CoreGraphics.framework */; };
+		A6A8218E1955E03F00FA2CFD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A8218D1955E03F00FA2CFD /* UIKit.framework */; };
+		A6A821941955E03F00FA2CFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6A821921955E03F00FA2CFD /* InfoPlist.strings */; };
+		A6A821961955E03F00FA2CFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A821951955E03F00FA2CFD /* main.m */; };
+		A6A8219A1955E03F00FA2CFD /* TOMSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A821991955E03F00FA2CFD /* TOMSAppDelegate.m */; };
+		A6A8219D1955E03F00FA2CFD /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A8219B1955E03F00FA2CFD /* Main_iPhone.storyboard */; };
+		A6A821A01955E03F00FA2CFD /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A8219E1955E03F00FA2CFD /* Main_iPad.storyboard */; };
+		A6A821A51955E03F00FA2CFD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A821A41955E03F00FA2CFD /* Images.xcassets */; };
+		A6A821AC1955E03F00FA2CFD /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A821AB1955E03F00FA2CFD /* XCTest.framework */; };
+		A6A821AD1955E03F00FA2CFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A821891955E03F00FA2CFD /* Foundation.framework */; };
+		A6A821AE1955E03F00FA2CFD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A8218D1955E03F00FA2CFD /* UIKit.framework */; };
+		A6A821B61955E03F00FA2CFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6A821B41955E03F00FA2CFD /* InfoPlist.strings */; };
+		A6A821B81955E03F00FA2CFD /* bringsteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A821B71955E03F00FA2CFD /* bringsteTests.m */; };
+		A6A821C31955E21500FA2CFD /* TOMSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A821C21955E21500FA2CFD /* TOMSViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A6A821AF1955E03F00FA2CFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6A8217E1955E03F00FA2CFD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6A821851955E03F00FA2CFD;
+			remoteInfo = bringste;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A6A821861955E03F00FA2CFD /* bringste.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bringste.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6A821891955E03F00FA2CFD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A6A8218B1955E03F00FA2CFD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A6A8218D1955E03F00FA2CFD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A6A821911955E03F00FA2CFD /* bringste-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bringste-Info.plist"; sourceTree = "<group>"; };
+		A6A821931955E03F00FA2CFD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A6A821951955E03F00FA2CFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A6A821971955E03F00FA2CFD /* bringste-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bringste-Prefix.pch"; sourceTree = "<group>"; };
+		A6A821981955E03F00FA2CFD /* TOMSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TOMSAppDelegate.h; sourceTree = "<group>"; };
+		A6A821991955E03F00FA2CFD /* TOMSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TOMSAppDelegate.m; sourceTree = "<group>"; };
+		A6A8219C1955E03F00FA2CFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		A6A8219F1955E03F00FA2CFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		A6A821A41955E03F00FA2CFD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A6A821AA1955E03F00FA2CFD /* bringsteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bringsteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6A821AB1955E03F00FA2CFD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A6A821B31955E03F00FA2CFD /* bringsteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bringsteTests-Info.plist"; sourceTree = "<group>"; };
+		A6A821B51955E03F00FA2CFD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A6A821B71955E03F00FA2CFD /* bringsteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bringsteTests.m; sourceTree = "<group>"; };
+		A6A821C11955E21500FA2CFD /* TOMSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOMSViewController.h; sourceTree = "<group>"; };
+		A6A821C21955E21500FA2CFD /* TOMSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOMSViewController.m; sourceTree = "<group>"; };
+		A6A821C41955E2CA00FA2CFD /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A6A821831955E03F00FA2CFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6A8218C1955E03F00FA2CFD /* CoreGraphics.framework in Frameworks */,
+				A6A8218E1955E03F00FA2CFD /* UIKit.framework in Frameworks */,
+				A6A8218A1955E03F00FA2CFD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6A821A71955E03F00FA2CFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6A821AC1955E03F00FA2CFD /* XCTest.framework in Frameworks */,
+				A6A821AE1955E03F00FA2CFD /* UIKit.framework in Frameworks */,
+				A6A821AD1955E03F00FA2CFD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A6A8217D1955E03F00FA2CFD = {
+			isa = PBXGroup;
+			children = (
+				A6A8218F1955E03F00FA2CFD /* bringste */,
+				A6A821B11955E03F00FA2CFD /* bringsteTests */,
+				A6A821881955E03F00FA2CFD /* Frameworks */,
+				A6A821871955E03F00FA2CFD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A6A821871955E03F00FA2CFD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A6A821861955E03F00FA2CFD /* bringste.app */,
+				A6A821AA1955E03F00FA2CFD /* bringsteTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A6A821881955E03F00FA2CFD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6A821891955E03F00FA2CFD /* Foundation.framework */,
+				A6A8218B1955E03F00FA2CFD /* CoreGraphics.framework */,
+				A6A8218D1955E03F00FA2CFD /* UIKit.framework */,
+				A6A821AB1955E03F00FA2CFD /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A6A8218F1955E03F00FA2CFD /* bringste */ = {
+			isa = PBXGroup;
+			children = (
+				A6A821C41955E2CA00FA2CFD /* Constants.h */,
+				A6A821981955E03F00FA2CFD /* TOMSAppDelegate.h */,
+				A6A821991955E03F00FA2CFD /* TOMSAppDelegate.m */,
+				A6A8219B1955E03F00FA2CFD /* Main_iPhone.storyboard */,
+				A6A8219E1955E03F00FA2CFD /* Main_iPad.storyboard */,
+				A6A821C11955E21500FA2CFD /* TOMSViewController.h */,
+				A6A821C21955E21500FA2CFD /* TOMSViewController.m */,
+				A6A821A41955E03F00FA2CFD /* Images.xcassets */,
+				A6A821901955E03F00FA2CFD /* Supporting Files */,
+			);
+			path = bringste;
+			sourceTree = "<group>";
+		};
+		A6A821901955E03F00FA2CFD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A6A821911955E03F00FA2CFD /* bringste-Info.plist */,
+				A6A821921955E03F00FA2CFD /* InfoPlist.strings */,
+				A6A821951955E03F00FA2CFD /* main.m */,
+				A6A821971955E03F00FA2CFD /* bringste-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A6A821B11955E03F00FA2CFD /* bringsteTests */ = {
+			isa = PBXGroup;
+			children = (
+				A6A821B71955E03F00FA2CFD /* bringsteTests.m */,
+				A6A821B21955E03F00FA2CFD /* Supporting Files */,
+			);
+			path = bringsteTests;
+			sourceTree = "<group>";
+		};
+		A6A821B21955E03F00FA2CFD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A6A821B31955E03F00FA2CFD /* bringsteTests-Info.plist */,
+				A6A821B41955E03F00FA2CFD /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A6A821851955E03F00FA2CFD /* bringste */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6A821BB1955E03F00FA2CFD /* Build configuration list for PBXNativeTarget "bringste" */;
+			buildPhases = (
+				A6A821821955E03F00FA2CFD /* Sources */,
+				A6A821831955E03F00FA2CFD /* Frameworks */,
+				A6A821841955E03F00FA2CFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = bringste;
+			productName = bringste;
+			productReference = A6A821861955E03F00FA2CFD /* bringste.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A6A821A91955E03F00FA2CFD /* bringsteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6A821BE1955E03F00FA2CFD /* Build configuration list for PBXNativeTarget "bringsteTests" */;
+			buildPhases = (
+				A6A821A61955E03F00FA2CFD /* Sources */,
+				A6A821A71955E03F00FA2CFD /* Frameworks */,
+				A6A821A81955E03F00FA2CFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A6A821B01955E03F00FA2CFD /* PBXTargetDependency */,
+			);
+			name = bringsteTests;
+			productName = bringsteTests;
+			productReference = A6A821AA1955E03F00FA2CFD /* bringsteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A6A8217E1955E03F00FA2CFD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TOMS;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = TomKnig;
+				TargetAttributes = {
+					A6A821A91955E03F00FA2CFD = {
+						TestTargetID = A6A821851955E03F00FA2CFD;
+					};
+				};
+			};
+			buildConfigurationList = A6A821811955E03F00FA2CFD /* Build configuration list for PBXProject "bringste" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A6A8217D1955E03F00FA2CFD;
+			productRefGroup = A6A821871955E03F00FA2CFD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A6A821851955E03F00FA2CFD /* bringste */,
+				A6A821A91955E03F00FA2CFD /* bringsteTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A6A821841955E03F00FA2CFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6A821A01955E03F00FA2CFD /* Main_iPad.storyboard in Resources */,
+				A6A821A51955E03F00FA2CFD /* Images.xcassets in Resources */,
+				A6A8219D1955E03F00FA2CFD /* Main_iPhone.storyboard in Resources */,
+				A6A821941955E03F00FA2CFD /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6A821A81955E03F00FA2CFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6A821B61955E03F00FA2CFD /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A6A821821955E03F00FA2CFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6A821C31955E21500FA2CFD /* TOMSViewController.m in Sources */,
+				A6A821961955E03F00FA2CFD /* main.m in Sources */,
+				A6A8219A1955E03F00FA2CFD /* TOMSAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6A821A61955E03F00FA2CFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6A821B81955E03F00FA2CFD /* bringsteTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A6A821B01955E03F00FA2CFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A6A821851955E03F00FA2CFD /* bringste */;
+			targetProxy = A6A821AF1955E03F00FA2CFD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A6A821921955E03F00FA2CFD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A6A821931955E03F00FA2CFD /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A6A8219B1955E03F00FA2CFD /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A6A8219C1955E03F00FA2CFD /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		A6A8219E1955E03F00FA2CFD /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A6A8219F1955E03F00FA2CFD /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		A6A821B41955E03F00FA2CFD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A6A821B51955E03F00FA2CFD /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A6A821B91955E03F00FA2CFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A6A821BA1955E03F00FA2CFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A6A821BC1955E03F00FA2CFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bringste/bringste-Prefix.pch";
+				INFOPLIST_FILE = "bringste/bringste-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A6A821BD1955E03F00FA2CFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bringste/bringste-Prefix.pch";
+				INFOPLIST_FILE = "bringste/bringste-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		A6A821BF1955E03F00FA2CFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bringste.app/bringste";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bringste/bringste-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "bringsteTests/bringsteTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		A6A821C01955E03F00FA2CFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bringste.app/bringste";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bringste/bringste-Prefix.pch";
+				INFOPLIST_FILE = "bringsteTests/bringsteTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A6A821811955E03F00FA2CFD /* Build configuration list for PBXProject "bringste" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6A821B91955E03F00FA2CFD /* Debug */,
+				A6A821BA1955E03F00FA2CFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6A821BB1955E03F00FA2CFD /* Build configuration list for PBXNativeTarget "bringste" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6A821BC1955E03F00FA2CFD /* Debug */,
+				A6A821BD1955E03F00FA2CFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A6A821BE1955E03F00FA2CFD /* Build configuration list for PBXNativeTarget "bringsteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6A821BF1955E03F00FA2CFD /* Debug */,
+				A6A821C01955E03F00FA2CFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A6A8217E1955E03F00FA2CFD /* Project object */;
+}
