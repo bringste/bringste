@@ -10,49 +10,55 @@
 <div class="content">
 
   <!-- a card -->
-  <div class="card-wrapper">
-
-    <div ng-repeat="list in lists">
-      <!-- cards metadata  -->
-      <div class="card card-small card-checkable">
-        <ul class="table-view">
-          <li class="table-view-cell">
-            <img class="media-object pull-left" src="http://lorempixel.com/42/42/people/">
-            <div class="content-horizontally-padded pull-left">
-              <p>List from {{list.createdAt}}</p>
-              <p>{{list.isDelivered}}</p>
-            </div>
-            <span class="badge badge-positive badge-top-aligned pull-right">{{list.items.length}}</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- cards list contents  -->
-      <div class="card card-small card-list">
-        <ul class="table-view">
-          <li class="table-view-cell">
-            <div class="content-image-padded pull-left">
-            <ul>
-              <div ng-repeat="item in list.items">
-                <li><p>{{item.name}}</p></li>
-              </div>
-            </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <!-- cards metadata  -->
-      <div class="checkbox-wrapper">
-        <div class="checkbox">
-          <div class="checkmark">
-            <i class="fa fa-check"></i>
+  <div class="card-wrapper" ng-if="lists.length > 0" ng-repeat="list in lists">
+    <!-- cards metadata  -->
+    <div class="card card-small card-checkable">
+      <ul class="table-view">
+        <li class="table-view-cell">
+          <img class="media-object pull-left" src="http://lorempixel.com/42/42/people/">
+          <div class="content-horizontally-padded pull-left">
+            <p>List from {{list.createdAt}}</p>
+            <p>{{list.isDelivered}}</p>
           </div>
+          <span class="badge badge-positive badge-top-aligned pull-right">{{list.items.length}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- cards list contents  -->
+    <div class="card card-small card-list">
+      <ul class="table-view">
+        <li class="table-view-cell">
+          <div class="content-image-padded pull-left">
+          <ul>
+            <div ng-repeat="item in list.items">
+              <li><p>{{item.name}}</p></li>
+            </div>
+          </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- cards metadata  -->
+    <div class="checkbox-wrapper">
+      <div class="checkbox">
+        <div class="checkmark">
+          <i class="fa fa-check"></i>
         </div>
       </div>
     </div>
-    <!-- /a card -->
-    </div>
+  </div>
+  <!-- /a card -->
+
+  <!-- le blankslate -->
+  <p class="blankslate" ng-if="lists.length == 0" >
+    <span class="blankslateHeadline">No Lists to show</span>
+    <span>You don't have any shared lists so far.</span>
+    <span>Start by creating a <a rt-navigation-push href="/lists/new">new List</a></span>
+    <span>or <a rt-navigation-push href="/discover">discover</a> other lists.</span>
+  </p>
+  <!-- /le blankslate -->
 
 </div>
 <!-- /le content -->
