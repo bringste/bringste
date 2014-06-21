@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="bringste">
+  <head>
+    <meta charset="utf-8">
+    <title>bringste</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="vendor/ratchet/css/ratchet.css" />
+    <link rel="stylesheet" href="css/bringste.css">
+
+    <base href="/">
+  </head>
+  <body>
+
+    <header class="bar bar-nav">
+      <a class="icon icon-gear pull-right" rt-toggle-modal="settings"></a>
+      <h1 class="title">bringste</h1>
+    </header>
+
+    <div ng-view>
+
+    </div>
+
+    <script src="vendor/ratchet/js/ratchet.min.js"></script>
+    <script src="bringste.js"></script>
+  </body>
+</html>
