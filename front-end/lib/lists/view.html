@@ -44,7 +44,7 @@
               <p>List from {{list.createdAt}}</p>
               <p>{{list.isDelivered}}</p>
             </div>
-            <span class="badge badge-positive badge-top-aligned pull-right">{{list.length}}</span>
+            <span class="badge badge-positive badge-top-aligned pull-right">{{list.items.length}}</span>
           </li>
         </ul>
       </div>
@@ -56,7 +56,7 @@
             <div class="content-image-padded pull-left">
             <ul>
               <div ng-repeat="item in list.items">
-                <li><p>{{list.name}}</p></li>
+                <li><p>{{item.name}}</p></li>
               </div>
             </ul>
             </div>

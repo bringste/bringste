@@ -10,7 +10,11 @@ var ngModule = angular.module('bringste.lists', [
 ]);
 
 var ListsController = [ '$scope', function($scope) {
-  $scope.foo = 'BAR';
+  $scope.lists = [{
+    createdAt: null,
+    isDelivered: false,
+    items: [{name: 'test'}]
+  }];
 }];
 
 
