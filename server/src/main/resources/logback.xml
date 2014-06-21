@@ -8,7 +8,7 @@
         </encoder>
     </appender>
     <logger name="javax.activation" level="warn"/>
-    <logger name="com.mycompany.myapp" level="${logback.loglevel}"/>
+    <logger name="com.bringste.app" level="${logback.loglevel}"/>
     <logger name="ch.qos.logback" level="WARN"/>
     <logger name="com.codahale.metrics" level="WARN"/>
     <logger name="com.ryantenney" level="WARN"/>

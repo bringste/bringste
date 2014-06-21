@@ -1,7 +1,7 @@
 {
   "generator-jhipster": {
-    "packageName": "com.mycompany.myapp",
-    "packageFolder": "com/mycompany/myapp",
+    "packageName": "com.bringste.app",
+    "packageFolder": "com/bringste/app",
     "baseName": "jhipster",
     "hibernateCache": "ehcache",
     "clusteredHttpSession": "no",

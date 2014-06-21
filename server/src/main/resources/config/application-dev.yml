@@ -51,9 +51,9 @@ cache:
 hotReload:
     enabled: true
     package:
-      project: com.mycompany.myapp
-      domain: com.mycompany.myapp.domain
-      restdto: com.mycompany.myapp.web.rest.dto
+      project: com.bringste.app
+      domain: com.bringste.app.domain
+      restdto: com.bringste.app.web.rest.dto
     liquibase:
       defaultCatalogName: 
       defaultSchema: public
