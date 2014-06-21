@@ -38,5 +38,21 @@
             <column name="latitude" type="decimal(20,10)"/>
             <column name="zoom" type="numeric"/>
         </createTable>
+        <createTable tableName="T_SOURCE_LOCATION">
+            <column name="shopping_list_id" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location_id" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="T_TARGET_LOCATION">
+            <column name="shopping_list_id" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location_id" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
     </changeSet>
 </databaseChangeLog>

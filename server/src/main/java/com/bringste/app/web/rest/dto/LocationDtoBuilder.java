@@ -1,17 +1,17 @@
 package com.bringste.app.web.rest.dto;
 
 public class LocationDtoBuilder {
-  private float x;
-  private float y;
+  private float latitude;
+  private float longitude;
   private Integer zoom;
 
-  public LocationDtoBuilder setX(float x) {
-    this.x = x;
+  public LocationDtoBuilder setLatitude(float latitude) {
+    this.latitude = latitude;
     return this;
   }
 
-  public LocationDtoBuilder setY(float y) {
-    this.y = y;
+  public LocationDtoBuilder setLongitude(float longitude) {
+    this.longitude = longitude;
     return this;
   }
 
@@ -21,6 +21,6 @@ public class LocationDtoBuilder {
   }
 
   public LocationDto build() {
-    return new LocationDto(x, y, zoom);
+    return new LocationDto(latitude, longitude, zoom);
   }
 }

@@ -1,37 +1,37 @@
 package com.bringste.app.web.rest.dto;
 
 public class LocationDto {
-  float x;
-  float y;
+  float latitude;
+  float longitude;
   Integer zoom;
 
-  public float getX() {
-    return x;
+  public float getLatitude() {
+    return latitude;
   }
 
-  public float getY() {
-    return y;
+  public float getLongitude() {
+    return longitude;
   }
 
   public Integer getZoom() {
     return zoom;
   }
 
-  public void setX(float x) {
-    this.x = x;
+  public void setLatitude(float latitude) {
+    this.latitude = latitude;
   }
 
-  public void setY(float y) {
-    this.y = y;
+  public void setLongitude(float longitude) {
+    this.longitude = longitude;
   }
 
   public void setZoom(Integer zoom) {
     this.zoom = zoom;
   }
 
-  public LocationDto(float x, float y, Integer zoom) {
-    this.x = x;
-    this.y = y;
+  public LocationDto(float latitude, float longitude, Integer zoom) {
+    this.latitude = latitude;
+    this.longitude = longitude;
     this.zoom = zoom;
   }
 
