@@ -110,3 +110,23 @@ body {
   max-height: 192px;
 }
 
+.blankslate span {
+  display: block;
+
+  font-size: 16px;
+  font-weight: 100;
+
+  text-align: center;
+}
+
+.blankslate .blankslateHeadline {
+  font-size: 36px;
+  font-weight: 300;
+
+  line-height: 56px;
+}
+
+.blankslate a {
+  font-weight: 300;
+}
+
