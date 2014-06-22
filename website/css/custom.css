@@ -1,0 +1,170 @@
+
+html { 
+  background: url('../img/bg.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  color: #F7F7F7;
+  font-family: 'Helvetica Neue';
+}
+
+body {
+  width: 100%;
+}
+
+.content {
+  background: #F7F7F7;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.content, .legitimizer-container {
+  width: 90% !important;
+  max-width: 960px !important;
+
+  margin: 5% auto !important;
+
+  -webkit-box-shadow: 0px 0px 100px 100px rgba(0, 0, 0, .05);
+  -moz-box-shadow: 0px 0px 100px 100px rgba(0, 0, 0, .05);
+  box-shadow: 0px 0px 100px 100px rgba(0, 0, 0, .05); 
+}
+ 
+ .legitimizer-container {
+    margin: 42px auto 10% !important;
+ }
+
+.content .card {
+  min-height: 500px;
+  height: auto;
+}
+
+.content .card-text {
+  background: #F7F7F7;
+  color: #2b2b2b;
+}
+
+.content .navbar {
+  position: relative;
+
+  width: 90%;
+  height: 70px;
+
+  border-radius: 35px;
+  background-color: #F7F7F7;
+
+  margin: 0 auto;
+  top: 32px;
+}
+
+.content .navbar .logo, .content .navbar p{
+  color: #2b2b2b;
+  float: left;
+}
+
+.content .navbar p{
+  margin: 24px 0 24px 24px;
+}
+
+.content .navbar a{
+  color: #2b2b2b;
+  text-decoration: none;
+}
+
+.content .navbar .logo{
+  width: 42px;
+  height: 42px;
+
+  margin: 14px 0 14px 32px;
+
+  background: url('../img/logo.jpg') no-repeat;
+  background-size: contain; 
+
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.content .image{
+}
+
+.content .hero{
+  background: url('../img/hero.jpg') no-repeat center center; 
+}
+
+.content .footer{
+  background: url('../img/footer.jpg') no-repeat center center; 
+}
+
+h1, h2, h4 {
+  text-align: center;
+}
+
+h1 {
+  margin: 96px 0 32px;
+
+  font-weight: 300;
+  font-size: 46px;
+}
+
+h2, h4 {
+  position: relative;
+
+  width: 80%;
+
+  margin: 0 auto;
+  top: 128px;
+
+  font-weight: 200;
+  font-size: 28px;
+}
+
+h4 {
+  width: 60%;
+
+  font-weight: 100;
+  font-size: 14px;
+  color: #8e8e93;
+}
+
+.appStore {
+  position: relative;
+  display: block;
+
+  top: 142px;
+
+  background: url('../img/btnAppStore.png') no-repeat;
+  background-size: contain; 
+
+  width: 180px;
+  height: 62px;
+
+  overflow: visible;
+  margin: 0 auto;
+}
+
+@media (max-width: 520px) {
+
+  h2, h4 {
+    top: 48px;
+  }
+
+  .appStore {
+    top: 64px;
+    margin-bottom: 42px;
+  }
+
+}
+
+@media (max-width: 400px) {
+
+  h2, h4 {
+    top: 24px;
+  }
+
+  .appStore {
+    top: 32px;
+    margin-bottom: 42px;
+  }
+
+}

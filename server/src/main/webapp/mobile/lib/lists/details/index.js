@@ -7,31 +7,11 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste.lists.details', []);
 
-var DetailsController = [ '$scope', 'focus', '$route', function($scope, focus, $route) {
+var DetailsController = [ '$scope', 'api', '$routeParams', function($scope, api, $routeParams) {
 
-  $http.get("../../app/rest/shopping-list/" + $route.current.params.id).then(function(result){
+  api.get("/shopping-list/:id", { params: { id: $routeParams.id } }).then(function(result) {
     $scope.list = result.data;
   });
-
-  $scope.changed = function(box) {
-
-    var items = $scope.list.items;
-
-    var idx = items.indexOf(box);
-    if (idx == items.length - 1) {
-      if (box.name) {
-        items.push({ name: '' });
-      }
-    } else {
-      if (!box.name) {
-        items.splice(idx, 1);
-
-        console.log(items[idx]);
-
-        focus(items[idx]);
-      }
-    }
-  };
 
   $scope.deliver = function(type) {
     $scope.list.deliver = type;
@@ -46,7 +26,7 @@ var DetailsController = [ '$scope', 'focus', '$route', function($scope, focus, $
 
 ngModule.config([ '$routeProvider', function($routeProvider) {
 
-  $routeProvider.when('/lists/details/:id', {
+  $routeProvider.when('/lists/:id', {
     controller: DetailsController,
     template: fs.readFileSync(__dirname + '/view.html', 'utf-8')
   });

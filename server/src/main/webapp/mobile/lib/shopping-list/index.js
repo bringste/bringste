@@ -6,23 +6,48 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste.shoppinglist', []);
 
-var ShoppinglistController = [ '$scope', '$http', function($scope, $http) {
-  $scope.subscribedLists = [];
+var ShoppingListController = [ '$scope', '$location', 'api', function($scope, $location, api) {
 
-  $http.get("../../app/rest/shopping-lists/assigned").then(function(result) {
-    $scope.subscribedLists = result.data.lists;
-  });
+  $scope.view = $location.search().view || 'aggregated';
 
-  $scope.toggleSelected = function(list) {
-    list.isSelected = !list.isSelected;
+  function update() {
+
+    api.get('/shopping-lists/assigned').then(function(result) {
+      var lists = result.data.lists;
+
+      $scope.shoppinglists = lists;
+      $scope.allItems = [];
+
+      angular.forEach(lists, function(list) {
+
+        angular.forEach(list.items, function(item) {
+          $scope.allItems.push({ list: list, entry: item });
+        });
+      });
+    });
+  }
+
+
+  update();
+
+
+  $scope.finishShopping = function() { };
+
+  $scope.setDelivered = function(e) {};
+
+  $scope.toggleBought = function(entry) {
+    var list = entry.list,
+        element = entry.element;
+
+    list.selected = !list.selected;
   };
-
 }];
+
 
 ngModule.config([ '$routeProvider', function($routeProvider) {
 
   $routeProvider.when('/shopping-list', {
-    controller: ShoppinglistController,
+    controller: ShoppingListController,
     template: fs.readFileSync(__dirname + '/view.html', 'utf-8')
   });
 
