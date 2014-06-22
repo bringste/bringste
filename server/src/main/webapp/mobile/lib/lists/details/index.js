@@ -15,10 +15,16 @@ var DetailsController = [ '$scope', 'api', '$routeParams', function($scope, api,
     console.log(result.data);
   });
 
-  $scope.create = function() {
-    console.log($scope.list);
-  };
 
+  $scope.pay = function() {
+
+    api.post('/shopping-list/:id/transfer-tip', { params: { id: $routeParams.id } }).then(function(response) {
+
+      var data = response.data;
+      window.location = data;
+    });
+
+  };
 }];
 
 

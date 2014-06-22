@@ -15,7 +15,7 @@ var ShoppingListController = [ '$scope', '$location', 'api', function($scope, $l
     api.get('/shopping-lists/assigned').then(function(result) {
       var lists = result.data.lists;
 
-      $scope.shoppinglists = lists;
+      $scope.shoppingLists = lists;
       $scope.allItems = [];
 
       angular.forEach(lists, function(list) {
