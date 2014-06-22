@@ -1,3 +1,3 @@
 id;creator_id;assignee_id;source_location_id;target_location_id;tip_description;tip_amount;tip_type;due_date;reserved
-list-1;omainge;user;loc-1;loc-2;Beer;1.0;CUSTOM;1403388264;false
-list-2;omainge;NULL;loc-1;loc-3;NULL;5.0;PAYPAL;1403388264;false
+list-1;omainge;user;loc-3;loc-1;Beer;1.0;CUSTOM;1403388264;true
+list-2;omainge;NULL;loc-1;loc-2;NULL;5.0;PAYPAL;1403388264;false

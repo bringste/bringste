@@ -35,9 +35,6 @@ var DiscoverController = [ '$scope', '$http', function($scope, $http) {
     $http.post('../..//app/rest/shopping-list/' + list.id + '/' + action).then(function() {
       list.selected = !list.selected;
     }, function(err) {
-      console.log(err);
-      // remove list from scope
-      $scope.bringRequests.splice($scope.bringRequests.indexOf(list), 1);
     });
   };
 

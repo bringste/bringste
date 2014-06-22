@@ -18,28 +18,30 @@
 <div class="content">
 
   <!-- a card -->
-  <div class="card-wrapper"
+  <div class="card-wrapper card-wrapper-active"
        ng-if="bringRequests.length > 0"
-       ng-repeat="entry in bringRequests"
-       ng-class="{ 'card-wrapper-active': entry.expanded === true }">
+       ng-repeat="entry in bringRequests">
 
     <!-- cards metadata  -->
     <div class="card card-small card-checkable">
-      <ul class="table-view" ng-click="toggleExpansion(entry)">
+      <ul class="table-view">
         <li class="table-view-cell">
           <img class="media-object pull-left" ng-src="{{ entry.creator.avatarUrl }}">
           <div class="content-horizontally-padded pull-left">
             <p>{{ entry.creator.name }}</p>
-            <p>{{ entry.targetLocation.name }}</p>
+            <p>from {{entry.sourceLocation.name}} to {{ entry.targetLocation.name }}</p>
           </div>
-          <span class="badge badge-positive badge-inverted badge-top-aligned pull-right">{{ entry.tipAmount.toFixed(2) }}€</span>
+          <span class="badge badge-positive badge-inverted badge-top-aligned pull-right">
+            <span ng-show="entry.tipType != 'CUSTOM'">{{ entry.tipAmount }} €</span>
+            <span ng-hide="entry.tipType != 'CUSTOM'">{{ entry.tipAmount }} {{entry.tipDescription}}</span>
+          </span>
         </li>
       </ul>
     </div>
 
     <!-- cards list contents  -->
     <div class="card card-small card-list">
-      <ul class="table-view" ng-click="toggleExpanded(entry)">
+      <ul class="table-view">
         <li class="table-view-cell">
           <div class="content-image-padded pull-left">
           <p><span ng-repeat="item in entry.items"><span ng-if="!$first">, </span>{{ item.name }}</span></p>

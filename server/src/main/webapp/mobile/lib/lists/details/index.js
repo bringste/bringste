@@ -7,14 +7,11 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste.lists.details', []);
 
-var DetailsController = [ '$scope', 'focus', function($scope, focus) {
+var DetailsController = [ '$scope', 'focus', '$route', function($scope, focus, $route) {
 
-  $scope.list = {
-    dueDate: null,
-    deliver: 'home',
-    pledge: 5,
-    items: [ { name: '' } ]
-  };
+  $http.get("../../app/rest/shopping-list/" + $route.current.params.id).then(function(result){
+    $scope.list = result.data;
+  });
 
   $scope.changed = function(box) {
 
@@ -49,7 +46,7 @@ var DetailsController = [ '$scope', 'focus', function($scope, focus) {
 
 ngModule.config([ '$routeProvider', function($routeProvider) {
 
-  $routeProvider.when('/lists/details', {
+  $routeProvider.when('/lists/details/:id', {
     controller: DetailsController,
     template: fs.readFileSync(__dirname + '/view.html', 'utf-8')
   });

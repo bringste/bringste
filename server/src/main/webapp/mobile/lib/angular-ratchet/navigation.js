@@ -75,6 +75,7 @@ ngModule.provider('$route', function() {
         var current = $navigationCache.get();
 
         if (!current || current.href !== href) {
+          console.log(href, current);
           current = null;
         }
 

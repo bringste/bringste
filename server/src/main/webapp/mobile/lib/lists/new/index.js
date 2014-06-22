@@ -7,13 +7,14 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste.lists.new', []);
 
-var NewListController = [ '$scope', 'focus', function($scope, focus) {
+var NewListController = [ '$scope', 'focus', '$http', function($scope, focus, $http) {
 
   $scope.list = {
     dueDate: null,
-    deliver: 'home',
-    pledge: 5,
-    items: [ { name: '' } ]
+    targetLocation: {name: "", longitude: "", latitude: ""},
+    deliverHome: false,
+    tipAmount: 5,
+    items: []
   };
 
   $scope.changed = function(box) {
@@ -41,7 +42,7 @@ var NewListController = [ '$scope', 'focus', function($scope, focus) {
   };
 
   $scope.create = function() {
-    console.log($scope.list);
+    $http.post("../../app/rest/shopping-list/new", $scope.list);
   };
 
 }];
