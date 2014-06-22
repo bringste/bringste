@@ -46,7 +46,6 @@ public class ShoppingList implements Serializable {
   @JoinColumn(name = "assignee_id")
   private User assignee;
 
-  @NotNull
   @Column(name = "due_date")
   private Long dueDate;
 

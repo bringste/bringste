@@ -9,6 +9,7 @@ public class CreateListDto {
   Date dueDate = new Date();
   List<ItemDto> items;
   BigDecimal tipAmount;
+  LocationDto targetLocation;
 
   public boolean isDeliverHome() {
     return deliverHome;
@@ -40,5 +41,13 @@ public class CreateListDto {
 
   public void setTipAmount(BigDecimal tipAmount) {
     this.tipAmount = tipAmount;
+  }
+
+  public LocationDto getTargetLocation() {
+    return targetLocation;
+  }
+
+  public void setTargetLocation(LocationDto targetLocation) {
+    this.targetLocation = targetLocation;
   }
 }

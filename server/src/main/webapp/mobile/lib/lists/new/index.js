@@ -12,9 +12,9 @@ var NewListController = [ '$scope', 'focus', '$http', function($scope, focus, $h
   $scope.list = {
     dueDate: null,
     targetLocation: {name: "", longitude: "", latitude: ""},
-    deliverHome: false,
+    deliverHome: true,
     tipAmount: 5,
-    items: []
+    items: [{name: "Beer"}, {name: ""}]
   };
 
   $scope.changed = function(box) {
@@ -37,8 +37,8 @@ var NewListController = [ '$scope', 'focus', '$http', function($scope, focus, $h
     }
   };
 
-  $scope.deliver = function(type) {
-    $scope.list.deliver = type;
+  $scope.deliver = function(deliverHome) {
+    $scope.list.deliverHome = deliverHome;
   };
 
   $scope.create = function() {

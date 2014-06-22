@@ -1,8 +1,6 @@
 package com.bringste.app.web.rest;
 
-import com.bringste.app.domain.Item;
-import com.bringste.app.domain.ShoppingList;
-import com.bringste.app.domain.User;
+import com.bringste.app.domain.*;
 import com.bringste.app.repository.ShoppingListRepository;
 import com.bringste.app.repository.UserRepository;
 import com.bringste.app.web.rest.dto.*;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -65,26 +64,27 @@ public class ShoppingListResource {
     ShoppingListDto shoppingListDtoBuilder = new ShoppingListDto();
     shoppingListDtoBuilder.setId(shoppingList.getId());
 
-    Integer sourceZoom = shoppingList.getSourceLocation().getZoom();
-    float sourceLongitude = shoppingList.getSourceLocation().getLongitude().floatValue();
-    float sourceLatitude = shoppingList.getSourceLocation().getLatitude().floatValue();
+    if (shoppingList.getSourceLocation() != null) {
+      Integer sourceZoom = shoppingList.getSourceLocation().getZoom();
+      BigDecimal sourceLongitude = shoppingList.getSourceLocation().getLongitude();
+      BigDecimal sourceLatitude = shoppingList.getSourceLocation().getLatitude();
 
-    LocationDto sourceLocation = new LocationDto()
-      .withLatitude(sourceLatitude)
-      .withLongitude(sourceLongitude)
-      .withZoom(sourceZoom)
-      .withName(shoppingList.getSourceLocation().getName());
+      LocationDto sourceLocation = new LocationDto()
+        .withLatitude(sourceLatitude)
+        .withLongitude(sourceLongitude)
+        .withZoom(sourceZoom)
+        .withName(shoppingList.getSourceLocation().getName());
 
-    shoppingListDtoBuilder.setSourceLocation(sourceLocation);
+      shoppingListDtoBuilder.setSourceLocation(sourceLocation);
+    }
 
     shoppingListDtoBuilder.setTargetLocation(new LocationDto()
-      .withLatitude(shoppingList.getTargetLocation().getLatitude().floatValue())
-      .withLongitude(shoppingList.getTargetLocation().getLongitude().floatValue())
+      .withLatitude(shoppingList.getTargetLocation().getLatitude())
+      .withLongitude(shoppingList.getTargetLocation().getLongitude())
       .withZoom(shoppingList.getTargetLocation().getZoom())
       .withName(shoppingList.getTargetLocation().getName()));
 
-    shoppingListDtoBuilder.setCreator(listUserDtoFromUser(shoppingList.getCreator())
-    );
+    shoppingListDtoBuilder.setCreator(listUserDtoFromUser(shoppingList.getCreator()));
 
     if (shoppingList.getAssignee() != null) {
       shoppingListDtoBuilder.setAssignee(listUserDtoFromUser(shoppingList.getAssignee()));
@@ -93,9 +93,11 @@ public class ShoppingListResource {
       .setTipDescription(shoppingList.getTipDescription());
     shoppingListDtoBuilder.setItems(items);
 
-    shoppingListDtoBuilder.setDueDate(new Date(shoppingList.getDueDate()))
-      .setReserved(shoppingList.isReserved());
+    if (shoppingList.getDueDate() != null) {
+      shoppingListDtoBuilder.setDueDate(new Date(shoppingList.getDueDate()));
+    }
 
+    shoppingListDtoBuilder.setReserved(shoppingList.isReserved());
     shoppingListDtoBuilder.setTipAmount(shoppingList.getTipAmount());
     return shoppingListDtoBuilder;
   }
@@ -154,10 +156,44 @@ public class ShoppingListResource {
 
   @RequestMapping(value = "/rest/shopping-list/new", method = RequestMethod.POST)
   @Timed
-  public ResponseEntity<String> createNewList(@RequestBody CreateListDto createListDto) {
-    Payment payment = new Payment();
-    payment.setIntent("sale");
-    return new ResponseEntity<>("transfered", HttpStatus.OK);
+  public ResponseEntity<String> createNewList(@RequestBody CreateListDto createListDto, Principal principal) {
+    ShoppingList newList = new ShoppingList().withId();
+    newList.setCreator(userRepository.findOne(principal.getName()));
+
+    newList.setTipAmount(createListDto.getTipAmount());
+    newList.setTipType(TipType.PAYPAL);
+
+    if (createListDto.getDueDate() != null) {
+      newList.setDueDate(createListDto.getDueDate().getTime());
+    }
+
+    if (createListDto.isDeliverHome()) {
+      newList.setTargetLocation(userRepository.findOne(principal.getName()).getHomeLocation());
+    } else if (createListDto.getTargetLocation() == null) {
+      return new ResponseEntity<>("either home or target location must be set", HttpStatus.CONFLICT);
+    } else {
+      newList.setTargetLocation(new Location()
+        .withId()
+        .withLatitude(createListDto.getTargetLocation().getLatitude())
+        .withLongitude(createListDto.getTargetLocation().getLongitude())
+      );
+    }
+
+    for (ItemDto itemDto : createListDto.getItems()) {
+      Item item = new Item().withId();
+      if (itemDto.getName() == null || itemDto.getName().isEmpty()) {
+        continue;
+      }
+      item.setName(itemDto.getName());
+      item.setDone(false);
+
+      List<Item> items = new ArrayList<>();
+      items.add(item);
+      newList.setItems(items);
+    }
+
+    shoppingListRepository.save(newList);
+    return new ResponseEntity<>("created", HttpStatus.OK);
   }
 
   @RequestMapping(value = "/rest/shopping-lists/created",
