@@ -7,8 +7,10 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste.discover.map', []);
 
-var DiscoverMapController = [ '$scope', function($scope) {
-
+var DiscoverMapController = [ '$scope', '$http', function($scope, $http) {
+  $http.get("../../app/rest/shopping-lists").then(function(result) {
+    $scope.shoppingLists = result.data.lists;
+  });
 }];
 
 
@@ -19,41 +21,36 @@ ngModule.directive('bsteMap', function() {
       var map = window.L.mapbox.map(element.get(0), 'bringste.iip05e3b');
       map.setView([39.12367, -76.81229], 9);
       var myLayer = L.mapbox.featureLayer().addTo(map);
+      var shoppingListsLayer = L.mapbox.featureLayer().addTo(map);
 
-      //display markers
-      var geojson = {
+      scope.$watch(attrs.entries, function(value){
+        shoppingListsLayer.setGeoJSON([]);
+
+        var geojson = {
           type: 'FeatureCollection',
-          features: [{
-              type: 'Feature',
-              properties: {
-                  title: 'Washington, D.C.',
-                  'marker-color': '#00a3c4',
-                  'marker-size': 'large',
-                  'marker-symbol': '9',
-                  url: 'http://en.wikipedia.org/wiki/Washington,_D.C.'
-              },
-              geometry: {
-                  type: 'Point',
-                  coordinates: [-77.03201, 38.90065]
-              }
-          },
-          {
-              type: 'Feature',
-              properties: {
-                  title: 'Baltimore, MD',
-                  'marker-color': '#00a3c4',
-                  'marker-size': 'large',
-                  'marker-symbol': '3',
-                  url: 'http://en.wikipedia.org/wiki/Baltimore'
-              },
-              geometry: {
-                  type: 'Point',
-                  coordinates: [-76.60767, 39.28755]
-              }
-          }]
-      };
+          features: []
+        };
 
-      myLayer.setGeoJSON(geojson);
+        for (var key in value) {
+          var shoppingList = value[key];
+          var shoppingListSource = shoppingList.sourceLocation;
+          var feature = {
+            type: 'Feature',
+            properties: {
+              title: shoppingListSource.name,
+              'marker-color': '#00a3c4',
+              'marker-size': 'large',
+              'marker-symbol': shoppingList.items.length
+            }, geometry: {
+              type: 'Point',
+              coordinates: [shoppingListSource.longitude, shoppingListSource.latitude]
+            }
+          };
+          geojson.features.push(feature);
+        }
+        shoppingListsLayer.setGeoJSON(geojson);
+      });
+
       myLayer.on('mouseover', function(e) {
           e.layer.openPopup();
       });
@@ -62,7 +59,6 @@ ngModule.directive('bsteMap', function() {
       });
 
       //display current location
-      map.locate();
       map.on('locationfound', function(e) {
         map.fitBounds(e.bounds);
 
@@ -79,7 +75,7 @@ ngModule.directive('bsteMap', function() {
             }
         });
       });
-
+      map.locate();
     }
   };
 
