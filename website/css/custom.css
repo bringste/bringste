@@ -32,7 +32,7 @@ body {
 }
  
  .legitimizer-container {
-    margin: 42px auto 10% !important;
+    margin: 21px auto 10% !important;
  }
 
 .content .card {
@@ -43,6 +43,7 @@ body {
 .content .card-text {
   background: #F7F7F7;
   color: #2b2b2b;
+  min-height: 0;
 }
 
 .content .navbar {
@@ -108,8 +109,6 @@ h1 {
 }
 
 h2, h4 {
-  position: relative;
-
   width: 80%;
 
   margin: 0 auto;
@@ -128,7 +127,6 @@ h4 {
 }
 
 .appStore {
-  position: relative;
   display: block;
 
   top: 142px;
@@ -140,31 +138,54 @@ h4 {
   height: 62px;
 
   overflow: visible;
-  margin: 0 auto;
+  margin: 0 auto 42px;
 }
 
-@media (max-width: 520px) {
+.step {
+  width: 33%;
+  float: left;
 
-  h2, h4 {
-    top: 48px;
+  margin: 64px 0;
+}
+
+.laststep {
+  color: #2b2b2b;
+
+  width: 100%;
+  float: left;
+
+  margin: 0;
+}
+
+.laststep h1 {
+  margin: 21px 0 32px;
+}
+
+.step-middle {
+  border-left: 1px solid #dcdcdc;
+  border-right: 1px solid #dcdcdc;
+}
+
+@media (max-width: 767px) {
+
+  .step, .laststep {
+    float: none;
+
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .step, .appStore {
+    margin-top: 48px;
+  }
+
+  .step-middle {
+    border-left: none;
+    border-right: none;
   }
 
   .appStore {
-    top: 64px;
-    margin-bottom: 42px;
-  }
-
-}
-
-@media (max-width: 400px) {
-
-  h2, h4 {
-    top: 24px;
-  }
-
-  .appStore {
-    top: 32px;
-    margin-bottom: 42px;
+    float: none;
   }
 
 }
