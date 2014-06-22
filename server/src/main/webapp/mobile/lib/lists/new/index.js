@@ -7,7 +7,7 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste.lists.new', []);
 
-var NewListController = [ '$scope', 'focus', '$http', function($scope, focus, $http) {
+var NewListController = [ '$scope', '$navigation', 'focus', 'api', function($scope, $navigation, focus, api) {
 
   $scope.list = {
     dueDate: null,
@@ -29,9 +29,6 @@ var NewListController = [ '$scope', 'focus', '$http', function($scope, focus, $h
     } else {
       if (!box.name) {
         items.splice(idx, 1);
-
-        console.log(items[idx]);
-
         focus(items[idx]);
       }
     }
@@ -42,9 +39,12 @@ var NewListController = [ '$scope', 'focus', '$http', function($scope, focus, $h
   };
 
   $scope.create = function() {
-    $http.post("../../app/rest/shopping-list/new", $scope.list);
+    api.post("/shopping-list/new", $scope.list).then(function(success) {
+      $navigation.pop({ href: '/lists' });
+    }, function(err) {
+      console.log(err);
+    });
   };
-
 }];
 
 

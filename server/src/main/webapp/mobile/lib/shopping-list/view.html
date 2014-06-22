@@ -1,39 +1,114 @@
 <!-- le header -->
 <header class="bar bar-nav">
-  <h1 class="title">Shopping List</h1>
+  <h1 class="title">Shopping Complete</h1>
+
+  <button class="btn pull-right">
+    Bought
+  </button>
 </header>
 <!-- /le header -->
 
+<!-- le content presentation selector -->
+<nav class="bar bar-standard bar-header-secondary">
+  <div class="segmented-control">
+    <a class="control-item" ng-class="{ active: view == 'aggregated' }" rt-nav-push href="/shopping-list?view=aggregated">Buy</a>
+    <a class="control-item" ng-class="{ active: view == 'grouped' }" rt-nav-push href="/shopping-list?view=grouped">Deliver</a>
+  </div>
+</nav>
+<!-- /le content presentation selector -->
+
 
 <!-- le content -->
-<div class="content">
+
+<!-- aggregated view -->
+
+<div class="content" ng-show="view == 'aggregated'">
 
   <!-- a card -->
-  <div ng-if="subscribedLists.length > 0" ng-repeat="subscribedList in subscribedLists">
-    <h4 class="content-soft-margin">{{subscribedList.creator.name}}</h4>
-    <ul class="table-view shopping-list-table-view">
-      <li class="table-view-cell media" ng-click="toggleSelected(item)" ng-repeat="item in subscribedList.items">
-        <span class="media-object pull-left">
-          <div class="checkbox" ng-class="{ 'checkbox-checked': item.isSelected === true }">
-            <div class="checkmark">
-              <i class="fa fa-check"></i>
-            </div>
+
+  <ul class="table-view" ng-show="allItems.length > 0">
+    <li class="table-view-cell" ng-repeat="item in allItems">
+      <span class="media-object pull-left">
+        <div class="checkbox"
+             ng-click="toggleBought(item)"
+             ng-class="{ 'checkbox-checked': item.bought === true }">
+
+          <div class="checkmark">
+            <i class="fa fa-check"></i>
           </div>
-        </span>
-          <div class="media-body">{{item.name}}</div>
-      </li>
-    </ul>
-  </div>
+        </div>
+      </span>
+
+      <div class="media-body">{{ item.entry.name }}</div>
+    </li>
+  </ul>
   <!-- /a card -->
 
 
   <!-- le blankslate -->
-  <p class="blankslate" ng-if="subscribedLists.length == 0" >
+  <p class="blankslate" ng-show="allItems.length == 0" >
     <span class="blankslateHeadline">Empty shopping list</span>
     <span>There are no items scheduled for purchase.</span>
-    <span><a rt-nav-push href="/discover">Discover</a> some lists and deliver items to people around you.</span>
+    <span><a rt-nav-push href="/lists">Create your own list</a> or <a rt-nav-push href="/discover">get items for people around you</a>.</span>
   </p>
   <!-- /le blankslate -->
 
 </div>
+
+
+<div class="content" ng-if="view == 'grouped'">
+
+  <!-- a card -->
+  <div class="card-wrapper"
+       ng-show="shoppingLists.length > 0"
+       ng-repeat="entry in shoppingLists"
+       ng-class="{ 'card-wrapper-active': entry.expanded === true }">
+
+    <!-- cards metadata  -->
+    <div class="card card-small card-checkable">
+      <ul class="table-view" ng-click="toggleExpansion(entry)">
+        <li class="table-view-cell">
+          <img class="media-object pull-left" ng-src="{{ entry.creator.avatarUrl }}">
+          <div class="media-body pull-left">
+            <p>{{ entry.creator.name }}</p>
+            <p>{{ entry.targetLocation.name }}</p>
+          </div>
+          <span class="badge badge-positive badge-inverted badge-top-aligned pull-right">{{ entry.tipAmount.toFixed(2) }}€</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- cards list contents  -->
+    <div class="card card-small card-list">
+      <ul class="table-view" ng-click="toggleExpanded(entry)">
+        <li class="table-view-cell">
+          <div class="content-image-padded pull-left">
+          <p><span ng-repeat="item in entry.items"><span ng-if="!$first">, </span>{{ item.name }}</span></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- cards metadata  -->
+    <div class="checkbox-wrapper">
+      <div class="checkbox" ng-class="{ 'checkbox-checked': entry.selected === true }" ng-click="toggleSelected(entry)">
+        <div class="checkmark">
+          <i class="fa fa-check"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /a card -->
+
+  <!-- le blankslate -->
+  <p class="blankslate" ng-show="shoppingLists.length == 0" >
+    <span class="blankslateHeadline">No requests to show</span>
+    <span>There are currently no requests around you.</span>
+    <span>Start over by creating a <a rt-nav-push href="/lists/new">new List</a></span>
+    <span>or just take a nap.</span>
+  </p>
+  <!-- /le blankslate -->
+
+</div>
+
 <!-- /le content -->

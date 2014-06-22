@@ -7,12 +7,6 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste.discover.map', []);
 
-var DiscoverMapController = [ '$scope', 'api', function($scope, api) {
-  api.get("/shopping-lists").then(function(result) {
-    $scope.shoppingLists = result.data.lists;
-  });
-}];
-
 
 ngModule.directive('bsteMap', function() {
 
@@ -34,17 +28,17 @@ ngModule.directive('bsteMap', function() {
 
         for (var key in value) {
           var shoppingList = value[key];
-          var shoppingListSource = shoppingList.sourceLocation;
+          var shoppingListTarget = shoppingList.targetLocation;
           var feature = {
             type: 'Feature',
             properties: {
-              title: shoppingListSource.name,
+              title: shoppingListTarget.name,
               'marker-color': '#00a3c4',
               'marker-size': 'large',
               'marker-symbol': shoppingList.items.length
             }, geometry: {
               type: 'Point',
-              coordinates: [shoppingListSource.longitude, shoppingListSource.latitude]
+              coordinates: [shoppingListTarget.longitude, shoppingListTarget.latitude]
             }
           };
           geojson.features.push(feature);
@@ -81,15 +75,6 @@ ngModule.directive('bsteMap', function() {
   };
 
 });
-
-ngModule.config([ '$routeProvider', function($routeProvider) {
-
-  $routeProvider.when('/discover/map', {
-    controller: DiscoverMapController,
-    template: fs.readFileSync(__dirname + '/view.html', 'utf-8')
-  });
-
-}]);
 
 
 module.exports = ngModule;

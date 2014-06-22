@@ -10,40 +10,33 @@ var ngModule = angular.module('bringste.discover', [
 ]);
 
 
-var DiscoverController = [ '$scope', 'api', function($scope, api) {
+var DiscoverController = [ '$scope', '$location', 'api', function($scope, $location, api) {
+
+  $scope.view = $location.search().view || 'map';
 
   api.get('/shopping-lists').then(function(response) {
     $scope.bringRequests = response.data.lists;
-
-    for (var idx = 0; idx < $scope.bringRequests.length; ++idx) {
-        var list = $scope.bringRequests[idx];
-        list.expanded = false;
-        list.selected = list.reserved;
-    }
-
-    console.log($scope.bringRequests);
-
     $scope.error = null;
   }, function(err) {
     $scope.error = err;
   });
 
-  $scope.toggleSelected = function(list) {
-    var selected = list.selected,
-        action = selected ? 'unreserve' : 'reserve';
+  $scope.toggleReserved = function(list) {
+    var reserved = list.reserved,
+        action = reserved ? 'unreserve' : 'reserve';
 
     api.post('/shopping-list/:id/:action', { params: { id: list.id, action: action } }).then(function() {
-      list.selected = !list.selected;
+      list.reserved = !list.reserved;
     }, function(err) {
+
     });
   };
 
   $scope.toggleExpanded = function(list) {
-    console.log('acas');
     list.expanded = !list.expanded;
   };
-
 }];
+
 
 ngModule.config([ '$routeProvider', function($routeProvider) {
 

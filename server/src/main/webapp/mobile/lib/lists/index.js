@@ -13,7 +13,7 @@ var ngModule = angular.module('bringste.lists', [
 var ListsController = [ '$scope', 'api', function($scope, api) {
   $scope.lists = [];
 
-  api.get("/shopping-lists/user").then(function(result){
+  api.get("/shopping-lists/created").then(function(result){
     $scope.lists = result.data.lists;
   });
 

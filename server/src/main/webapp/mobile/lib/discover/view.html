@@ -8,14 +8,18 @@
 <!-- le content presentation selector -->
 <nav class="bar bar-standard bar-header-secondary">
   <div class="segmented-control">
-    <a class="control-item active">List</a>
-    <a class="control-item" rt-nav-push href="/discover/map">Map</a>
+    <a class="control-item" ng-class="{ active: view == 'list' }" rt-nav-push href="/discover?view=list">List</a>
+    <a class="control-item" ng-class="{ active: view == 'map' }" rt-nav-push href="/discover?view=map">Map</a>
   </div>
 </nav>
 <!-- /le content presentation selector -->
 
+
 <!-- le content -->
-<div class="content">
+
+<!-- list view -->
+
+<div class="content" ng-if="view == 'list'">
 
   <!-- a card -->
   <div class="card-wrapper card-wrapper-active"
@@ -27,7 +31,7 @@
       <ul class="table-view">
         <li class="table-view-cell">
           <img class="media-object pull-left" ng-src="{{ entry.creator.avatarUrl }}">
-          <div class="content-horizontally-padded pull-left">
+          <div class="media-body">
             <p>{{ entry.creator.name }}</p>
             <p>from {{entry.sourceLocation.name}} to {{ entry.targetLocation.name }}</p>
           </div>
@@ -52,7 +56,10 @@
 
     <!-- cards metadata  -->
     <div class="checkbox-wrapper">
-      <div class="checkbox" ng-class="{ 'checkbox-checked': entry.selected === true }" ng-click="toggleSelected(entry)">
+      <div class="checkbox"
+           ng-class="{ 'checkbox-checked': entry.reserved === true }"
+           ng-click="toggleReserved(entry)">
+
         <div class="checkmark">
           <i class="fa fa-check"></i>
         </div>
@@ -71,4 +78,13 @@
   <!-- /le blankslate -->
 
 </div>
+
+
+<!-- map view -->
+
+<div class="content map" ng-if="view == 'map'">
+  <!-- le map -->
+  <div bste-map entries="bringRequests"></div>
+</div>
+
 <!-- /le content -->
