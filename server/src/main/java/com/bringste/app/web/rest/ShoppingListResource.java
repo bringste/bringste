@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -134,4 +135,11 @@ public class ShoppingListResource {
     return new ResponseEntity<>("transfered", HttpStatus.OK);
   }
 
+
+  @RequestMapping(value = "/rest/shopping-lists/user",
+    method = RequestMethod.GET, produces = {"application/json"})
+  @Timed
+  public ResponseEntity<ShoppingListsDto> getUserShoppingLists(Principal principal) {
+    return new ResponseEntity<>(createShoppingListsDto(shoppingListRepository.findShoppingListsByLogin(principal.getName())), HttpStatus.OK);
+  }
 }

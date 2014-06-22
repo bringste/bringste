@@ -10,23 +10,12 @@ var ngModule = angular.module('bringste.lists', [
   require('./details').name
 ]);
 
-var ListsController = [ '$scope', function($scope) {
-  $scope.lists = [
-    {
-      createdAt: null,
-      isDelivered: false,
-      isPayed: false,
-      reward: 3.00,
-      items: [{name: 'nutella'}, {name: 'blub mate'}]
-    },
-    {
-      createdAt: null,
-      isDelivered: true,
-      isPayed: true,
-      reward: 5.00,
-      items: [{name: 'sahne'}, {name: 'zucker'}]
-    }
-  ];
+var ListsController = [ '$scope', '$http', function($scope, $http) {
+  $scope.lists = [];
+
+  $http.get("../../app/rest/shopping-lists/user").then(function(result){
+    $scope.lists = result.data.lists;
+  });
 
 }];
 

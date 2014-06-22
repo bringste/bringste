@@ -24,11 +24,11 @@ le header -->
           <a class="navigate-right">
             <img class="media-object pull-left" src="http://lorempixel.com/42/42/people/">
             <div class="content-horizontally-padded pull-left">
-              <p>List from {{list.createdAt}}</p>
-              <p>{{list.isDelivered ? 'Brought by Andreas' : 'Open';}}</p>
+              <p>List for {{list.sourceLocation.name}}</p>
+              <p>{{list.assignee ? 'assigned to ' + list.assignee.login : 'Open';}}</p>
             </div>
             <span class="badge badge-inverted badge-top-aligned pull-right"
-                        ng-class="{ 'badge-positive': list.isPayed === true, 'badge-negative': list.isPayed === false }">{{ list.reward.toFixed(2) }}€</span>
+                        ng-class="{ 'badge-positive': list.isPayed === true, 'badge-negative': list.isPayed === false }">{{ list.tipAmount.toFixed(2) }}€</span>
           </a>
         </li>
       </ul>
@@ -39,7 +39,7 @@ le header -->
       <ul class="table-view">
         <li class="table-view-cell">
           <div class="content-image-padded pull-left">
-          <p><span ng-repeat="item in list.items"><span ng-if="!$first">, </span>{{ item.name }}</span></p>
+          <p><p ng-repeat="item in list.items"><span ng-if="!$first">, </span>{{ item.name }}</p></p>
           </div>
         </li>
       </ul>
