@@ -8,14 +8,18 @@
 <!-- le content presentation selector -->
 <nav class="bar bar-standard bar-header-secondary">
   <div class="segmented-control">
-    <a class="control-item active">List</a>
-    <a class="control-item" rt-nav-push href="/discover/map">Map</a>
+    <a class="control-item" ng-class="{ active: view == 'list' }" rt-nav-push href="/discover?view=list">List</a>
+    <a class="control-item" ng-class="{ active: view == 'map' }" rt-nav-push href="/discover?view=map">Map</a>
   </div>
 </nav>
 <!-- /le content presentation selector -->
 
+
 <!-- le content -->
-<div class="content">
+
+<!-- list view -->
+
+<div class="content" ng-if="view == 'list'">
 
   <!-- a card -->
   <div class="card-wrapper"
@@ -69,4 +73,13 @@
   <!-- /le blankslate -->
 
 </div>
+
+
+<!-- map view -->
+
+<div class="content map" ng-if="view == 'map'">
+  <!-- le map -->
+  <div bste-map entries="bringRequests"></div>
+</div>
+
 <!-- /le content -->

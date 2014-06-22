@@ -7,12 +7,6 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste.discover.map', []);
 
-var DiscoverMapController = [ '$scope', 'api', function($scope, api) {
-  api.get("/shopping-lists").then(function(result) {
-    $scope.shoppingLists = result.data.lists;
-  });
-}];
-
 
 ngModule.directive('bsteMap', function() {
 
@@ -81,15 +75,6 @@ ngModule.directive('bsteMap', function() {
   };
 
 });
-
-ngModule.config([ '$routeProvider', function($routeProvider) {
-
-  $routeProvider.when('/discover/map', {
-    controller: DiscoverMapController,
-    template: fs.readFileSync(__dirname + '/view.html', 'utf-8')
-  });
-
-}]);
 
 
 module.exports = ngModule;

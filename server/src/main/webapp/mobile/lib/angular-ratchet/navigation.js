@@ -45,12 +45,12 @@ ngModule.service('$navigation', [ '$navigationCache', '$location', function($nav
 
     this.push = function(entry) {
       $navigationCache.push(entry);
-      $location.path(entry.href);
+      $location.url(entry.href);
     };
 
     this.pop = function(element) {
       $navigationCache.pop();
-      $location.path(element.href);
+      $location.url(element.href);
     };
   }
 

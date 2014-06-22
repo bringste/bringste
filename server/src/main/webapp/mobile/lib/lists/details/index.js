@@ -49,7 +49,7 @@ var DetailsController = [ '$scope', 'focus', function($scope, focus) {
 
 ngModule.config([ '$routeProvider', function($routeProvider) {
 
-  $routeProvider.when('/lists/details', {
+  $routeProvider.when('/lists/:id', {
     controller: DetailsController,
     template: fs.readFileSync(__dirname + '/view.html', 'utf-8')
   });
