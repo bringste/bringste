@@ -1,9 +1,7 @@
-jhipster-sample-app
-===================
+bringster
+=========
 
-[![Build Status](https://drone.io/github.com/jhipster/jhipster-sample-app/status.png)](https://drone.io/github.com/jhipster/jhipster-sample-app/latest)
-
-This is a sample application created with [JHipster](https://github.com/jdubois/generator-jhipster).
+This is our battlehack app created with [JHipster](https://github.com/jdubois/generator-jhipster).
 
 It is created with all the default settings.
 
@@ -14,5 +12,3 @@ mvn spring-boot:run
 ```
 
 And open [http://localhost:8080/](http://localhost:8080/)
-
-Of course, if you are a true Java hipster, you should use the [Yeoman generator](https://github.com/jdubois/generator-jhipster)!

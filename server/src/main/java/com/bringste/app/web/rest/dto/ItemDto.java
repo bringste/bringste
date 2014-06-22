@@ -5,12 +5,6 @@ public class ItemDto {
   String name;
   boolean done;
 
-  public ItemDto(String id,String name, boolean done) {
-    this.name = name;
-    this.done = done;
-    this.id = id;
-  }
-
   public ItemDto() {
   }
 
@@ -24,5 +18,20 @@ public class ItemDto {
 
   public boolean isDone() {
     return done;
+  }
+
+  public ItemDto withId(String id) {
+    this.id = id;
+    return this;
+  }
+
+  public ItemDto withName(String name) {
+    this.name = name;
+    return this;
+  }
+
+  public ItemDto withDone(boolean done) {
+    this.done = done;
+    return this;
   }
 }

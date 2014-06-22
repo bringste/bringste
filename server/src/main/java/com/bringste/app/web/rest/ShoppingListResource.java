@@ -2,6 +2,7 @@ package com.bringste.app.web.rest;
 
 import com.bringste.app.domain.Item;
 import com.bringste.app.domain.ShoppingList;
+import com.bringste.app.domain.User;
 import com.bringste.app.repository.ShoppingListRepository;
 import com.bringste.app.web.rest.dto.*;
 import com.codahale.metrics.annotation.Timed;
@@ -39,33 +40,35 @@ public class ShoppingListResource {
     for (ShoppingList shoppingList: shoppingLists) {
       List<ItemDto> items = new ArrayList<>();
       for (Item item : shoppingList.getItems()) {
-        items.add(new ItemDtoBuilder().setDone(item.getDone()).setName(item.getName()).setId(item.getId()).build());
+        items.add(new ItemDto().withDone(item.getDone()).withName(item.getName()).withId(item.getId()));
       }
 
-      ShoppingListDtoBuilder shoppingListDtoBuilder = new ShoppingListDtoBuilder()
-        .setId(shoppingList.getId());
+      ShoppingListDto shoppingListDtoBuilder = new ShoppingListDto();
+      shoppingListDtoBuilder.setId(shoppingList.getId());
 
       Integer sourceZoom = shoppingList.getSourceLocation().getZoom();
       float sourceLongitude = shoppingList.getSourceLocation().getLongitude().floatValue();
       float sourceLatitude = shoppingList.getSourceLocation().getLatitude().floatValue();
 
-      LocationDto sourceLocation = new LocationDtoBuilder()
-        .setLatitude(sourceLatitude)
-        .setLongitude(sourceLongitude)
-        .setZoom(sourceZoom)
-        .build();
+      LocationDto sourceLocation = new LocationDto()
+        .withLatitude(sourceLatitude)
+        .withLongitude(sourceLongitude)
+        .withZoom(sourceZoom)
+        .withName(shoppingList.getSourceLocation().getName());
 
       shoppingListDtoBuilder.setSourceLocation(sourceLocation);
 
-      shoppingListDtoBuilder.setTargetLocation(new LocationDtoBuilder()
-        .setLatitude(shoppingList.getTargetLocation().getLatitude().floatValue())
-        .setLongitude(shoppingList.getTargetLocation().getLongitude().floatValue())
-        .setZoom(shoppingList.getTargetLocation().getZoom())
-        .build());
+      shoppingListDtoBuilder.setTargetLocation(new LocationDto()
+        .withLatitude(shoppingList.getTargetLocation().getLatitude().floatValue())
+        .withLongitude(shoppingList.getTargetLocation().getLongitude().floatValue())
+        .withZoom(shoppingList.getTargetLocation().getZoom())
+        .withName(shoppingList.getTargetLocation().getName()));
 
-      shoppingListDtoBuilder.setCreatorId(shoppingList.getCreator().getLogin());
+      shoppingListDtoBuilder.setCreator(listUserDtoFromUser(shoppingList.getCreator())
+      );
+
       if (shoppingList.getAssignee() != null) {
-        shoppingListDtoBuilder.setAssigneeId(shoppingList.getAssignee().getLogin());
+        shoppingListDtoBuilder.setAssignee(listUserDtoFromUser(shoppingList.getAssignee()));
       }
       shoppingListDtoBuilder.setTipType(shoppingList.getTipType())
         .setTipDescription(shoppingList.getTipDescription());
@@ -76,10 +79,17 @@ public class ShoppingListResource {
 
       shoppingListDtoBuilder.setTipAmount(shoppingList.getTipAmount());
 
-      shoppingListDtos.add(shoppingListDtoBuilder.build());
+      shoppingListDtos.add(shoppingListDtoBuilder);
     }
 
     return new ShoppingListsDto(shoppingListDtos);
+  }
+
+  private ListUserDto listUserDtoFromUser(User user) {
+    return new ListUserDto()
+      .withLogin(user.getLogin())
+      .withName(String.format("%s %s", user.getFirstName(), user.getLastName()))
+      .withAvatarUrl("http://lorempixel.com/42/42/people/" + user.getLogin());
   }
 
   @RequestMapping(value = "/rest/shopping-list/{id}/reserve", method = RequestMethod.POST)

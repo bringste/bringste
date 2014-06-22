@@ -13,8 +13,8 @@ public class ShoppingListDto {
   Date dueDate;
   String tipDescription;
   BigDecimal tipAmount;
-  String creatorId;
-  String assigneeId;
+  ListUserDto creator;
+  ListUserDto assignee;
   LocationDto sourceLocation;
   LocationDto targetLocation;
   Boolean reserved;
@@ -37,14 +37,6 @@ public class ShoppingListDto {
     return tipAmount;
   }
 
-  public String getCreatorId() {
-    return creatorId;
-  }
-
-  public String getAssigneeId() {
-    return assigneeId;
-  }
-
   public LocationDto getSourceLocation() {
     return sourceLocation;
   }
@@ -65,18 +57,67 @@ public class ShoppingListDto {
     return tipType;
   }
 
-  public ShoppingListDto(String id, Date dueDate, String tipDescription, BigDecimal tipAmount, TipType tipType, String creatorId, String assigneeId, LocationDto sourceLocation, LocationDto targetLocation, Boolean reserved, List<ItemDto> items) {
-    this.id = id;
-    this.dueDate = dueDate;
-    this.tipDescription = tipDescription;
-    this.tipAmount = tipAmount;
+  public ListUserDto getCreator() {
+    return creator;
+  }
+
+  public ListUserDto getAssignee() {
+    return assignee;
+  }
+
+  public ShoppingListDto setTipType(TipType tipType) {
     this.tipType = tipType;
-    this.creatorId = creatorId;
-    this.assigneeId = assigneeId;
+    return this;
+  }
+
+  public ShoppingListDto setId(String id) {
+    this.id = id;
+    return this;
+  }
+
+  public ShoppingListDto setDueDate(Date dueDate) {
+    this.dueDate = dueDate;
+    return this;
+  }
+
+  public ShoppingListDto setTipDescription(String tipDescription) {
+    this.tipDescription = tipDescription;
+    return this;
+  }
+
+  public ShoppingListDto setTipAmount(BigDecimal tipAmount) {
+    this.tipAmount = tipAmount;
+    return this;
+  }
+
+  public ShoppingListDto setCreator(ListUserDto creator) {
+    this.creator = creator;
+    return this;
+  }
+
+  public ShoppingListDto setAssignee(ListUserDto assignee) {
+    this.assignee = assignee;
+    return this;
+  }
+
+  public ShoppingListDto setSourceLocation(LocationDto sourceLocation) {
     this.sourceLocation = sourceLocation;
+    return this;
+  }
+
+  public ShoppingListDto setTargetLocation(LocationDto targetLocation) {
     this.targetLocation = targetLocation;
+    return this;
+  }
+
+  public ShoppingListDto setReserved(Boolean reserved) {
     this.reserved = reserved;
+    return this;
+  }
+
+  public ShoppingListDto setItems(List<ItemDto> items) {
     this.items = items;
+    return this;
   }
 
   public ShoppingListDto() {

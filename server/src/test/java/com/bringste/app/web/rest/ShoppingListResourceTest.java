@@ -77,15 +77,20 @@ public class ShoppingListResourceTest {
       .andExpect(content().contentType("application/json"))
       .andExpect(jsonPath("$.lists").isArray())
       .andExpect(jsonPath("$.lists[0]").exists())
-      .andExpect(jsonPath("$.lists[0].creatorId").value("omainge"))
-      .andExpect(jsonPath("$.lists[0].assigneeId").value("user"))
-      .andExpect(jsonPath("$.lists[1].assigneeId").doesNotExist())
+      .andExpect(jsonPath("$.lists[0].creator.login").value("omainge"))
+      .andExpect(jsonPath("$.lists[0].creator.name").value("Oma Inge"))
+      .andExpect(jsonPath("$.lists[0].creator.avatarUrl").value("http://lorempixel.com/42/42/people/omainge"))
+      .andExpect(jsonPath("$.lists[0].assignee.login").value("user"))
+      .andExpect(jsonPath("$.lists[0].sourceLocation.name").value("Umspannwerk"))
       .andExpect(jsonPath("$.lists[0].tipType").value("CUSTOM"))
       .andExpect(jsonPath("$.lists[0].tipDescription").value("Beer"))
       .andExpect(jsonPath("$.lists[0].tipAmount").value(1.0))
       .andExpect(jsonPath("$.lists[0].items").isArray())
+      .andExpect(jsonPath("$.lists[0].items[0].id").value("item-1"))
       .andExpect(jsonPath("$.lists[0].items[0].name").value("Bread"))
-      .andExpect(jsonPath("$.lists[0].items[0].done").value(false));
+      .andExpect(jsonPath("$.lists[0].items[0].done").value(false))
+      .andExpect(jsonPath("$.lists[1].items").isArray())
+      .andExpect(jsonPath("$.lists[1].assignee").doesNotExist());
   }
 
   @Test

@@ -4,6 +4,7 @@ public class LocationDto {
   float latitude;
   float longitude;
   Integer zoom;
+  String name;
 
   public float getLatitude() {
     return latitude;
@@ -17,22 +18,28 @@ public class LocationDto {
     return zoom;
   }
 
-  public void setLatitude(float latitude) {
+  public String getName() {
+    return name;
+  }
+
+  public LocationDto withLatitude(float latitude) {
     this.latitude = latitude;
+    return this;
   }
 
-  public void setLongitude(float longitude) {
+  public LocationDto withLongitude(float longitude) {
     this.longitude = longitude;
+    return this;
   }
 
-  public void setZoom(Integer zoom) {
+  public LocationDto withZoom(Integer zoom) {
     this.zoom = zoom;
+    return this;
   }
 
-  public LocationDto(float latitude, float longitude, Integer zoom) {
-    this.latitude = latitude;
-    this.longitude = longitude;
-    this.zoom = zoom;
+  public LocationDto withName(String name) {
+    this.name = name;
+    return this;
   }
 
   public LocationDto() {
