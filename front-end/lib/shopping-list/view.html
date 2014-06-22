@@ -10,8 +10,8 @@
 
   <!-- a card -->
   <div ng-if="subscribedLists.length > 0" ng-repeat="subscribedList in subscribedLists">
+    <h4 class="content-soft-margin">{{subscribedList.creator.name}}</h4>
     <ul class="table-view shopping-list-table-view">
-      <li class="table-view-cell table-view-divider">{{subscribedList.creator.name}}</li>
       <li class="table-view-cell media" ng-click="toggleSelected(item)" ng-repeat="item in subscribedList.items">
         <span class="media-object pull-left">
           <div class="checkbox" ng-class="{ 'checkbox-checked': item.isSelected === true }">

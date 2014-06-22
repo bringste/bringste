@@ -116,7 +116,7 @@ body {
 
   top: 50%;
 
-  width: 90%;
+  width: calc(90% - 20px);
   height: auto;
 
   margin: -90px 5% 0 5%;
@@ -172,12 +172,20 @@ body {
   margin: 0 0 10px 0;
 }
 
-.bar-nav ~ .content-settings h4.ui-settings, .bar-nav ~ .content-settings a.ui-settings {
-  margin: 46px 15px 10px;
+.input-group-settings input {
+  padding: 0 20px;
+}
+
+.bar-nav ~ .content .content-margin, .bar-nav ~ .content .content-soft-margin {
+  margin: 46px 20px 10px;
   width: auto;
 }
 
-.bar-nav ~ .content-settings a.ui-settings {
+.bar-nav ~ .content .content-soft-margin {
+  margin: 23px 10px 10px;
+}
+
+.bar-nav ~ .content a.content-margin {
   margin-top: 10px;
   width: auto;
 }

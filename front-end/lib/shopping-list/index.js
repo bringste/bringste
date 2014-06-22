@@ -7,7 +7,8 @@ var angular = require('angular');
 var ngModule = angular.module('bringste.shoppinglist', []);
 
 var ShoppinglistController = [ '$scope', function($scope) {
-  $scope.subscribedLists = [{
+  $scope.subscribedLists = [
+  {
     creator: {
       id: 0,
       name: 'Oma Inge'
@@ -15,7 +16,17 @@ var ShoppinglistController = [ '$scope', function($scope) {
     createdAt: null,
     isDelivered: false,
     items: [{name: 'Fritz Cola', isSelected: true}, {name: 'Wasser', isSelected: false}]
-  }];
+  },
+  {
+    creator: {
+      id: 0,
+      name: 'Oma Erna'
+    },
+    createdAt: null,
+    isDelivered: false,
+    items: [{name: 'Milch', isSelected: true}, {name: 'Zucker', isSelected: false}]
+  }
+  ];
 
   $scope.toggleSelected = function(list) {
     list.isSelected = !list.isSelected;
