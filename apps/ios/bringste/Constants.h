@@ -9,6 +9,6 @@
 #ifndef bringste_Constants_h
 #define bringste_Constants_h
 
-#define kBringsteURL @"http://bringste.ngrok.com"
+#define kBringsteURL @"http://www.bringste.berlin/mobile/dist/index.html"
 
 #endif
