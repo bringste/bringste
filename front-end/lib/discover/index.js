@@ -10,88 +10,33 @@ var ngModule = angular.module('bringste.discover', [
 ]);
 
 
-var DiscoverController = [ '$scope', function($scope) {
-  $scope.bringRequests = [
-    {
-      isSelected: true,
-      isExpanded: false,
-      reward: 3.00,
-      user: {
-        imageUrl: 'http://lorempixel.com/42/42/people/',
-        name: 'Oma Inge'
-      },
-      address: {
-        street: 'Foo street 12',
-        city: '10121 Berlin'
-      },
-      items: [
-        { name: 'Milch' },
-        { name: 'Brot' },
-        { name: 'Zucker' }
-      ]
-    },
-    {
-      isSelected: false,
-      isExpanded: false,
-      reward: 5.00,
-      user: {
-        imageUrl: 'http://lorempixel.com/42/42/people/',
-        name: 'Oma Inge'
-      },
-      address: {
-        street: 'Foo street 13',
-        city: '10121 Berlin'
-      },
-      items: [
-        { name: 'Milch' },
-        { name: 'Brot' },
-        { name: 'Zucker' }
-      ]
-    },
-    {
-      isSelected: false,
-      isExpanded: false,
-      reward: 6.00,
-      user: {
-        imageUrl: 'http://lorempixel.com/42/42/people/',
-        name: 'Oma Inge'
-      },
-      address: {
-        street: 'Foo street 14',
-        city: '10121 Berlin'
-      },
-      items: [
-        { name: 'Milch' },
-        { name: 'Brot' },
-        { name: 'Zucker' }
-      ]
-    },
-    {
-      isSelected: false,
-      isExpanded: false,
-      reward: 8.00,
-      user: {
-        imageUrl: 'http://lorempixel.com/42/42/people/',
-        name: 'Oma Inge'
-      },
-      address: {
-        street: 'Foo street 15',
-        city: '10121 Berlin'
-      },
-      items: [
-        { name: 'Milch' },
-        { name: 'Brot' },
-        { name: 'Zucker' }
-      ]
-    }
-  ];
+var DiscoverController = [ '$scope', '$http', function($scope, $http) {
+
+  $http.get('http://www.bringste.berlin:80/app/rest/shopping-lists').then(function(response) {
+    $scope.bringRequests = response.data.lists;
+    console.log($scope.bringRequests);
+
+    $scope.error = null;
+  }, function(err) {
+    $scope.error = err;
+  });
 
   $scope.toggleSelected = function(list) {
-    list.isSelected = !list.isSelected;
+
+    var selected = list.selected,
+        action = selected ? 'unreserve' : 'reserve';
+
+    $http.post('http://www.bringste.berlin:80/app/rest/shopping-lists/' + list.id + '/' + action).then(function() {
+      list.selected = !list.selected;
+    }, function(err) {
+      console.log(err);
+      // remove list from scope
+      $scope.bringRequests.splice($scope.bringRequests.indexOf(list), 1);
+    });
   };
 
-  $scope.toggleExpansion = function(list) {
-    list.isExpanded = !list.isExpanded;
+  $scope.toggleExpanded = function(list) {
+    list.expanded = !list.expanded;
   };
 
 }];

@@ -139,22 +139,6 @@ ngModule.provider('$route', function() {
 });
 
 
-ngModule.service('$navigationSupport', [ '$window', function($window) {
-
-  var scrolling;
-
-  $window.addEventListener('touchstart', function () { scrolling = false; });
-  $window.addEventListener('touchmove', function () { scrolling = true; });
-
-  return {
-    isScrolling: function() {
-      return scrolling;
-    }
-  };
-}]);
-
-
-
 rtViewFactory.$inject = ['$route', '$animate'];
 function rtViewFactory(   $route,   $animate) {
   return {
@@ -252,22 +236,15 @@ ngModule.directive('rtView', rtViewFactory);
 ngModule.directive('rtView', rtViewFillContentsFactory);
 
 
-ngModule.directive('rtNavigationPush', [ '$navigationSupport', '$route', function($navigationSupport, $route) {
+ngModule.directive('rtNavigationPush', [ '$route', function($route) {
 
   return {
 
     link: function(scope, element, attrs) {
 
       element.on('click', function(event) {
-        event.preventDefault();
-      });
 
-      element.on('touchend', function(event) {
         event.preventDefault();
-
-        if ($navigationSupport.isScrolling()) {
-          return;
-        }
 
         scope.$apply(function() {
           $route.push({
@@ -276,14 +253,13 @@ ngModule.directive('rtNavigationPush', [ '$navigationSupport', '$route', functio
           });
         });
       });
-
     }
   };
 
 }]);
 
 
-ngModule.directive('rtNavigationPop', [ '$navigationSupport', '$route', function($navigationSupport, $route) {
+ngModule.directive('rtNavigationPop', [ '$route', function($route) {
 
   return {
 
@@ -291,14 +267,6 @@ ngModule.directive('rtNavigationPop', [ '$navigationSupport', '$route', function
 
       element.on('click', function(event) {
         event.preventDefault();
-      });
-
-      element.on('touchend', function(event) {
-        event.preventDefault();
-
-        if ($navigationSupport.isScrolling()) {
-          return;
-        }
 
         scope.$apply(function() {
           $route.pop({
