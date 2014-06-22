@@ -1,18 +1,18 @@
 <!-- le nav -->
 <nav class="bar bar-tab">
-  <a class="tab-item" ng-class="{ active: isActive('/lists') }" rt-navigation-push href="/lists">
+  <a class="tab-item" ng-class="{ active: isActive('/lists') }" rt-nav-push href="/lists">
     <span class="icon"><i class="fa fa-home"></i></span>
     <span class="tab-label">My Lists</span>
   </a>
-  <a class="tab-item" ng-class="{ active: isActive('/discover') }" rt-navigation-push href="/discover">
+  <a class="tab-item" ng-class="{ active: isActive('/discover') }" rt-nav-push href="/discover/map">
     <span class="icon"><i class="fa fa-map-marker"></i></span>
     <span class="tab-label">Bring it!</span>
   </a>
-  <a class="tab-item" ng-class="{ active: isActive('/shopping-list') }" rt-navigation-push href="/shopping-list">
-    <span class="icon"><i class="fa fa-list-ul"></i></span>
+  <a class="tab-item" ng-class="{ active: isActive('/shopping-list') }" rt-nav-push href="/shopping-list">
+    <span class="icon"><i class="fa fa-list-ul"></i><span class="badge badge-negative">4</span></span>
     <span class="tab-label">Shopping List</span>
   </a>
-  <a class="tab-item" ng-class="{ active: isActive('/settings') }"  rt-navigation-push href="/settings" href>
+  <a class="tab-item" ng-class="{ active: isActive('/settings') }"  rt-nav-push href="/settings" href>
     <span class="icon"><i class="fa fa-cog"></i></span>
     <span class="tab-label">Settings</span>
   </a>

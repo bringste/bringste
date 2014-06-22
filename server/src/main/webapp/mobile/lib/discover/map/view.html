@@ -1,6 +1,6 @@
 <!-- le header -->
 <header class="bar bar-nav">
-  <h1 class="title">Discover</h1>
+  <h1 class="title">Bring it!</h1>
 </header>
 <!-- /le header -->
 
@@ -8,7 +8,7 @@
 <!-- le content presentation selector -->
 <nav class="bar bar-standard bar-header-secondary">
   <div class="segmented-control">
-    <a class="control-item" rt-navigation-push href="/discover">List</a>
+    <a class="control-item" rt-nav-push href="/discover">List</a>
     <a class="control-item active">Map</a>
   </div>
 </nav>
@@ -16,12 +16,10 @@
 
 
 <!-- le content -->
-<div class="content">
+<div class="content map">
 
   <!-- le map -->
-  <div class="map-wrapper">
-    <div class="map" bste-map entries="shoppingLists"></div>
-  </div>
+  <div bste-map entries="shoppingLists"></div>
 
 </div>
 <!-- /le content -->
