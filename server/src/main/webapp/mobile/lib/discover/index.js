@@ -21,13 +21,14 @@ var DiscoverController = [ '$scope', '$location', 'api', function($scope, $locat
     $scope.error = err;
   });
 
-  $scope.toggleSelected = function(list) {
+  $scope.toggleReserved = function(list) {
     var reserved = list.reserved,
         action = reserved ? 'unreserve' : 'reserve';
 
     api.post('/shopping-list/:id/:action', { params: { id: list.id, action: action } }).then(function() {
       list.reserved = !list.reserved;
     }, function(err) {
+
     });
   };
 

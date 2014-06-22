@@ -8,8 +8,12 @@ body {
 }
 
 .bar-nav ~ .content {
-  padding: 10px;
+  padding: 10px 0;
   margin: 44px 0 50px;
+}
+
+.bar-nav ~ .content-padded {
+  padding: 10px;
 }
 
 .bar-header-secondary ~ .content {
