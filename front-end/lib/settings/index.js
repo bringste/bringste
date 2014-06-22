@@ -7,7 +7,6 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste.settings', []);
 
-
 var SettingsController = [ '$scope', '$http', 'credentials', function($scope, $http, credentials) {
 
   $http.get('http://www.bringste.berlin:80/app/rest/users/' + credentials.id).then(function(response) {
@@ -22,14 +21,11 @@ var SettingsController = [ '$scope', '$http', 'credentials', function($scope, $h
 
 }];
 
-
-ngModule.config([ '$modalProvider', function($modalProvider) {
-
-  $modalProvider.register('settings', {
+ngModule.config([ '$routeProvider', function($routeProvider) {
+  $routeProvider.when('/settings', {
     controller: SettingsController,
     template: fs.readFileSync(__dirname + '/view.html', 'utf-8')
   });
-
 }]);
 
 
