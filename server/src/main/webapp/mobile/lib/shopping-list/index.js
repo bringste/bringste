@@ -6,47 +6,34 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste.shoppinglist', []);
 
-
-var ShoppingListController = [ '$scope', '$location', function($scope, $location) {
+var ShoppingListController = [ '$scope', '$location', 'api', function($scope, $location, api) {
 
   $scope.view = $location.search().view || 'aggregated';
 
-  $scope.shoppingLists = [{
-    creator: {
-      id: 0,
-      name: 'Oma Inge'
-    },
-    createdAt: null,
-    isDelivered: false,
-    items: [{name: 'Fritz Cola', selected: true}, {name: 'Wasser', selected: false}]
-  },
-  {
-    creator: {
-      id: 0,
-      name: 'Oma Erna'
-    },
-    createdAt: null,
-    isDelivered: false,
-    items: [{name: 'Milch', selected: true}, {name: 'Zucker', selected: false}]
-  }];
+  function update() {
 
+    api.get('/shopping-lists/assigned').then(function(result) {
+      var lists = result.data.lists;
 
-  $scope.allItems = [];
+      $scope.shoppinglists = lists;
+      $scope.allItems = [];
 
-  angular.forEach($scope.shoppingLists, function(list) {
+      angular.forEach(lists, function(list) {
 
-    angular.forEach(list.items, function(item) {
-      $scope.allItems.push({ list: list, entry: item });
+        angular.forEach(list.items, function(item) {
+          $scope.allItems.push({ list: list, entry: item });
+        });
+      });
     });
-  });
+  }
 
-  $scope.finishShopping = function() {
 
-  };
+  update();
 
-  $scope.setDelivered = function(e) {
 
-  };
+  $scope.finishShopping = function() { };
+
+  $scope.setDelivered = function(e) {};
 
   $scope.toggleBought = function(entry) {
     var list = entry.list,

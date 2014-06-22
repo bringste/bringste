@@ -7,34 +7,11 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste.lists.details', []);
 
-var DetailsController = [ '$scope', 'focus', function($scope, focus) {
+var DetailsController = [ '$scope', 'api', '$routeParams', function($scope, api, $routeParams) {
 
-  $scope.list = {
-    dueDate: null,
-    deliver: 'home',
-    pledge: 5,
-    items: [ { name: '' } ]
-  };
-
-  $scope.changed = function(box) {
-
-    var items = $scope.list.items;
-
-    var idx = items.indexOf(box);
-    if (idx == items.length - 1) {
-      if (box.name) {
-        items.push({ name: '' });
-      }
-    } else {
-      if (!box.name) {
-        items.splice(idx, 1);
-
-        console.log(items[idx]);
-
-        focus(items[idx]);
-      }
-    }
-  };
+  api.get("/shopping-list/:id", { params: { id: $routeParams.id } }).then(function(result) {
+    $scope.list = result.data;
+  });
 
   $scope.deliver = function(type) {
     $scope.list.deliver = type;
