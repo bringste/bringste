@@ -14,6 +14,13 @@ var DiscoverController = [ '$scope', '$http', function($scope, $http) {
 
   $http.get('http://www.bringste.berlin:80/app/rest/shopping-lists').then(function(response) {
     $scope.bringRequests = response.data.lists;
+
+    for (var idx = 0; idx < $scope.bringRequests.length; ++idx) {
+        var list = $scope.bringRequests[idx];
+        list.expanded = false;
+        list.selected = list.reserved;
+    }
+
     console.log($scope.bringRequests);
 
     $scope.error = null;
@@ -22,7 +29,6 @@ var DiscoverController = [ '$scope', '$http', function($scope, $http) {
   });
 
   $scope.toggleSelected = function(list) {
-
     var selected = list.selected,
         action = selected ? 'unreserve' : 'reserve';
 
@@ -36,6 +42,7 @@ var DiscoverController = [ '$scope', '$http', function($scope, $http) {
   };
 
   $scope.toggleExpanded = function(list) {
+    console.log('acas');
     list.expanded = !list.expanded;
   };
 

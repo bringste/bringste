@@ -21,7 +21,7 @@
   <div class="card-wrapper"
        ng-if="bringRequests.length > 0"
        ng-repeat="entry in bringRequests"
-       ng-class="{ 'card-wrapper-active': entry.isExpanded === true }">
+       ng-class="{ 'card-wrapper-active': entry.expanded === true }">
 
     <!-- cards metadata  -->
     <div class="card card-small card-checkable">
@@ -50,7 +50,7 @@
 
     <!-- cards metadata  -->
     <div class="checkbox-wrapper">
-      <div class="checkbox" ng-class="{ 'checkbox-checked': entry.isSelected === true }" ng-click="toggleSelected(entry)">
+      <div class="checkbox" ng-class="{ 'checkbox-checked': entry.selected === true }" ng-click="toggleSelected(entry)">
         <div class="checkmark">
           <i class="fa fa-check"></i>
         </div>
