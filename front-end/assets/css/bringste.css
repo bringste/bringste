@@ -158,3 +158,8 @@ body {
   right: 21px;
   z-index: 99;*/
 }
+
+.shopping-list-table-view, .shopping-list-table-view .table-view-divider, .shopping-list-table-view .table-view-cell {
+  background-color: #fff;
+  border: none;
+}
