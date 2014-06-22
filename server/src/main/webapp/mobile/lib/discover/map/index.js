@@ -28,17 +28,17 @@ ngModule.directive('bsteMap', function() {
 
         for (var key in value) {
           var shoppingList = value[key];
-          var shoppingListSource = shoppingList.sourceLocation;
+          var shoppingListTarget = shoppingList.targetLocation;
           var feature = {
             type: 'Feature',
             properties: {
-              title: shoppingListSource.name,
+              title: shoppingListTarget.name,
               'marker-color': '#00a3c4',
               'marker-size': 'large',
               'marker-symbol': shoppingList.items.length
             }, geometry: {
               type: 'Point',
-              coordinates: [shoppingListSource.longitude, shoppingListSource.latitude]
+              coordinates: [shoppingListTarget.longitude, shoppingListTarget.latitude]
             }
           };
           geojson.features.push(feature);
