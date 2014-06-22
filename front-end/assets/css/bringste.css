@@ -7,6 +7,15 @@ body {
   user-select: none;
 }
 
+.bar-nav ~ .content {
+  padding: 10px;
+  margin: 44px 0 50px;
+}
+
+.bar-header-secondary ~ .content {
+  margin-top: 88px;
+}
+
 .card-small {
   width: 80%;
 }

@@ -17,7 +17,7 @@ le header -->
        ng-class="{ 'card-fadeout': list.isDelivered === true }">
 
     <!-- cards metadata  -->
-    <div class="card">
+    <div class="card card-checkable">
       <ul class="table-view">
         <li class="table-view-cell">
 
@@ -25,7 +25,7 @@ le header -->
             <img class="media-object pull-left" src="http://lorempixel.com/42/42/people/">
             <div class="content-horizontally-padded pull-left">
               <p>List from {{list.createdAt}}</p>
-              <p>{{list.isDelivered ? 'DELIVERED' : 'Not yet delivered';}}</p>
+              <p>{{list.isDelivered ? 'Brought by Andreas' : 'Open';}}</p>
             </div>
             <span class="badge badge-inverted badge-top-aligned pull-right"
                         ng-class="{ 'badge-positive': list.isPayed === true, 'badge-negative': list.isPayed === false }">{{ list.reward.toFixed(2) }}€</span>
