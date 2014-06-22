@@ -12,7 +12,7 @@ var DetailsController = [ '$scope', 'focus', function($scope, focus) {
   $scope.list = {
     dueDate: null,
     deliver: 'home',
-    pledge: 0,
+    pledge: 5,
     items: [ { name: '' } ]
   };
 
