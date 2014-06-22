@@ -15,61 +15,87 @@ import java.util.Properties;
 @Configuration
 public class MailConfiguration implements EnvironmentAware {
 
-    private static final String ENV_SPRING_MAIL = "spring.mail.";
-    private static final String DEFAULT_HOST = "127.0.0.1";
-    private static final String PROP_HOST = "host";
-    private static final String DEFAULT_PROP_HOST = "localhost";
-    private static final String PROP_PORT = "port";
-    private static final String PROP_USER = "user";
-    private static final String PROP_PASSWORD = "password";
-    private static final String PROP_PROTO = "protocol";
-    private static final String PROP_TLS = "tls";
-    private static final String PROP_AUTH = "auth";
-    private static final String PROP_SMTP_AUTH = "mail.smtp.auth";
-    private static final String PROP_STARTTLS = "mail.smtp.starttls.enable";
-    private static final String PROP_TRANSPORT_PROTO = "mail.transport.protocol";
+  private static final String ENV_SPRING_MAIL = "spring.mail.";
+  private static final String DEFAULT_HOST = "127.0.0.1";
+  private static final String PROP_HOST = "host";
+  private static final String DEFAULT_PROP_HOST = "localhost";
+  private static final String PROP_PORT = "port";
+  private static final String PROP_USER = "user";
+  private static final String PROP_PASSWORD = "password";
+  private static final String PROP_PROTO = "protocol";
+  private static final String PROP_TLS = "tls";
+  private static final String PROP_AUTH = "auth";
+  private static final String PROP_SMTP_AUTH = "mail.smtp.auth";
+  private static final String PROP_STARTTLS = "mail.smtp.starttls.enable";
+  private static final String PROP_TRANSPORT_PROTO = "mail.transport.protocol";
 
-    private final Logger log = LoggerFactory.getLogger(MailConfiguration.class);
+  private final Logger log = LoggerFactory.getLogger(MailConfiguration.class);
 
-    private RelaxedPropertyResolver propertyResolver;
+  private RelaxedPropertyResolver propertyResolver;
 
-    public MailConfiguration() {
+  public MailConfiguration() {
+  }
+
+  @Override
+  public void setEnvironment(Environment environment) {
+    this.propertyResolver = new RelaxedPropertyResolver(environment, ENV_SPRING_MAIL);
+  }
+
+  @Bean
+  public JavaMailSenderImpl javaMailSender() {
+    log.debug("Configuring mail server");
+    String host = getHost();
+    int port = getPort();
+    String user = getUser();
+    String password = getPassword();
+    String protocol = propertyResolver.getProperty(PROP_PROTO);
+    Boolean tls = propertyResolver.getProperty(PROP_TLS, Boolean.class, false);
+    Boolean auth = propertyResolver.getProperty(PROP_AUTH, Boolean.class, false);
+
+    JavaMailSenderImpl sender = new JavaMailSenderImpl();
+    if (host != null && !host.isEmpty()) {
+      sender.setHost(host);
+    } else {
+      log.warn("Warning! Your SMTP server is not configured. We will try to use one on localhost.");
+      log.debug("Did you configure your SMTP settings in your application.yml?");
+      sender.setHost(DEFAULT_HOST);
     }
+    sender.setPort(port);
+    sender.setUsername(user);
+    sender.setPassword(password);
 
-    @Override
-    public void setEnvironment(Environment environment) {
-        this.propertyResolver = new RelaxedPropertyResolver(environment, ENV_SPRING_MAIL);
+    Properties sendProperties = new Properties();
+    sendProperties.setProperty(PROP_SMTP_AUTH, auth.toString());
+    sendProperties.setProperty(PROP_STARTTLS, tls.toString());
+    sendProperties.setProperty(PROP_TRANSPORT_PROTO, protocol);
+    sender.setJavaMailProperties(sendProperties);
+    return sender;
+  }
+
+  private int getPort() {
+    if (System.getenv("bringste.mail.port") != null) {
+      return Integer.valueOf(System.getenv("bringste.mail.port"));
     }
+    return propertyResolver.getProperty(PROP_PORT, Integer.class, 0);
+  }
 
-    @Bean
-    public JavaMailSenderImpl javaMailSender() {
-        log.debug("Configuring mail server");
-        String host = propertyResolver.getProperty(PROP_HOST, DEFAULT_PROP_HOST);
-        int port = propertyResolver.getProperty(PROP_PORT, Integer.class, 0);
-        String user = propertyResolver.getProperty(PROP_USER);
-        String password = propertyResolver.getProperty(PROP_PASSWORD);
-        String protocol = propertyResolver.getProperty(PROP_PROTO);
-        Boolean tls = propertyResolver.getProperty(PROP_TLS, Boolean.class, false);
-        Boolean auth = propertyResolver.getProperty(PROP_AUTH, Boolean.class, false);
+  private String getPassword() {
+    return getEnv("bringste.mail.password",  propertyResolver.getProperty(PROP_PASSWORD));
+  }
 
-        JavaMailSenderImpl sender = new JavaMailSenderImpl();
-        if (host != null && !host.isEmpty()) {
-            sender.setHost(host);
-        } else {
-            log.warn("Warning! Your SMTP server is not configured. We will try to use one on localhost.");
-            log.debug("Did you configure your SMTP settings in your application.yml?");
-            sender.setHost(DEFAULT_HOST);
-        }
-        sender.setPort(port);
-        sender.setUsername(user);
-        sender.setPassword(password);
+  private String getUser() {
+    return getEnv("bringste.mail.user",  propertyResolver.getProperty(PROP_USER));
+  }
 
-        Properties sendProperties = new Properties();
-        sendProperties.setProperty(PROP_SMTP_AUTH, auth.toString());
-        sendProperties.setProperty(PROP_STARTTLS, tls.toString());
-        sendProperties.setProperty(PROP_TRANSPORT_PROTO, protocol);
-        sender.setJavaMailProperties(sendProperties);
-        return sender;
+  private String getHost() {
+    return getEnv("bringste.mail.host",  propertyResolver.getProperty(PROP_HOST, DEFAULT_PROP_HOST));
+  }
+
+  String getEnv(String key, String defaultValue) {
+    if (System.getenv(key) != null) {
+      return System.getenv(key);
     }
+    return defaultValue;
+  }
 
 }

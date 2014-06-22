@@ -6,6 +6,9 @@ import com.bringste.app.domain.User;
 import com.bringste.app.repository.ShoppingListRepository;
 import com.bringste.app.web.rest.dto.*;
 import com.codahale.metrics.annotation.Timed;
+import com.paypal.api.payments.Payer;
+import com.paypal.api.payments.Payment;
+import com.paypal.core.rest.APIContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -26,6 +29,9 @@ public class ShoppingListResource {
 
   @Inject
   ShoppingListRepository shoppingListRepository;
+
+  @Inject
+  APIContext apiContext;
 
   @RequestMapping(value = "/rest/shopping-lists",
     method = RequestMethod.GET, produces = {"application/json"})
@@ -118,6 +124,14 @@ public class ShoppingListResource {
     } else {
       return new ResponseEntity<>("conflict, list is already unreserved", HttpStatus.CONFLICT);
     }
+  }
+
+  @RequestMapping(value = "/rest/shopping-list/{id}/transfer-tip", method = RequestMethod.POST)
+  @Timed
+  public ResponseEntity<String> transferTip(@PathVariable("id") String id) {
+    Payment payment = new Payment();
+    payment.setIntent("sale");
+    return new ResponseEntity<>("transfered", HttpStatus.OK);
   }
 
 }
