@@ -10,9 +10,9 @@ var ngModule = angular.module('bringste.discover', [
 ]);
 
 
-var DiscoverController = [ '$scope', '$http', function($scope, $http) {
+var DiscoverController = [ '$scope', 'api', function($scope, api) {
 
-  $http.get('../../app/rest/shopping-lists').then(function(response) {
+  api.get('/shopping-lists').then(function(response) {
     $scope.bringRequests = response.data.lists;
 
     for (var idx = 0; idx < $scope.bringRequests.length; ++idx) {
@@ -32,12 +32,9 @@ var DiscoverController = [ '$scope', '$http', function($scope, $http) {
     var selected = list.selected,
         action = selected ? 'unreserve' : 'reserve';
 
-    $http.post('../..//app/rest/shopping-list/' + list.id + '/' + action).then(function() {
+    api.post('/shopping-list/:id/:action', { params: { id: list.id, action: action } }).then(function() {
       list.selected = !list.selected;
     }, function(err) {
-      console.log(err);
-      // remove list from scope
-      $scope.bringRequests.splice($scope.bringRequests.indexOf(list), 1);
     });
   };
 

@@ -38,11 +38,11 @@ public class PayPalConfig {
       Properties properties = new Properties();
       properties.load(propertiesStream);
 
-      if (!properties.containsKey("paypal.clientID")) {
+      if (!properties.containsKey("clientID")) {
         properties.put(CLIENT_ID, getGetenvOrDefault("paypal.clientID", "id"));
       }
 
-      if (!properties.containsKey("paypal.clientSecret")) {
+      if (!properties.containsKey("clientSecret")) {
         properties.put(CLIENT_ID, getGetenvOrDefault("paypal.clientSecret", "secret"));
       }
 

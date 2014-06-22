@@ -19,7 +19,6 @@ public class Location {
   @Id
   String id;
 
-  @NotNull
   @Size(min = 0, max = 255)
   @Column(name = "name")
   String name;

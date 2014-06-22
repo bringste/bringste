@@ -6,27 +6,12 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste.shoppinglist', []);
 
-var ShoppinglistController = [ '$scope', function($scope) {
-  $scope.subscribedLists = [
-  {
-    creator: {
-      id: 0,
-      name: 'Oma Inge'
-    },
-    createdAt: null,
-    isDelivered: false,
-    items: [{name: 'Fritz Cola', isSelected: true}, {name: 'Wasser', isSelected: false}]
-  },
-  {
-    creator: {
-      id: 0,
-      name: 'Oma Erna'
-    },
-    createdAt: null,
-    isDelivered: false,
-    items: [{name: 'Milch', isSelected: true}, {name: 'Zucker', isSelected: false}]
-  }
-  ];
+var ShoppinglistController = [ '$scope', '$http', function($scope, $http) {
+  $scope.subscribedLists = [];
+
+  $http.get("../../app/rest/shopping-lists/assigned").then(function(result) {
+    $scope.subscribedLists = result.data.lists;
+  });
 
   $scope.toggleSelected = function(list) {
     list.isSelected = !list.isSelected;

@@ -6,14 +6,14 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste.settings', []);
 
-var SettingsController = [ '$scope', '$http', 'credentials', function($scope, $http, credentials) {
+var SettingsController = [ '$scope', 'api', 'credentials', function($scope, api, credentials) {
 
-  $http.get('http://www.bringste.berlin:80/app/rest/users/' + credentials.id).then(function(response) {
+  api.get('/users/:id', { params: { id: credentials.id } }).then(function(response) {
     $scope.profile = response.data;
   });
 
   $scope.save = function() {
-    $http.post('http://www.bringste.berlin:80/app/rest/users/' + credentials.id, $scope.profile).then(function(response) {
+    api.post('/users/:id', $scope.profile, { params: { id: credentials.id } }).then(function(response) {
 
     });
   };
