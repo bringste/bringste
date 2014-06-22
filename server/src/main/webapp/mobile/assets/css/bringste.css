@@ -118,14 +118,10 @@ body {
   position: absolute;
 
   top: 50%;
+  left: 50%;
 
-  width: calc(90% - 20px);
-  height: auto;
-
-  margin: -90px 5% 0 5%;
-
-  max-width: 533px;
-  max-height: 192px;
+  width: 280px;
+  margin: -90px 0px 0px -140px;
 }
 
 .blankslate span {
