@@ -16,13 +16,15 @@ var ListsController = [ '$scope', function($scope) {
       isDelivered: false,
       isSelected: false,
       isExpanded: false,
+      isPayed: false,
       reward: 3.00,
       items: [{name: 'nutella'}, {name: 'blub mate'}]
     },
     {
       createdAt: null,
-      isDelivered: false,
+      isDelivered: true,
       isSelected: true,
+      isPayed: true,
       isExpanded: false,
       reward: 5.00,
       items: [{name: 'sahne'}, {name: 'zucker'}]

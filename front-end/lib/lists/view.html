@@ -1,4 +1,4 @@
-<!-- le header -->
+le header -->
 <header class="bar bar-nav">
   <a class="icon icon-plus pull-right" rt-navigation-push href="/lists/new"></a>
   <h1 class="title">My Lists</h1>
@@ -13,24 +13,32 @@
   <div class="card-wrapper"
        ng-if="lists.length > 0"
        ng-repeat="list in lists"
-       ng-class="{ 'card-wrapper-active': list.isExpanded === true }">
+       ng-class="{ 'card-wrapper-active': list.isExpanded === true, 'card-fadeout': list.isDelivered === true }">
 
     <!-- cards metadata  -->
-    <div class="card card-small card-checkable">
+    <div class="card">
       <ul class="table-view" ng-click="toggleExpansion(list)">
         <li class="table-view-cell">
-          <img class="media-object pull-left" src="http://lorempixel.com/42/42/people/">
-          <div class="content-horizontally-padded pull-left">
-            <p>List from {{list.createdAt}}</p>
-            <p>{{list.isDelivered}}</p>
-          </div>
-          <span class="badge badge-positive badge-inverted badge-top-aligned pull-right">{{ list.reward.toFixed(2) }}€</span>
+
+          <a class="navigate-right">
+            <!-- <span class="media-object pull-left icon icon-gear"></span>
+            <div class="media-body">
+              Item 2
+            </div> -->
+            <img class="media-object pull-left" src="http://lorempixel.com/42/42/people/">
+            <div class="content-horizontally-padded pull-left">
+              <p>List from {{list.createdAt}}</p>
+              <p>{{list.isDelivered ? 'DELIVERED' : 'Not yet delivered';}}</p>
+            </div>
+            <span class="badge badge-inverted badge-top-aligned pull-right"
+            ng-class="{ 'badge-positive': list.isPayed === true, 'badge-negative': list.isPayed === false }">{{ list.reward.toFixed(2) }}€</span>
+          </a>
         </li>
       </ul>
     </div>
 
     <!-- cards list contents  -->
-    <div class="card card-small card-list">
+    <div class="card card-list">
       <ul class="table-view" ng-click="toggleExpanded(list)">
         <li class="table-view-cell">
           <div class="content-image-padded pull-left">
@@ -40,14 +48,6 @@
       </ul>
     </div>
 
-    <!-- cards metadata  -->
-    <div class="checkbox-wrapper">
-      <div class="checkbox" ng-class="{ 'checkbox-checked': list.isSelected === true }" ng-click="toggleSelected(list)">
-        <div class="checkmark">
-          <i class="fa fa-check"></i>
-        </div>
-      </div>
-    </div>
   </div>
   <!-- /a card -->
 
@@ -61,4 +61,4 @@
   <!-- /le blankslate -->
 
 </div>
-<!-- /le content -->
+<!-- /le content
