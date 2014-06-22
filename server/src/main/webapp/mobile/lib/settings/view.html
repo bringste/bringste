@@ -1,27 +1,32 @@
-<!-- le header -->
-<header class="bar bar-nav">
-  <h1 class="title">Shopping List</h1>
-</header>
-<!-- /le header -->
+<div class="modal">
+
+  <!-- le header -->
+  <header class="bar bar-nav">
+    <a class="icon icon-close pull-right" href rt-toggle-modal="settings"></a>
+    <h1 class="title">Settings</h1>
+  </header>
+  <!-- /le header -->
 
 
-<!-- le content -->
-<div class="content content-settings">
+  <!-- le content -->
+  <div class="content content-settings">
 
-  <h4 class="content-margin">Address</h4>
-  <div class="input-group input-group-settings">
-    <input type="text" placeholder="Full name" ng-model="profile.fullname">
-    <input type="text" placeholder="Street" ng-model="profile.street">
-    <input type="text" placeholder="Zipcode" ng-model="profile.zip">
+    <h4 class="content-margin">Address</h4>
+    <div class="input-group input-group-settings">
+      <input type="text" placeholder="Full name" ng-model="profile.fullname">
+      <input type="text" placeholder="Street" ng-model="profile.street">
+      <input type="text" placeholder="Zipcode" ng-model="profile.zip">
+    </div>
+    <a class="btn btn-positive btn-block content-margin">Save</a>
+
+    <h4 class="content-margin">PayPal</h4>
+    <div class="input-group input-group-settings">
+      <input type="email" placeholder="Email" ng-model="profile.email">
+      <input type="password" placeholder="Password" ng-model="profile.password">
+    </div>
+    <a class="btn btn-primary btn-block content-margin">Sign in</a>
+
   </div>
-  <a class="btn btn-positive btn-block content-margin">Save</a>
-
-  <h4 class="content-margin">PayPal</h4>
-  <div class="input-group input-group-settings">
-    <input type="email" placeholder="Email" ng-model="profile.email">
-    <input type="password" placeholder="Password" ng-model="profile.password">
-  </div>
-  <a class="btn btn-primary btn-block content-margin">Sign in</a>
+  <!-- /le content -->
 
 </div>
-<!-- /le content

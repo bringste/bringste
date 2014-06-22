@@ -1,5 +1,6 @@
-le header -->
+<!-- le header -->
 <header class="bar bar-nav">
+  <a class="icon icon-gear pull-left" href rt-toggle-modal="settings"></a>
   <a class="icon icon-plus pull-right" rt-nav-push href="/lists/new"></a>
   <h1 class="title">My Lists</h1>
 </header>
@@ -28,7 +29,9 @@ le header -->
               <p>{{ list.assignee ? 'assigned to ' + list.assignee.login : 'Open' }}</p>
             </div>
             <span class="badge badge-inverted badge-top-aligned pull-right"
-                        ng-class="{ 'badge-positive': list.isPayed === true, 'badge-negative': list.isPayed === false }">{{ list.tipAmount.toFixed(2) }}€</span>
+                  ng-class="{ 'badge-positive': list.isPayed === true, 'badge-negative': list.isPayed === false }">
+              {{ list.tipAmount.toFixed(2) }}€
+            </span>
           </a>
         </li>
       </ul>

@@ -20,8 +20,8 @@ var SettingsController = [ '$scope', 'api', 'credentials', function($scope, api,
 
 }];
 
-ngModule.config([ '$routeProvider', function($routeProvider) {
-  $routeProvider.when('/settings', {
+ngModule.config([ '$modalProvider', function($modalProvider) {
+  $modalProvider.register('settings', {
     controller: SettingsController,
     template: fs.readFileSync(__dirname + '/view.html', 'utf-8')
   });
