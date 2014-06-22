@@ -3,10 +3,14 @@ package com.bringste.app.web.rest;
 import com.bringste.app.domain.*;
 import com.bringste.app.repository.ShoppingListRepository;
 import com.bringste.app.repository.UserRepository;
+import com.bringste.app.service.MailService;
+import com.bringste.app.service.PayPalService;
+import com.bringste.app.service.PaymentResult;
 import com.bringste.app.web.rest.dto.*;
 import com.codahale.metrics.annotation.Timed;
 import com.paypal.api.payments.Payment;
 import com.paypal.core.rest.APIContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -35,7 +39,10 @@ public class ShoppingListResource {
   UserRepository userRepository;
 
   @Inject
-  APIContext apiContext;
+  PayPalService payPalService;
+
+  @Inject
+  MailService mailService;
 
   @RequestMapping(value = "/rest/shopping-lists",
     method = RequestMethod.GET, produces = {"application/json"})
@@ -120,13 +127,15 @@ public class ShoppingListResource {
   @Timed
   public ResponseEntity<String> reserveShoppingList(@PathVariable("id") String id, Principal principal) {
     ShoppingList shoppingList = shoppingListRepository.findOne(id);
+    User assignee = userRepository.findOne(principal.getName());
     if (shoppingList.isReserved()) {
       return new ResponseEntity<>("conflict, list is already reserved", HttpStatus.CONFLICT);
     } else {
       ShoppingList list = shoppingListRepository.findOne(id);
       list.setReserved(true);
-      list.setAssignee(userRepository.findOne(principal.getName()));
+      list.setAssignee(assignee);
       shoppingListRepository.save(list);
+      mailService.sendEmail(shoppingList.getCreator().getEmail(), "Your list has been assigned", assignee.getLogin() + " is bringing the stuff", false, false);
       return new ResponseEntity<>("reserved", HttpStatus.OK);
     }
   }
@@ -149,9 +158,9 @@ public class ShoppingListResource {
   @RequestMapping(value = "/rest/shopping-list/{id}/transfer-tip", method = RequestMethod.POST)
   @Timed
   public ResponseEntity<String> transferTip(@PathVariable("id") String id) {
-    Payment payment = new Payment();
-    payment.setIntent("sale");
-    return new ResponseEntity<>("transfered", HttpStatus.OK);
+    ShoppingList shoppingList = shoppingListRepository.findOne(id);
+    PaymentResult result = payPalService.createPayment(shoppingList.getCreator(), shoppingList.getAssignee(), shoppingList.getTipAmount());
+    return new ResponseEntity<>(result.getRedirectUrl(), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/rest/shopping-list/new", method = RequestMethod.POST)

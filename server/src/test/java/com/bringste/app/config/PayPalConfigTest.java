@@ -11,7 +11,7 @@ import java.util.List;
 
 public class PayPalConfigTest {
   @Test
-  @Ignore("is an IT")
+  @Ignore("Integration Test")
   public void paymentShouldWork() throws PayPalRESTException {
     APIContext apiContext = new PayPalConfig().apiContext();
 
