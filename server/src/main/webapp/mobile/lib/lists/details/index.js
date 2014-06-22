@@ -11,11 +11,9 @@ var DetailsController = [ '$scope', 'api', '$routeParams', function($scope, api,
 
   api.get("/shopping-list/:id", { params: { id: $routeParams.id } }).then(function(result) {
     $scope.list = result.data;
-  });
 
-  $scope.deliver = function(type) {
-    $scope.list.deliver = type;
-  };
+    console.log(result.data);
+  });
 
   $scope.create = function() {
     console.log($scope.list);

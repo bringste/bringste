@@ -11,7 +11,7 @@ le header -->
 
   <!-- a card -->
   <div class="card-wrapper card-wrapper-active"
-       rt-nav-push href="/lists/details"
+       rt-nav-push ng-href="/lists/{{ list.id }}"
        ng-if="lists.length > 0"
        ng-repeat="list in lists"
        ng-class="{ 'card-fadeout': list.isDelivered === true }">
@@ -24,8 +24,8 @@ le header -->
           <a class="navigate-right">
             <img class="media-object pull-left" src="http://lorempixel.com/42/42/people/">
             <div class="content-horizontally-padded pull-left">
-              <p>List for {{list.sourceLocation.name}}</p>
-              <p>{{list.assignee ? 'assigned to ' + list.assignee.login : 'Open';}}</p>
+              <p>List for {{ list.sourceLocation.name }}</p>
+              <p>{{ list.assignee ? 'assigned to ' + list.assignee.login : 'Open' }}</p>
             </div>
             <span class="badge badge-inverted badge-top-aligned pull-right"
                         ng-class="{ 'badge-positive': list.isPayed === true, 'badge-negative': list.isPayed === false }">{{ list.tipAmount.toFixed(2) }}€</span>

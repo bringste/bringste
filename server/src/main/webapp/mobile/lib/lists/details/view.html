@@ -1,6 +1,6 @@
 <!-- le header -->
 <header class="bar bar-nav">
-  <a class="icon icon-left-nav pull-left" href rt-nav-pop></a>
+  <a class="icon icon-left-nav pull-left" rt-nav-pop href="/lists"></a>
   <h1 class="title">Details</h1>
 </header>
 <!-- /le header -->
@@ -12,10 +12,7 @@
   <form ng-submit="create()">
 
     <p>Delivery Address:</p>
-    <div class="segmented-control" style="margin-bottom: 15px;">
-      <a class="control-item" ng-class="{ active: list.deliver == 'home' }" href ng-click="deliver('home')">Home</a>
-      <a class="control-item" ng-class="{ active: list.deliver == 'current' }" href ng-click="deliver('current')">Current Position</a>
-    </div>
+    <input type="text" readonly ng-model="list.targetLocation.name" />
 
     <p>Due Date:</p>
 
@@ -27,8 +24,8 @@
       <input type="text" placeholder="+ Add Item" focus-on="item" ng-change="changed(item)" ng-model="item.name" />
     </div>
 
-    <a class="btn btn-primary btn-block">Pay {{list.pledge.toFixed(2)}}€</a>
-    <a class="btn btn-negative btn-block btn-outlined">Drop List</a>
+    <a class="btn btn-primary btn-block" ng-click="pay()">Pay {{list.tipAmount.toFixed(2)}}€</a>
+    <a class="btn btn-negative btn-block btn-outlined" ng-click="remove()">Drop List</a>
   </form>
 
 </div>

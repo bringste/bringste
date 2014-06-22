@@ -28,7 +28,7 @@ ngModule.factory('$navigationCache', function() {
     },
 
     pop: function() {
-      return elements[currentIdx--];
+      return elements[--currentIdx];
     },
 
     get: function() {
@@ -49,8 +49,8 @@ ngModule.service('$navigation', [ '$navigationCache', '$location', function($nav
     };
 
     this.pop = function(element) {
-      $navigationCache.pop();
-      $location.url(element.href);
+      var e = $navigationCache.pop();
+      $location.url((e || element).href);
     };
   }
 
