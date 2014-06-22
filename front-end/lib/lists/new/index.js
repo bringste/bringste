@@ -12,6 +12,7 @@ var NewListController = [ '$scope', 'focus', function($scope, focus) {
   $scope.list = {
     dueDate: null,
     deliver: 'home',
+    pledge: 0,
     items: [ { name: '' } ]
   };
 

@@ -10,28 +10,25 @@ le header -->
 <div class="content">
 
   <!-- a card -->
-  <div class="card-wrapper"
+  <div class="card-wrapper card-wrapper-active"
+       rt-navigation-push href="/lists/details"
        ng-if="lists.length > 0"
        ng-repeat="list in lists"
-       ng-class="{ 'card-wrapper-active': list.isExpanded === true, 'card-fadeout': list.isDelivered === true }">
+       ng-class="{ 'card-fadeout': list.isDelivered === true }">
 
     <!-- cards metadata  -->
     <div class="card">
-      <ul class="table-view" ng-click="toggleExpansion(list)">
+      <ul class="table-view">
         <li class="table-view-cell">
 
           <a class="navigate-right">
-            <!-- <span class="media-object pull-left icon icon-gear"></span>
-            <div class="media-body">
-              Item 2
-            </div> -->
             <img class="media-object pull-left" src="http://lorempixel.com/42/42/people/">
             <div class="content-horizontally-padded pull-left">
               <p>List from {{list.createdAt}}</p>
               <p>{{list.isDelivered ? 'DELIVERED' : 'Not yet delivered';}}</p>
             </div>
             <span class="badge badge-inverted badge-top-aligned pull-right"
-            ng-class="{ 'badge-positive': list.isPayed === true, 'badge-negative': list.isPayed === false }">{{ list.reward.toFixed(2) }}€</span>
+                        ng-class="{ 'badge-positive': list.isPayed === true, 'badge-negative': list.isPayed === false }">{{ list.reward.toFixed(2) }}€</span>
           </a>
         </li>
       </ul>
@@ -39,7 +36,7 @@ le header -->
 
     <!-- cards list contents  -->
     <div class="card card-list">
-      <ul class="table-view" ng-click="toggleExpanded(list)">
+      <ul class="table-view">
         <li class="table-view-cell">
           <div class="content-image-padded pull-left">
           <p><span ng-repeat="item in list.items"><span ng-if="!$first">, </span>{{ item.name }}</span></p>

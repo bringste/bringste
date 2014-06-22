@@ -6,7 +6,8 @@ var angular = require('angular');
 
 
 var ngModule = angular.module('bringste.lists', [
-  require('./new').name
+  require('./new').name,
+  require('./details').name
 ]);
 
 var ListsController = [ '$scope', function($scope) {
@@ -14,8 +15,6 @@ var ListsController = [ '$scope', function($scope) {
     {
       createdAt: null,
       isDelivered: false,
-      isSelected: false,
-      isExpanded: false,
       isPayed: false,
       reward: 3.00,
       items: [{name: 'nutella'}, {name: 'blub mate'}]
@@ -23,21 +22,11 @@ var ListsController = [ '$scope', function($scope) {
     {
       createdAt: null,
       isDelivered: true,
-      isSelected: true,
       isPayed: true,
-      isExpanded: false,
       reward: 5.00,
       items: [{name: 'sahne'}, {name: 'zucker'}]
     }
   ];
-
-  $scope.toggleSelected = function(list) {
-    list.selected = !list.selected;
-  };
-
-  $scope.toggleExpanded = function(list) {
-    list.expanded = !list.expanded;
-  };
 
 }];
 
