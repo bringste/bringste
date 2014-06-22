@@ -75,7 +75,7 @@ ngModule.directive('bsteMap', function() {
             properties: {
                 'title': 'Here you are!',
                 'marker-color': '#0076c4',
-                  'marker-size': 'small'
+                'marker-size': 'small'
             }
         });
       });
