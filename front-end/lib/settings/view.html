@@ -6,26 +6,22 @@
 
 
 <!-- le content -->
-<div class="content content-padded">
+<div class="content content-settings">
 
-  <h5>Account settings</h5>
-  <div class="input-group">
-    <input type="text" placeholder="Username" ng-model="profile.username">
+  <h4 class="ui-settings">Address</h4>
+  <div class="input-group input-group-settings">
+    <input type="text" placeholder="Full name" ng-model="profile.fullname">
+    <input type="text" placeholder="Street" ng-model="profile.street">
+    <input type="text" placeholder="Zipcode" ng-model="profile.zip">
+  </div>
+  <a class="btn btn-positive btn-block ui-settings">Save</a>
+
+  <h4 class="ui-settings">PayPal</h4>
+  <div class="input-group input-group-settings">
     <input type="email" placeholder="Email" ng-model="profile.email">
     <input type="password" placeholder="Password" ng-model="profile.password">
   </div>
-
-  <h5>Details</h5>
-
-  <div class="input-group">
-    <input type="text" placeholder="Full name" ng-model="profile.fullname">
-
-    <input type="text" placeholder="My Home Address" ng-model="profile.address">
-  </div>
-
-  <div>
-    <button class="btn btn-positive btn-block">Save settings</button>
-  </div>
+  <a class="btn btn-primary btn-block ui-settings">Sign in</a>
 
 </div>
 <!-- /le content
