@@ -10,5 +10,8 @@ import java.util.List;
 
 public interface ShoppingListRepository extends JpaRepository<ShoppingList, String> {
   @Query("select s from ShoppingList s where s.creator.login = ?1")
-  List<ShoppingList> findShoppingListsByLogin(String login);
+  List<ShoppingList> findShoppingListsByCreator(String login);
+
+  @Query("select s from ShoppingList s where s.assignee.login = ?1")
+  List<ShoppingList> findShoppingListsByAssignee(String login);
 }

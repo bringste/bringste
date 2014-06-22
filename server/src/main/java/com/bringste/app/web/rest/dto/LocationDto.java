@@ -1,16 +1,18 @@
 package com.bringste.app.web.rest.dto;
 
+import java.math.BigDecimal;
+
 public class LocationDto {
-  float latitude;
-  float longitude;
+  BigDecimal latitude;
+  BigDecimal longitude;
   Integer zoom;
   String name;
 
-  public float getLatitude() {
+  public BigDecimal getLatitude() {
     return latitude;
   }
 
-  public float getLongitude() {
+  public BigDecimal getLongitude() {
     return longitude;
   }
 
@@ -22,12 +24,12 @@ public class LocationDto {
     return name;
   }
 
-  public LocationDto withLatitude(float latitude) {
+  public LocationDto withLatitude(BigDecimal latitude) {
     this.latitude = latitude;
     return this;
   }
 
-  public LocationDto withLongitude(float longitude) {
+  public LocationDto withLongitude(BigDecimal longitude) {
     this.longitude = longitude;
     return this;
   }

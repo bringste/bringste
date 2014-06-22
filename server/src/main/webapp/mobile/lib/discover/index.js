@@ -28,9 +28,6 @@ var DiscoverController = [ '$scope', '$location', 'api', function($scope, $locat
     api.post('/shopping-list/:id/:action', { params: { id: list.id, action: action } }).then(function() {
       list.reserved = !list.reserved;
     }, function(err) {
-      console.log(err);
-      // remove list from scope
-      $scope.bringRequests.splice($scope.bringRequests.indexOf(list), 1);
     });
   };
 

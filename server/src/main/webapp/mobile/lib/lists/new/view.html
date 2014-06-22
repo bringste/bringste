@@ -13,8 +13,8 @@
 
     <p>Delivery Address:</p>
     <div class="segmented-control" style="margin-bottom: 15px;">
-      <a class="control-item" ng-class="{ active: list.deliver == 'home' }" href ng-click="deliver('home')">Home</a>
-      <a class="control-item" ng-class="{ active: list.deliver == 'current' }" href ng-click="deliver('current')">Current Position</a>
+      <a class="control-item" ng-class="{ active: list.deliverHome == true }" href ng-click="deliver(true)">Home</a>
+      <a class="control-item" ng-class="{ active: list.deliverHome == false }" href ng-click="deliver(false)">Current Position</a>
     </div>
 
     <p>Due Date:</p>
@@ -29,7 +29,7 @@
 
     <p>Pledge:</p>
 
-    <input type="number" ng-model="list.pledge" />
+    <input type="number" ng-model="list.tipAmount" />
 
     <button class="btn btn-positive btn-block" type="submit">Create List</button>
   </form>

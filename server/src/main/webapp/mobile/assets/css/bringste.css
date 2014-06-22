@@ -67,11 +67,19 @@ body {
 }
 
 .content-horizontally-padded {
-  margin: -4px 0 0 10px;
+  width: 100%;
+  margin: -4px -55px 0 10px;
+}
+
+.content-horizontally-padded p {
+  margin-bottom: 0px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .content-image-padded {
-  margin: 0 0 0 62px;
+  margin: 0 0 0 52px;
 }
 
 .card-wrapper .checkbox-wrapper {
@@ -118,14 +126,10 @@ body {
   position: absolute;
 
   top: 50%;
+  left: 50%;
 
-  width: calc(90% - 20px);
-  height: auto;
-
-  margin: -90px 5% 0 5%;
-
-  max-width: 533px;
-  max-height: 192px;
+  width: 280px;
+  margin: -90px 0px 0px -140px;
 }
 
 .blankslate span {
