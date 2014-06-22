@@ -1,6 +1,6 @@
 le header -->
 <header class="bar bar-nav">
-  <a class="icon icon-plus pull-right" rt-navigation-push href="/lists/new"></a>
+  <a class="icon icon-plus pull-right" rt-nav-push href="/lists/new"></a>
   <h1 class="title">My Lists</h1>
 </header>
 <!-- /le header -->
@@ -11,7 +11,7 @@ le header -->
 
   <!-- a card -->
   <div class="card-wrapper card-wrapper-active"
-       rt-navigation-push href="/lists/details"
+       rt-nav-push href="/lists/details"
        ng-if="lists.length > 0"
        ng-repeat="list in lists"
        ng-class="{ 'card-fadeout': list.isDelivered === true }">
@@ -52,8 +52,8 @@ le header -->
   <p class="blankslate" ng-if="lists.length == 0" >
     <span class="blankslateHeadline">No Lists to show</span>
     <span>You don't have any shared lists so far.</span>
-    <span>Start by creating a <a rt-navigation-push href="/lists/new">new List</a></span>
-    <span>or <a rt-navigation-push href="/discover">discover</a> other lists.</span>
+    <span>Start by creating a <a rt-nav-push href="/lists/new">new List</a></span>
+    <span>or <a rt-nav-push href="/discover">discover</a> other lists.</span>
   </p>
   <!-- /le blankslate -->
 
