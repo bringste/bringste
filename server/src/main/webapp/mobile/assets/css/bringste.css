@@ -67,11 +67,19 @@ body {
 }
 
 .content-horizontally-padded {
-  margin: -4px 0 0 10px;
+  width: 100%;
+  margin: -4px -55px 0 10px;
+}
+
+.content-horizontally-padded p {
+  margin-bottom: 0px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .content-image-padded {
-  margin: 0 0 0 62px;
+  margin: 0 0 0 52px;
 }
 
 .card-wrapper .checkbox-wrapper {
