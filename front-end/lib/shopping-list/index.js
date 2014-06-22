@@ -6,7 +6,6 @@ var angular = require('angular');
 
 var ngModule = angular.module('bringste.shoppinglist', []);
 
-
 var ShoppinglistController = [ '$scope', function($scope) {
   $scope.subscribedLists = [{
     creator: {

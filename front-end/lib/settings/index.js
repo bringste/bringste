@@ -4,7 +4,6 @@ var fs = require('fs');
 
 var angular = require('angular');
 
-
 var ngModule = angular.module('bringste.settings', []);
 
 var SettingsController = [ '$scope', '$http', 'credentials', function($scope, $http, credentials) {
