@@ -10,10 +10,10 @@ var ngModule = angular.module('bringste.lists', [
   require('./details').name
 ]);
 
-var ListsController = [ '$scope', '$http', function($scope, $http) {
+var ListsController = [ '$scope', 'api', function($scope, api) {
   $scope.lists = [];
 
-  $http.get("../../app/rest/shopping-lists/user").then(function(result){
+  api.get("/shopping-lists/user").then(function(result){
     $scope.lists = result.data.lists;
   });
 
